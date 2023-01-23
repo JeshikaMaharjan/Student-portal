@@ -1,5 +1,5 @@
 import React,{useRef,useState} from "react";
-import apiClient from "../http-common";
+import {basicInstance} from "../http-common";
 
 // GET request
 
@@ -19,7 +19,7 @@ function UserDetails() {
 
     if (id) {
       try {        
-        const res = await apiClient.get(`/getInfo/student/${id}`);
+        const res = await basicInstance.get(`/getInfo/student/${id}`);
 
         const result = {
           data: res.data,

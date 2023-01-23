@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import apiClient from "../http-common";
+import {basicInstance} from "../http-common";
 
 
 function Users() {
@@ -15,7 +15,7 @@ function Users() {
 
   async function getAllData() {
     try {    
-      const res = await apiClient.get("/getInfo");
+      const res = await basicInstance.get("/getInfo");
 
       const result = {
         status: res.status + "-" + res.statusText,
