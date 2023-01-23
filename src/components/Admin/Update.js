@@ -1,9 +1,10 @@
 import React from "react";
 
-export const Update = () => {
+const Update = () => {
     return (
       <>          
         {console.log('Update deals /notifications')}
       </>
     )
 }
+export default Update;
