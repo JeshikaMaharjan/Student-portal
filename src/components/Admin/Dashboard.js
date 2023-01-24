@@ -4,7 +4,7 @@ import {Outlet} from 'react-router-dom';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Icon } from '@mui/material';
 
-const Dashboard = () => {   
+const Dashboard = (props) => {   
     return (
             <>          
                 <div className="dashboard">
@@ -39,8 +39,9 @@ const Dashboard = () => {
                     <div className='dash_separator'>
                     </div>
 
-                    <div className='dash_body'>                        
-                        <Outlet/>        
+                    <div className='dash_body'>             
+                        {props.comp} 
+                        {/* props.comp vaneko Home bata ako Component hoo  */}
                     </div>                       
 
                 </div>                                  
