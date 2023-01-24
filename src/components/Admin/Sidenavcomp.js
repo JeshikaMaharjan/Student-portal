@@ -9,22 +9,22 @@ export const Sidenavcomp = [
 {
     title: 'Profile',
     icon: <AccountCircleIcon/>,
-    link:"/home/profile"
+    link:"/admin/profile"
 },
 {
     title: 'Registration',
     icon: <PersonAddIcon/>,
-    link:"/home/registration"
+    link:"/admin/registration"
 },
 {
     title: 'Search',
     icon: <DescriptionIcon/>,
-    link:"/home/search"
+    link:"/admin/search"
 },
 {
     title: 'Update',
     icon: <AutoGraphIcon/>,
-    link:"/home/update"
+    link:"/admin/update"
 }
 // ,
 // {
