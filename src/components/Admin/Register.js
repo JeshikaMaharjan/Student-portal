@@ -84,7 +84,7 @@ const Register=()=>{
                           <button id='btn' onClick = { () => {
                             setRole(3);
                             // postData();                            
-                            navigate('/home/registration/registerstudent', {replace : true})
+                            navigate('/admin/registration/registerstudent', {replace : true})
                             }}>Register Student</button>                          
                         </div>
 
@@ -103,7 +103,7 @@ const Register=()=>{
                             { 
                                 setRole(2);
                                  // postData();
-                                navigate('/home/registration/registerstaff', {replace : true})
+                                navigate('/admin/registration/registerstaff', {replace : true})
                                 
                                 }}>Register Staff</button>                                                     
                         </div>
