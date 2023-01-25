@@ -1,24 +1,26 @@
 import axios from "axios";
 
-const baseURL = 'http://192.168.101.81:8000/api';
+const baseURL = 'http://10.0.0.28:8000/api';
+
+const token = () => localStorage.getItem('access_token');
 
 const basicInstance = axios.create(
     {
         baseURL : baseURL,
-        timeout : 5000    
     }
 );
 
 const tokenInstance = axios.create(
     {
         baseURL : baseURL,
-        timeout : 5000,
         headers : {
-            'Authorization' : `Bearer ${localStorage.getItem('access_token')}`,
+            Authorization : `Bearer ${token()}`,
             'Content-Type' : 'application/json'
-        }    
+        }  ,
+        
     }
 );
-export  {basicInstance,tokenInstance};
+
+export  {basicInstance,tokenInstance, token};
   
 
