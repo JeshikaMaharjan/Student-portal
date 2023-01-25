@@ -18,21 +18,23 @@ export default function Login(){
     async function postData() {
         const postData = {  
 
-            username: username.current.value,
+            userName: username.current.value,
             password: password.current.value,       
         };
 
         try {        
             const res = await basicInstance.post("/login", postData);
-            localStorage.setItem('access_token', res.data.access); //accesstoken save gareko localstorage ma
+            localStorage.setItem('access_token', JSON.stringify(res.data.access)); //accesstoken save gareko localstorage ma
             // const newrole = res.data.role;
+            console.log(res.data)
              
             setPostResult('Login successful');
-            navigate('/profile');
+            navigate('/admin/profile');
           
                     
         } 
         catch (err) {
+            console.log(err)
             setPostResult(fortmatResponse(err.response?.data || err));
             navigate('/login');
         }
