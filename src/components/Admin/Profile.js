@@ -1,6 +1,16 @@
 import React from 'react'
 
 const Profile =() => {
+  // function getAllData(){
+        //     try{
+        //         const response = tokenInstance('/details/');
+        //         setUserList(response.data); //data ma student namelist aunu paryo
+        //     }
+        //     catch(err){
+        //         setUserList('empty');
+        //         console.log(err.response.data);
+        //     }
+        // }  
   
   return (
           <>        

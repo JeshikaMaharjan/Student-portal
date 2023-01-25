@@ -1,7 +1,7 @@
 import { tokenInstance } from "../../http-common";
 import { useRef } from "react";
 
-function EditDetails(detail){
+function EditDetails({detail}){
     const name = useRef(null);
     
     function handleChange(){
@@ -9,7 +9,7 @@ function EditDetails(detail){
             name :name.current.value
         }
         try {        
-            tokenInstance.put(`/student/${detail.id}`, putData)
+            tokenInstance.put(`/student/${detail.username}`, putData)
             .then((res) => {
                 console.log(res);
 

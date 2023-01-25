@@ -3,6 +3,7 @@ import Scroll from '../Scroll';
 import SearchList from './SearchList';
 
 function Search({details}) {
+  console.log("search c", details)
 
   const [searchField, setSearchField] = useState("");
 
@@ -10,7 +11,7 @@ function Search({details}) {
     person => {
       return (
         person
-        .name
+        .userName
         .toLowerCase()
         .includes(searchField.toLowerCase())
       );
@@ -28,6 +29,7 @@ function Search({details}) {
       </Scroll>
     );
   }
+  console.log("Search component")
 
   return (
     <>

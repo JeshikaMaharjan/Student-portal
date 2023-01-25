@@ -1,72 +1,19 @@
 import React, {useRef, useState} from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import {Link,Outlet} from 'react-router-dom';
-import {tokenInstance} from  '../../http-common';
 import Scroll from "../Scroll";
 import '../../css/Register.css'
 import '../../css/RegIniForm.css'
 
 
 const Register=()=>{
-    const navigate = useNavigate();
-    const userName = useRef(null);
-    const firstName = useRef(null);
-    const lastName = useRef(null);
-    const password = useRef(null);
-    const [role, setRole] = useState(null) ;    
-    
-    const [postResult, setPostResult] = useState(null);
-    
-    function postData() {
-        const postData = {    
-
-            firstName: firstName.current.value,
-            lastName: lastName.current.value,
-            userName: userName.current.value,
-            password: password.current.value,       
-            role: role,   
-        };
-        
-        try { 
-            tokenInstance.post(`/user/create`, postData)
-            .then((res) => {               
-                setPostResult('Registered successfully.');
-            });	        
-            
-        } 
-        catch (err) {            
-            setPostResult('Unsuccessful');
-        }
-    }
-    
+    const navigate = useNavigate();  
     
     return(
         <>       
         <Scroll>
         <div className="initialReg">
             <div className="formBox">
-                <h2 className="title">Registration</h2>
-                <form>
-                    <div className="inputBx">
-                        <span>First Name</span>
-                        <input type="text" name="firstName" ref={firstName} placeholder='Enter First Name' />
-                    </div>
-                    
-                    <div className="inputBx">
-                        <span>Last Name</span>
-                        <input type="text" name="lastName" ref={lastName}  placeholder='Enter Last Name' />
-                    </div>
-                    
-                    <div className="inputBx">
-                        <span>Username</span>
-                        <input type="text" name="username" ref={userName}  placeholder='Set Username' />
-                    </div>
-                    
-                    <div className="inputBx">
-                        <span>Password</span>
-                        <input type="password" name="" ref={password}  placeholder='Set Password' />
-                    </div>                                      
-                </form>
+                <h2 className="title">Registration</h2>                
             </div>
         </div>                    
         
@@ -82,8 +29,7 @@ const Register=()=>{
 
                         <div className="btnsec">
                           <button id='btn' onClick = { () => {
-                            setRole(3);
-                            // postData();                            
+                                                        
                             navigate('/admin/registration/registerstudent', {replace : true})
                             }}>Register Student</button>                          
                         </div>
@@ -100,9 +46,7 @@ const Register=()=>{
 
                         <div className="btnsec">
                             <button id='btn' onClick = { () =>
-                            { 
-                                setRole(2);
-                                 // postData();
+                            {                                 
                                 navigate('/admin/registration/registerstaff', {replace : true})
                                 
                                 }}>Register Staff</button>                                                     
@@ -112,12 +56,10 @@ const Register=()=>{
                 </div>        
             </div>
         </div>
-        </Scroll>
-        {console.log(role)}    
+        </Scroll>   
         </>
     )
 }
 
 export default Register
-
 
