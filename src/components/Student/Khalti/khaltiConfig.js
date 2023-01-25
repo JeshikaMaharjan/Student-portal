@@ -16,11 +16,11 @@ let config = {
                 "amount" : payload.amount,
                 "username": payload.productName
             };
-            axios.post("http://192.168.101.81:8000/api/khalti", data,
-            {
-                headers: {'Authorization': 'Bearer '+ localStorage.getItem('access_token')}
+            axios.post("http://10.0.0.28:8000/api/khalti", data,
+            // {
+            //     headers: {'Authorization': 'Bearer '+ localStorage.getItem('access_token')}
 
-            }
+            // }
             )
 
         },
