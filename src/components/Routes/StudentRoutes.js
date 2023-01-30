@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../Student/Student";
 import Profile from "../Student/Profile";
-import Khalti from "../Khalti/Khalti";
+import PaymentRoutes from "./PaymentRoutes";
 
 
 function StudentRoutes(){
@@ -9,8 +9,9 @@ function StudentRoutes(){
         <>
         <Routes>
             <Route index element={<Layout />}/>
-            <Route path ='profile' element = {<Layout component ={<Profile/>}/>}/>                                
-            <Route path ='payment' element = {<Layout component ={<Khalti/>}/>}/>                                
+            <Route path ='profile' element = {<Layout component ={<Profile/>}/>}/>  
+            <Route path ='payment/*' element = {<Layout component ={<PaymentRoutes/>}/>}/>                          
+                                           
         </Routes>
         </>
     )

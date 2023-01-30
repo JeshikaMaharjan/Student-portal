@@ -26,11 +26,4 @@ export const Sidenavcomp = [
     icon: <AutoGraphIcon/>,
     link:"/admin/update"
 }
-// ,
-// {
-    
-//     title: 'Log Out',
-//     icon: <LogoutIcon/>,
-//     link:"/logout"
-// }
 ]

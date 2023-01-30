@@ -11,17 +11,21 @@ let config = {
         onSuccess (payload) {
             // hit merchant api for initiating verfication
             console.log(payload);
+
             let data ={
                 "token" : payload.token,
                 "amount" : payload.amount,
-                "username": payload.productName
+                "userName": payload.product_name
             };
-            axios.post("http://10.0.0.28:8000/api/khalti", data,
-            // {
-            //     headers: {'Authorization': 'Bearer '+ localStorage.getItem('access_token')}
+            axios.post("http://192.168.1.100:8000/api/khalti", data,
+            {
+                headers: {'Authorization': 'Bearer '+ localStorage.getItem('access_token')}
 
-            // }
+            }
             )
+            .then((res) => {
+                console.log(res)
+            })
 
         },
         // onError handler is optional

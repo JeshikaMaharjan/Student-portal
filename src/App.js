@@ -1,123 +1,73 @@
-import { Route, Routes } from 'react-router-dom';
-import './css/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from './components/Login';
-import Users from './components/Users';
-import UserDetails from './components/UserDetails';
-import AdminRoutes from './components/Routes/AdminRoutes';
-import { NoMatch } from './components/NoMatch';
-import Khalti from './components/Khalti/Khalti';
-import Unauthorized from './components/Unauthorized';
-import RequireAuth from './components/RequireAuth';
-import AccountRoutes from './components/Routes/Account_staffRoutes';
-import StudentRoutes from './components/Routes/StudentRoutes';
-// import { basicInstance } from "./http-common";
-// import { tokenInstance } from "./http-common";
+import { Route, Routes } from "react-router-dom";
+import "./css/App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./components/Login";
+import { NoMatch } from "./components/NoMatch";
+import { SecureComponent } from "./components/Routes/secureComponent";
+import { RequireAuth } from "react-auth-kit";
+import Image from "./components/image";
+//----------------------------------------------------
+import AdminRoutes from "./components/Routes/AdminRoutes";
+import AccountRoutes from "./components/Routes/Account_staffRoutes";
+import StudentRoutes from "./components/Routes/StudentRoutes";
+import Unauthorized from "./components/Unauthorized";
+// import RegisterStudent from "./components/Admin/RegisterStudent";
 
-// import { useEffect } from "react";
+import { useState } from "react";
 
+// import { useEffect, useState } from "react";
+// import { useBearStore } from "./Stores/bear-store";
 
-
-const ROLES = {
-  'Admin' : 1,
-  'Staff': 2,
-  'Student':3
-}
 function App() {
-  // useEffect(()=> {
-  //   login();
-  //   async function login() {
-  //     const postData = {  
-  //         userName: 'admin',
-  //         password: '12345',       
-  //     };
-    
-  //     try {        
-  //         const res = await basicInstance.post("/login", postData);
-  //         // localStorage.setItem('access_token', JSON.stringify(res.data.access)); //accesstoken save gareko localstorage ma
-  //         // const newrole = res.data.role;
-  //         console.log(res.data)
-           
-  //         // setPostResult('Login successful');
-  //         // navigate('/profile');
-  //     } 
-  //     catch (err) {
-  //         console.log(err)
-  //         // setPostResult(fortmatResponse(err.response?.data || err));
-  //         // navigate('/login');
-  //     }
-  //   }  
-  // }, [])
-  
+  // return <Image />;
 
-// useEffect(()=> {
-//   tokenInstance.get('/getInfo/allUser')
-//   .then((res) => {  
-//       console.log(res);             
-      
-//   })	                                   
-//   .catch((e) => {  
-//       console.log(e);             
-      
-//   });	                               
-// }, [])
+  // const [count, setCount] = useState(0);
 
+  // const bears = useBearStore((state) => state.bears);
+  // const increasePopulation = useBearStore((state) => state.increasePopulation);
 
-  // return (<h1>Hello World!</h1>)
-  return ( 
+  // console.log({ bears });
+
+  // useEffect(() => {
+  //   increasePopulation(25);
+  //   setCount((count) => count + 1);
+  //   setCount((count) => count + 1);
+  // }, []);
+
+  // const data = { name: "Jane Doe", age: 25, address: "Unknown" };
+  // const { ...rest } = data;
+  // console.log(rest);
+  // return <div>count: {count}</div>;
+
+  // return(
+  // <>
+  //   <Routes>
+  //     {/* public routes */}
+  //     <Route path ='/' element = {<Login/>}/>
+  //     <Route path ='/login' element = {<Login/>}/>
+  //     <Route path='*' element ={<NoMatch/>}/>
+  //     <Route path={'/secure/*'} element={
+  //       <RequireAuth loginPath={'/login'}>  {/* loginPath : The fallback path, which will be used in case of the user is not authenticated */}
+  //         <SecureComponent/>
+  //       </RequireAuth>
+  //     }/>
+  //   </Routes>
+  // </>
+
+  return (
     <>
       <Routes>
         {/* public routes */}
-        <Route path ='/' element = {<Login/>}/>
-        <Route path ='/login' element = {<Login/>}/>
-        <Route path="unauthorized" element={<Unauthorized />} />
-        <Route path="accountstaff/*" element={<AccountRoutes />} />          
-        <Route path="student/*" element={<StudentRoutes />} />          
-        <Route path="admin/*" element={<AdminRoutes />} />          
-
-        {/*  protected routes */}
-        {/* <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="admin/*" element={<AdminRoutes />} />          
-        </Route>  
-
-        <Route element={<RequireAuth allowedRoles={[ROLES.Staff]} />}>
-          <Route path="accountstaff/*" element={<AccountRoutes />} />          
-        </Route> 
-
-        <Route element={<RequireAuth allowedRoles={[ROLES.Student]} />}>
-          <Route path="student/*" element={<StudentRoutes />} />          
-        </Route>         */}
-
-        <Route path ='users' element = {<Users/>}/> 
-        <Route path='userId' element= {<UserDetails/>}/> 
-        <Route path ='payment' element = {<Khalti/>}/>
-        <Route path='*' element ={<NoMatch/>}/>
-      </Routes> 
-    </>      
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin/*" element={<AdminRoutes />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="accountstaff/*" element={<AccountRoutes />} />
+        <Route path="student/*" element={<StudentRoutes />} />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+    </>
   );
-}  
-//   return ( 
-//     <>
-//       <SideNav/>        
-//       <Routes>
-//         <Route path ='/' element = {<Login/>}/>
-//         <Route path ='/login' element = {<Login/>}/>
-//         <Route path ='home' element = {<Home/>}>
-//           <Route path ='profile' element = {<Profile/>}/>
-
-
-//           <Route path ='registration/*' element = {<RegisterRoutes/>}/> 
-//           <Route path ='update' element = {<Update/>}/>
-//           <Route path ='search' element = {<Search />}/>
-//         </Route> 
-
-//         <Route path ='users' element = {<Users/>}/> 
-//         <Route path='userId' element= {<UserDetails/>}/> 
-//         <Route path ='payment' element = {<Khalti/>}/>
-//         <Route path='*' element ={<NoMatch/>}/>
-//       </Routes> 
-//     </>      
-//   );
-// }  
+}
 
 export default App;

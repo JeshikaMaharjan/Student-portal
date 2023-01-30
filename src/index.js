@@ -1,21 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {BrowserRouter , Routes, Route} from 'react-router-dom';
-import './css/index.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App';
-import { AuthProvider } from './context/AuthProvider';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes } from "react-router-dom";
+import "./css/index.css";
+import App from "./App";
+import { AuthProvider } from "react-auth-kit";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <AuthProvider authType={"localstorage"} authName={"_auth"}>
     <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route path ='/*' element = {<App/>} />
-        </Routes>        
-      </AuthProvider>
+      <App />
     </BrowserRouter>
-  </React.StrictMode>
+  </AuthProvider>
 );
-

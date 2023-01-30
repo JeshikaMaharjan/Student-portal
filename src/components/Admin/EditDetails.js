@@ -1,30 +1,33 @@
 import { tokenInstance } from "../../http-common";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-function EditDetails({detail}){
-    const name = useRef(null);
-    
-    function handleChange(){
-        const putData = {
-            name :name.current.value
-        }
-        try {        
-            tokenInstance.put(`/student/${detail.username}`, putData)
-            .then((res) => {
-                console.log(res);
+function EditDetails() {
+  const location = useLocation();
+  const detail = location.state;
 
-            }) 
-            
-          } catch (err) {
-            console.log(err);
-          }
-    }
-    return(
-        <>
-            <input type = "text" value={detail.name} ref={name}>name</input>
-            <button onClick={handleChange}>Save</button>
-        </>
-    )
+  console.log("edit", detail);
 
+  const name = useRef(null);
+  function handleSubmit() {
+    const putData = {
+      firstName: name.current.value,
+    };
+
+    tokenInstance
+      .put(`/update/${detail.userName}`, putData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  return (
+    <>
+      <input type="text" ref={name} defaultValue={detail.firstName}></input>
+      <button onClick={handleSubmit}>Save</button>
+    </>
+  );
 }
 export default EditDetails;

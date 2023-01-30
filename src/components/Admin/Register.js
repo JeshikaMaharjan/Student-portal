@@ -1,21 +1,12 @@
 import React, {useRef, useState} from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import Scroll from "../Scroll";
 import '../../css/Register.css'
-import '../../css/RegIniForm.css'
-
 
 const Register=()=>{
     const navigate = useNavigate();  
     
     return(
         <>       
-        <Scroll>
-        <div className="initialReg">
-            <div className="formBox">
-                <h2 className="title">Registration</h2>                
-            </div>
-        </div>                    
         
         <div className="container">            
             <div className="midBox">
@@ -56,7 +47,7 @@ const Register=()=>{
                 </div>        
             </div>
         </div>
-        </Scroll>   
+        
         </>
     )
 }

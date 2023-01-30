@@ -1,23 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { tokenInstance } from '../../http-common';
+import {useAuthUser} from 'react-auth-kit'
 
 const Profile =() => {
-  // function getAllData(){
-        //     try{
-        //         const response = tokenInstance('/details/');
-        //         setUserList(response.data); //data ma student namelist aunu paryo
-        //     }
-        //     catch(err){
-        //         setUserList('empty');
-        //         console.log(err.response.data);
-        //     }
-        // }  
+  const [data,setData] = useState([]);
+  const auth = useAuthUser()
+  
+  useEffect(()=> {
+    detail();
+    async function detail() {
+      
+      try {        
+          // const res = await tokenInstance.get("/details/test1");          
+          await tokenInstance.get(`/details/${auth().user}`)
+          .then((res) => {
+            console.log(res.data)
+            const info = res.data
+            setData(info) 
+          })                   
+      }    
+      catch (err) {          
+          console.log(err)         
+      }
+    }  
+  }, [])
   
   return (
           <>        
             <div className="header">
               <div className="greet">
                 <div className="message">
-                    <div className="greet_mgs">Hey, Arun!</div>
+                    <div className="greet_mgs">Hey, {data.userName}</div>
                     <div className="back">Welcome back, nice to meet you again.</div>    
                 </div>
                 <div className="profile-image">
@@ -34,12 +47,11 @@ const Profile =() => {
                 <div className='dash_separator'>
                 </div>                    
                 <div className="informations">   
-                    <div className="fullName">Full Name:</div>
-                    <div className="contact">Contact:</div>
-                    <div className="gender">Gender:</div>
-                    <div className="dateOfBirth">Date Of Birth:</div>
-                    <div className="address">Address</div>
-                    <div className="bloodGroup">Blood Group:</div>    
+                    <div className="fullName">Full Name: {data.firstName} {data.lastName}</div>
+                    <div className="userName">UserName: {data.userName}</div>    
+                    <div className="contact">Contact: {data.contact_no}</div>
+                    <div className="address">Address: {data.address}</div>
+                    <div className="email">Email: {data.email}</div>
                 </div>
               </div>
             </div>
