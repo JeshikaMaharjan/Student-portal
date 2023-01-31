@@ -1,8 +1,9 @@
-import { tokenInstance } from "../../http-common";
 import { useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useToken } from "../../apis";
 
 function EditDetails() {
+  const { tokenInstance } = useToken();
   const location = useLocation();
   const detail = location.state;
 
@@ -15,7 +16,7 @@ function EditDetails() {
     };
 
     tokenInstance
-      .put(`/update/${detail.userName}`, putData)
+      .put(`/user/update/${detail.userName}`, putData)
       .then((res) => {
         console.log(res);
       })

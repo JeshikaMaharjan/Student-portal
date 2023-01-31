@@ -1,0 +1,79 @@
+import axios from "axios";
+import { useAuth } from "./Authentication/auth";
+
+const baseURL = "http://192.168.100.36:8000/api";
+
+const config = {
+  baseURL: baseURL,
+};
+
+const configWithToken = (token) => ({
+  baseURL: baseURL,
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  },
+});
+
+const useLogin = () => {
+  const setToken = useAuth((state) => state.setToken);
+  const setUser = useAuth((state) => state.setUser);
+  const setRole = useAuth((state) => state.setRole);
+  const setAuthenticated = useAuth((state) => state.setAuthenticated);
+
+  const login = async ({ username, password }) => {
+    try {
+      const res = await axios
+        .create(config)
+        .post("/login", { userName: username, password });
+
+      if (res.status !== 200) {
+        setAuthenticated(false);
+        return false;
+      }
+
+      console.log(res);
+
+      setToken(res.data.access);
+      setUser(res.data.username);
+      setRole(res.data.role);
+      setAuthenticated(true);
+      return true;
+    } catch (error) {
+      console.log(error);
+      setAuthenticated(false);
+      return false;
+    }
+  };
+
+  return { login };
+  //esle function naii return gareko ho i.e login function
+};
+
+const useToken = () => {
+  const token = useAuth((state) => state.accesstoken);
+  const tokenInstance = axios.create(configWithToken(token));
+  return { tokenInstance };
+};
+
+const useLogout = () => {
+  const setToken = useAuth((state) => state.setToken);
+  const setUser = useAuth((state) => state.setUser);
+  const setRole = useAuth((state) => state.setRole);
+  const setAuthenticated = useAuth((state) => state.setAuthenticated);
+  const logout = () => {
+    try {
+      setToken(null);
+      setUser(null);
+      setRole(null);
+      setAuthenticated(false);
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+  return { logout };
+};
+
+export { useLogin, useToken, useLogout };

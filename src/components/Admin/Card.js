@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
 import { navigate, useNavigate } from "react-router-dom";
-import { tokenInstance } from "../../http-common";
-import DeleteUser from "./DeleteUser";
-import EditDetails from "./EditDetails";
+import { useToken } from "../../apis";
 
 function Card({ person }) {
+  const { tokenInstance } = useToken();
   const name = useRef(null);
   const navigate = useNavigate();
 
@@ -18,7 +17,7 @@ function Card({ person }) {
                 <div className="imageSec">
                   <img
                     id="img-profile"
-                    src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9j5kXSP12ylfgHx30qabxtDu0GAX1cm19TTaKZVA1hONj-t6MfsXechjGt6hyYoPBD4Y&usqp=CAU"
+                    src={person.image}
                     alt="demo"
                     rel="norefferer"
                   />
@@ -42,14 +41,11 @@ function Card({ person }) {
                   <div className="editBtn">
                     <button
                       id="edit"
-                      onClick={
-                        () =>
-                          navigate("/admin/edit", {
-                            replace: true,
-                            state: { ...person },
-                          })
-
-                        // <EditDetails detail={person} />
+                      onClick={() =>
+                        navigate("/secure/admin/edit", {
+                          replace: true,
+                          state: { ...person },
+                        })
                       }
                     >
                       Edit
@@ -60,7 +56,7 @@ function Card({ person }) {
                     <button
                       id="delete"
                       onClick={() =>
-                        navigate("/admin/delete", {
+                        navigate("/secure/admin/delete", {
                           replace: true,
                           state: { ...person },
                         })

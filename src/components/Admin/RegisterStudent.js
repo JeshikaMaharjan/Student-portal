@@ -1,23 +1,13 @@
 import React, { useRef, useState } from "react";
-import { tokenInstance } from "../../http-common";
 import Scroll from "../Scroll";
 import "../../css/Register.css";
 import { Button, Form, FormGroup, Label, Input, CardHeader } from "reactstrap";
 import "../../css/RegForm.css";
 import { Card, CardBody } from "reactstrap";
+import { useToken } from "../../apis";
 
 function RegisterStudent() {
-  //   useEffect(()=> {
-  //     tokenInstance.get(`/faculty`)
-  //     .then((res) => {
-  //         console.log(res);
-
-  //     })
-  //     .catch((e) => {
-  //         console.log(e);
-
-  //     });
-  // }, [])
+  const { tokenInstance } = useToken();
 
   const userName = useRef(null);
   const firstName = useRef(null);
@@ -25,10 +15,9 @@ function RegisterStudent() {
   const address = useRef(null);
   const contact = useRef(null);
   const password = useRef(null);
-  const [role, setRole] = useState(3);
+  const [role, setRole] = useState(4);
   const email = useRef(null);
   const faculty = useRef(null);
-  // const [faculty, setfaculty] = useState(null);
   const batch = useRef(null);
   const semester = useRef(null);
   const [image, setImage] = useState("");
@@ -70,7 +59,6 @@ function RegisterStudent() {
       contact_no: contact.current.value,
       role: role,
       email: email.current.value,
-      // faculty: faculty.current.value,
       faculty: faculty.current.id,
       batch: batch.current.value,
       semester: semester.current.value,

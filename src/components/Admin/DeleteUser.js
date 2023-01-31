@@ -1,8 +1,9 @@
-import { tokenInstance } from "../../http-common";
 import { useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useToken } from "../../apis";
 
 function DeleteUser() {
+  const { tokenInstance } = useToken();
   const location = useLocation();
   const detail = location.state;
 

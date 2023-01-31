@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "../Admin/Admin";
-import Profile from "../Admin/Profile";
+import Profile from "../Profile";
 import RegisterRoutes from "./RegisterRoutes";
 import Update from "../Admin/Update";
 import Display from "../Admin/Display";

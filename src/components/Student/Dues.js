@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
-import { useAuthUser } from "react-auth-kit";
+// import { useAuthUser } from "react-auth-kit";
 import KhaltiCheckout from "khalti-checkout-web";
 import config from "./Khalti/khaltiConfig";
 import "../../css/Dues.css";
-import { tokenInstance } from "../../http-common";
+import { useToken } from "../../apis";
 
 function Dues() {
+  const { tokenInstance } = useToken();
   const [data, setData] = useState([]);
   const [amount, setamount] = useState();
-  const auth = useAuthUser();
+  // const auth = useAuthUser();
 
   let checkout = new KhaltiCheckout(config);
 
   useEffect(() => {
     tokenInstance
       //   .get(`/details/${user}`)
-      .get(`/due/test1`)
+      .get(`/due/student1`)
       .then((res) => {
         console.log(res.data);
         setData(res.data.due);

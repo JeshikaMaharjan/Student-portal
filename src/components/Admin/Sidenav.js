@@ -1,5 +1,4 @@
 import React from "react";
-import { useSignOut } from "react-auth-kit";
 import { Sidenavcomp } from "./Sidenavcomp";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -7,9 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 function SideNav() {
   const navigate = useNavigate();
-  const signOut = useSignOut();
-
-  // if (isAdmin) return <div>Admin</div>;
 
   return (
     <>
@@ -38,12 +34,12 @@ function SideNav() {
               </li>
             );
           })}
+          {/* <div className="Logout_btn" onClick={navigate("/logout")}>
+            <icon id="lobtn">
+              <LogoutIcon /> Log Out
+            </icon>
+          </div> */}
         </ul>
-        <div className="Logout_btn" onClick={() => signOut()}>
-          <icon id="lobtn">
-            <LogoutIcon /> Log Out
-          </icon>
-        </div>
       </div>
     </>
   );

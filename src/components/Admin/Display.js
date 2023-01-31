@@ -1,8 +1,9 @@
 import Search from "./Search";
 import { useState, useEffect } from "react";
-import { tokenInstance } from "../../http-common";
+import { useToken } from "../../apis";
 
 const Display = () => {
+  const { tokenInstance } = useToken();
   const [UserList, setUserList] = useState([]);
   useEffect(() => {
     tokenInstance

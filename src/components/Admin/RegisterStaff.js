@@ -1,31 +1,20 @@
 import React, { useRef, useState } from "react";
-import { tokenInstance } from "../../http-common";
 import Scroll from "../Scroll";
 import "../../css/Register.css";
 import { Button, Form, FormGroup, Label, Input, CardHeader } from "reactstrap";
 import "../../css/RegForm.css";
 import { Card, CardBody } from "reactstrap";
+import { useToken } from "../../apis";
 
 function RegisterStaff() {
-  //   useEffect(()=> {
-  //     tokenInstance.get(`/faculty`)
-  //     .then((res) => {
-  //         console.log(res);
-
-  //     })
-  //     .catch((e) => {
-  //         console.log(e);
-
-  //     });
-  // }, [])
-
+  const { tokenInstance } = useToken();
   const userName = useRef(null);
   const firstName = useRef(null);
   const lastName = useRef(null);
   const address = useRef(null);
   const contact = useRef(null);
   const password = useRef(null);
-  const [role, setRole] = useState(3);
+  const role = useRef(null);
   const email = useRef(null);
   const [image, setImage] = useState("");
 
@@ -64,7 +53,7 @@ function RegisterStaff() {
       password: password.current.value,
       address: address.current.value,
       contact_no: contact.current.value,
-      role: role,
+      role: role.current.id,
       email: email.current.value,
       image: image,
     };
@@ -167,6 +156,17 @@ function RegisterStaff() {
                       innerRef={password}
                       placeholder="Set Password"
                     />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="staff">Select staff</Label>
+                    <Input type="select" name="selectStaff">
+                      <option id="2" ref={role}>
+                        Account staff
+                      </option>
+                      <option id="3" ref={role}>
+                        Entry staff
+                      </option>
+                    </Input>
                   </FormGroup>
 
                   <FormGroup>
