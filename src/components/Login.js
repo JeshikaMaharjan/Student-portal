@@ -11,14 +11,13 @@ export default function Login() {
   const [postResult, setPostResult] = useState(null);
 
   const { login } = useLogin();
-  //useLogin() vitra ko login lekoo by destructuring
 
-  // const toggle = () => {
-  //   var blur = document.getElementById("blur");
-  //   blur.classList.toggle("active");
-  //   var popup = document.getElementById("popup");
-  //   popup.classList.toggle("active");
-  // };
+  const toggle = () => {
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+  };
 
   async function postData() {
     try {
@@ -41,55 +40,65 @@ export default function Login() {
 
   return (
     <>
-      <div className="box">
-        <div className="logo">
-          <img src={SERAlogo} alt="Logo" />
-        </div>
+      <div className="contrent" id="blur">
+        <div className="content">
+          <div className="box">
+            <div className="logo">
+              <img src={SERAlogo} alt="Logo" />
+            </div>
 
-        <div className="loginBox">
-          <div className="formBox">
-            <h2>Login</h2>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <div className="inputBx">
-                <span>Username</span>
-                <input
-                  type="text"
-                  name=""
-                  ref={username}
-                  placeholder="Enter Username"
-                />
+            <div className="loginBox">
+              <div className="formBox">
+                <h2>Login</h2>
+                <form onSubmit={(e) => e.preventDefault()}>
+                  <div className="inputBx">
+                    <span>Username</span>
+                    <input
+                      type="text"
+                      name=""
+                      ref={username}
+                      placeholder="Enter Username"
+                    />
+                  </div>
+                  <div className="inputBx">
+                    <span>Password</span>
+                    <input
+                      type="password"
+                      name=""
+                      ref={password}
+                      placeholder="Enter Password"
+                    />
+                  </div>
+                  <div className="inputBx">
+                    <button
+                      onClick={() => {
+                        postData();
+                        toggle();
+                      }}
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div className="inputBx">
-                <span>Password</span>
-                <input
-                  type="password"
-                  name=""
-                  ref={password}
-                  placeholder="Enter Password"
-                />
-              </div>
-              <div className="inputBx">
-                <button
-                  onClick={() => {
-                    postData();
-                    // toggle();
-                  }}
-                >
-                  Sign In
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-      {/* <div id="popup">
-        <div onClick={toggle} className="close">
+      <div id="popup">
+        <div id="test1" onClick={toggle} className="close">
           +
         </div>
-        <h2> Form submitted successfull</h2>
-        <p>La bhai naya bhar aba</p>
-        <button onClick={toggle}>Close</button>
-      </div> */}
+        {postResult && (
+          <div role="alert">
+            <pre>{postResult}</pre>
+          </div>
+        )}
+
+        <button id="test1" onClick={toggle}>
+          Close
+        </button>
+      </div>
     </>
   );
 }

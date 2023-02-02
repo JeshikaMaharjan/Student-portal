@@ -6,6 +6,7 @@ import Update from "../Admin/Update";
 import Display from "../Admin/Display";
 import EditDetails from "../Admin/EditDetails";
 import DeleteUser from "../Admin/DeleteUser";
+import ChangePassword from "../ChangePassword";
 
 function AdminRoutes() {
   return (
@@ -21,6 +22,10 @@ function AdminRoutes() {
         <Route path="search" element={<Layout component={<Display />} />} />
         <Route path="edit" element={<Layout component={<EditDetails />} />} />
         <Route path="delete" element={<Layout component={<DeleteUser />} />} />
+        <Route
+          path="changepassword"
+          element={<Layout component={<ChangePassword />} />}
+        />
       </Routes>
     </>
   );

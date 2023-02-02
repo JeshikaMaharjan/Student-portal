@@ -14,15 +14,20 @@ export const Sidenavcomp = [
     link: "/secure/student/profile",
   },
   {
-    title: "View",
-    icon: <PersonAddIcon />,
-    link: "/secure/student/view",
+    title: "Password",
+    icon: <AccountCircleIcon />,
+    link: "/secure/student/changepassword",
   },
-  {
-    title: "Search",
-    icon: <DescriptionIcon />,
-    link: "/secure/student/search",
-  },
+  // {
+  //   title: "View",
+  //   icon: <PersonAddIcon />,
+  //   link: "/secure/student/view",
+  // },
+  // {
+  //   title: "Search",
+  //   icon: <DescriptionIcon />,
+  //   link: "/secure/student/search",
+  // },
   {
     title: "Payment",
     icon: <AutoGraphIcon />,

@@ -13,6 +13,11 @@ export const Sidenavcomp = [
     link: "/secure/admin/profile",
   },
   {
+    title: "Password",
+    icon: <AccountCircleIcon />,
+    link: "/secure/admin/changepassword",
+  },
+  {
     title: "Registration",
     icon: <PersonAddIcon />,
     link: "/secure/admin/registration",
@@ -22,11 +27,11 @@ export const Sidenavcomp = [
     icon: <DescriptionIcon />,
     link: "/secure/admin/search",
   },
-  {
-    title: "Update",
-    icon: <AutoGraphIcon />,
-    link: "/secure/admin/update",
-  },
+  // {
+  //   title: "Update",
+  //   icon: <AutoGraphIcon />,
+  //   link: "/secure/admin/update",
+  // },
   {
     title: "Logout",
     icon: <LogoutIcon />,

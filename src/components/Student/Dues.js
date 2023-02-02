@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
-// import { useAuthUser } from "react-auth-kit";
 import KhaltiCheckout from "khalti-checkout-web";
-import config from "./Khalti/khaltiConfig";
 import "../../css/Dues.css";
 import { useToken } from "../../apis";
+import { useAuth } from "../../Authentication/auth";
+import KhaltiConfig from "./Khalti/khaltiConfig";
 
 function Dues() {
   const { tokenInstance } = useToken();
   const [data, setData] = useState([]);
   const [amount, setamount] = useState();
-  // const auth = useAuthUser();
+  const username = useAuth((state) => state.username);
 
+  const { config } = KhaltiConfig();
+  console.log(config);
   let checkout = new KhaltiCheckout(config);
 
   useEffect(() => {
     tokenInstance
-      //   .get(`/details/${user}`)
-      .get(`/due/student1`)
+      .get(`/due/${username}`)
       .then((res) => {
         console.log(res.data);
-        setData(res.data.due);
+        setData(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -43,10 +44,7 @@ function Dues() {
             <h4>Due Payment : {data}</h4>
           </div>
           <div className="paymentBtn">
-            <button
-              id="btn"
-              onClick={() => checkout.show({ amount: { data } * 100 })}
-            >
+            <button id="btn" onClick={() => checkout.show({ amount: 1000 })}>
               <span> Pay Via Khalti </span>{" "}
             </button>
             {/* <button ><span>Make Payment</span></button> */}

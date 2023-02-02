@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Scroll from "../Scroll";
 import PersonList from "./PersonList";
 
 function Search({ details }) {
@@ -15,19 +14,27 @@ function Search({ details }) {
 
   return (
     <>
-      <div>
-        <h2>Search User</h2>
+      <div className="header">
+        <div className="SearchBarDiv">
+          <div className="SearchStudent">
+            {/* <div id="combo-box-demo" className="SearchPanel"> */}
+            {/* <div> */}
+            <input
+              type="search"
+              // id="combo-box-demo"
+              // className="SearchPanel"
+              placeholder="Search User"
+              onChange={handleChange}
+            />
+            {/* </div> */}
+          </div>
+        </div>
       </div>
-      <div>
-        <input
-          type="search"
-          placeholder="Search User"
-          onChange={handleChange}
-        />
+      <div className="body">
+        <div className="card">
+          <PersonList items={filteredPersons} />
+        </div>
       </div>
-      <Scroll>
-        <PersonList items={filteredPersons} />
-      </Scroll>
     </>
   );
 }

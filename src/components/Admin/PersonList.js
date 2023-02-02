@@ -1,11 +1,12 @@
 import React from "react";
-import Card from "./Card";
+import Cardsingle from "./Cardsingle";
+import "../../css/Search.css";
 
 function PersonList({ items }) {
   return (
-    <div>
+    <div className="individualCard">
       {items.map((person) => (
-        <Card key={person.id} person={person} />
+        <Cardsingle key={person.id} person={person} />
       ))}
     </div>
   );

@@ -1,10 +1,24 @@
 import React, { useRef, useState } from "react";
-import Scroll from "../Scroll";
-import "../../css/Register.css";
+
 import { Button, Form, FormGroup, Label, Input, CardHeader } from "reactstrap";
 import "../../css/RegForm.css";
 import { Card, CardBody } from "reactstrap";
 import { useToken } from "../../apis";
+import { useFormik } from "formik";
+
+const validate = (values) => {
+  const errors = {};
+
+  if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Valid Email";
+  } else if (!values.email) {
+    errors.email = "Email Required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email address";
+  }
+
+  return errors;
+};
 
 function RegisterStudent() {
   const { tokenInstance } = useToken();
@@ -21,6 +35,23 @@ function RegisterStudent() {
   const batch = useRef(null);
   const semester = useRef(null);
   const [image, setImage] = useState("");
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validate,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  const toggle = () => {
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+  };
 
   const convertToBase64 = async (file) => {
     return new Promise((resolve, reject) => {
@@ -81,8 +112,8 @@ function RegisterStudent() {
 
   return (
     <>
-      <div>
-        <Scroll>
+      <div className="contain" id="blur">
+        <div className="content">
           <Card className="Card">
             <CardHeader className="CardHeader">
               <h1>Registration</h1>
@@ -91,25 +122,66 @@ function RegisterStudent() {
               <Form className="RegFormInfo">
                 <div className="inputSection">
                   <FormGroup className="name">
-                    <Label for="firstName">First Name</Label>
-                    <Input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      innerRef={firstName}
-                      placeholder="First Name"
-                    />
-                    <Label for="lastName">Last Name</Label>
-                    <Input
-                      type="text"
-                      name="lastName"
-                      id="lastName"
-                      innerRef={lastName}
-                      placeholder="Last Name"
-                    />
+                    <Label for="FullName">Full Name</Label>
+                    <div className="naming">
+                      {/* <Label for="firstName">First Name</Label> */}
+                      <Input
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        innerRef={firstName}
+                        placeholder="First Name"
+                      />
+                      {/* <Label for="lastName">Last Name</Label> */}
+                      <Input
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                        innerRef={lastName}
+                        placeholder="Last Name"
+                      />
+                    </div>
                   </FormGroup>
 
-                  <FormGroup>
+                  <FormGroup className="email">
+                    <Label for="exampleEmail">Email</Label>
+                    <Input
+                      type="email"
+                      name="email"
+                      id="exampleEmail"
+                      innerRef={email}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.email}
+                      placeholder="Enter Email"
+                    />
+                    <br />
+                    {formik.touched.email && formik.errors.email && (
+                      <span>{formik.errors.email}</span>
+                    )}
+                  </FormGroup>
+
+                  <FormGroup className="setIdentity">
+                    <Label for="userName">UserName</Label>
+                    <Input
+                      type="text"
+                      name="setuserName"
+                      id="setuserName"
+                      innerRef={userName}
+                      placeholder="Set userName"
+                    />
+                    {/* </FormGroup> */}
+                    {/* <FormGroup> */}
+                    <Label for="Password">Password</Label>
+                    <Input
+                      type="text"
+                      name="setPassword"
+                      id="setPassword"
+                      innerRef={password}
+                      placeholder="Set Password"
+                    />
+                  </FormGroup>
+                  <FormGroup className="address">
                     <Label for="setAddress">
                       Address
                       <Input
@@ -122,7 +194,7 @@ function RegisterStudent() {
                     </Label>
                   </FormGroup>
 
-                  <FormGroup>
+                  <FormGroup className="contact">
                     <Label for="Contact">Contact no.</Label>
                     <Input
                       type="number"
@@ -133,7 +205,7 @@ function RegisterStudent() {
                     />
                   </FormGroup>
 
-                  <FormGroup>
+                  <FormGroup className="stream">
                     <Label for="exampleSelect">Select Stream</Label>
                     <Input
                       type="select"
@@ -183,38 +255,6 @@ function RegisterStudent() {
                   </FormGroup>
 
                   <FormGroup>
-                    <Label for="exampleEmail">Email</Label>
-                    <Input
-                      type="email"
-                      name="email"
-                      id="exampleEmail"
-                      innerRef={email}
-                      placeholder="Enter Email"
-                    />
-                  </FormGroup>
-
-                  <FormGroup>
-                    <Label for="userName">UserName</Label>
-                    <Input
-                      type="text"
-                      name="setuserName"
-                      id="setuserName"
-                      innerRef={userName}
-                      placeholder="Set userName"
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="Password">Password</Label>
-                    <Input
-                      type="text"
-                      name="setPassword"
-                      id="setPassword"
-                      innerRef={password}
-                      placeholder="Set Password"
-                    />
-                  </FormGroup>
-
-                  <FormGroup>
                     <Label for="exampleFile">Photo</Label>
                     <Input
                       type="file"
@@ -229,11 +269,11 @@ function RegisterStudent() {
                 <div className="sub-btn">
                   <Button
                     variant="primary"
-                    onClick={postData}
-                    // onClick={() => {
-                    //   postData();
-                    //   msg();
-                    // }}
+                    // onClick={postData}
+                    onClick={() => {
+                      postData();
+                      toggle();
+                    }}
                   >
                     Register Student
                   </Button>
@@ -241,7 +281,21 @@ function RegisterStudent() {
               </Form>
             </CardBody>
           </Card>
-        </Scroll>
+        </div>
+      </div>
+      <div id="popup">
+        <div id="test1" onClick={toggle} className="close">
+          +
+        </div>
+        {postResult && (
+          <div role="alert">
+            <pre>{postResult}</pre>
+          </div>
+        )}
+
+        <button id="test1" onClick={toggle}>
+          Close
+        </button>
       </div>
     </>
   );

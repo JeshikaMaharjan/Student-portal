@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../Student/Student";
 import Profile from "../Profile";
 import PaymentRoutes from "./PaymentRoutes";
+import ChangePassword from "../ChangePassword";
 
 function StudentRoutes() {
   return (
@@ -12,6 +13,10 @@ function StudentRoutes() {
         <Route
           path="payment/*"
           element={<Layout component={<PaymentRoutes />} />}
+        />
+        <Route
+          path="changepassword"
+          element={<Layout component={<ChangePassword />} />}
         />
       </Routes>
     </>

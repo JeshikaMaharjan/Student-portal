@@ -1,6 +1,7 @@
 import Search from "./Search";
 import { useState, useEffect } from "react";
 import { useToken } from "../../apis";
+import "../../css/Search.css";
 
 const Display = () => {
   const { tokenInstance } = useToken();
