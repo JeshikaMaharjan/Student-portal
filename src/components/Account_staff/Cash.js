@@ -14,39 +14,32 @@ function Cash() {
   const semester = useRef(null);
   const billno = useRef(null);
   const amount = useRef(null);
+  const type = 2;
 
   const [postResult, setPostResult] = useState(null);
-  function msg() {
-    console.log("msg");
-    console.log(postResult);
-  }
 
-  function postData() {
+  async function postData() {
     console.log("postData");
     const postData = {
       userName: userName.current.value,
-      firstName: firstName.current.value,
-      lastName: lastName.current.value,
-      faculty: faculty.current.id,
-      batch: batch.current.value,
+
       semester: semester.current.value,
-      billno: billno.current.value,
       amount: amount.current.value,
+      type: type,
     };
 
-    tokenInstance
-      .post(`/`, postData)
+    await tokenInstance
+      .post(`/transaction`, postData)
       .then((res) => {
         console.log(res);
         console.log("data:", postData);
         setPostResult("successful.");
       })
       .catch((e) => {
-        console.log(e);
+        console.log(e.response.data.error);
         setPostResult("Unsuccessful");
         console.log("data:", postData);
       });
-    msg();
   }
 
   return (
@@ -69,38 +62,6 @@ function Cash() {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="firstName">FirstName</Label>
-                <Input
-                  type="text"
-                  name="firstName"
-                  id="firstName"
-                  innerRef={firstName}
-                  placeholder="Enter FirstName"
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="lastName">LastName</Label>
-                <Input
-                  type="text"
-                  name="lastName"
-                  id="lastName"
-                  innerRef={lastName}
-                  placeholder="Enter LastName"
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleSelect">Select Faculty</Label>
-                <Input
-                  type="select"
-                  name="select"
-                  id="program"
-                  innerRef={faculty}
-                >
-                  <option id="1">BCT</option>
-                  <option id="2">BCE</option>
-                </Input>
-              </FormGroup>
-              <FormGroup>
                 <Label for="exampleSelectSem">Select Semester</Label>
                 <Input
                   type="select"
@@ -118,16 +79,7 @@ function Cash() {
                   <option>8</option>
                 </Input>
               </FormGroup>
-              <FormGroup>
-                <Label for="billno.">Bill no.</Label>
-                <Input
-                  type="text"
-                  name="billno."
-                  id="billnum"
-                  innerRef={billno}
-                  placeholder="Enter Bill Number"
-                />
-              </FormGroup>
+
               <FormGroup>
                 <Label for="exampleText">Amount</Label>
                 <Input

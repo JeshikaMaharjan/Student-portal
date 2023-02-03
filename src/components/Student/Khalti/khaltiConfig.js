@@ -18,6 +18,7 @@ const KhaltiConfig = () => {
           token: payload.token,
           amount: payload.amount,
           userName: payload.product_name,
+          semester: 1,
         };
         tokenInstance
           .post(`/khalti`, data)

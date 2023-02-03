@@ -27,8 +27,8 @@ function RegisterStaff() {
   const lastName = useRef(null);
   const address = useRef(null);
   const contact = useRef(null);
-  const password = useRef(null);
   const role = useRef(null);
+  const password = useRef(null);
   const email = useRef(null);
   const [image, setImage] = useState("");
 
@@ -83,7 +83,7 @@ function RegisterStaff() {
       password: password.current.value,
       address: address.current.value,
       contact_no: contact.current.value,
-      role: role.current.id,
+      role: role.current.value,
       email: email.current.value,
       image: image,
     };
@@ -195,16 +195,16 @@ function RegisterStaff() {
                       placeholder="Enter Mobile Number"
                     />
                   </FormGroup>
-
                   <FormGroup>
                     <Label for="staff">Select staff</Label>
-                    <Input type="select" name="selectStaff">
-                      <option id="2" ref={role}>
-                        Account staff
-                      </option>
-                      <option id="3" ref={role}>
-                        Entry staff
-                      </option>
+                    <Input
+                      type="select"
+                      name="selectstaff"
+                      id="setstaff"
+                      innerRef={role}
+                    >
+                      <option value="2">Account staff</option>
+                      <option value="3">Entry staff</option>
                     </Input>
                   </FormGroup>
 
