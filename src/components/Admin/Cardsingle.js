@@ -47,7 +47,33 @@ function Cardsingle({ person }) {
               Edit
             </button>
           </div>
+          <div className="editBtn">
+            <button
+              id="edit"
+              onClick={() =>
+                navigate("/secure/admin/edit", {
+                  replace: true,
+                  state: { ...person },
+                })
+              }
+            >
+              Edit
+            </button>
+          </div>
 
+          <div className="deleteBtn">
+            <button
+              id="delete"
+              onClick={() =>
+                navigate("/secure/admin/delete", {
+                  replace: true,
+                  state: { ...person },
+                })
+              }
+            >
+              Delete
+            </button>
+          </div>
           <div className="deleteBtn">
             <button
               id="delete"

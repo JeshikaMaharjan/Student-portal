@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 
 import { Button, Form, FormGroup, Label, Input, CardHeader } from "reactstrap";
 import "../../css/RegForm.css";
-import { Card, CardBody } from "reactstrap";
 import { useToken } from "../../apis";
 import { useFormik } from "formik";
 
@@ -97,7 +96,7 @@ function RegisterStudent() {
     };
 
     tokenInstance
-      .post(`/user/create`, postData)
+      .post("/user/create", postData)
       .then((res) => {
         console.log(res);
         console.log("data:", postData);
@@ -114,98 +113,94 @@ function RegisterStudent() {
     <>
       <div className="contain" id="blur">
         <div className="content">
-          <Card className="Card">
-            <CardHeader className="CardHeader">
-              <h1>Registration</h1>
-            </CardHeader>
-            <CardBody>
-              <Form className="RegFormInfo">
-                <div className="inputSection">
-                  <FormGroup className="name">
-                    <Label for="FullName">Full Name</Label>
-                    <div className="naming">
-                      {/* <Label for="firstName">First Name</Label> */}
-                      <Input
-                        type="text"
-                        name="firstName"
-                        id="firstName"
-                        innerRef={firstName}
-                        placeholder="First Name"
-                      />
-                      {/* <Label for="lastName">Last Name</Label> */}
-                      <Input
-                        type="text"
-                        name="lastName"
-                        id="lastName"
-                        innerRef={lastName}
-                        placeholder="Last Name"
-                      />
-                    </div>
-                  </FormGroup>
-
-                  <FormGroup className="email">
-                    <Label for="exampleEmail">Email</Label>
-                    <Input
-                      type="email"
-                      name="email"
-                      id="exampleEmail"
-                      innerRef={email}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.email}
-                      placeholder="Enter Email"
-                    />
-                    <br />
-                    {formik.touched.email && formik.errors.email && (
-                      <span>{formik.errors.email}</span>
-                    )}
-                  </FormGroup>
-
-                  <FormGroup className="setIdentity">
-                    <Label for="userName">UserName</Label>
+          <div className="RegHeader">
+            <h1>Registration</h1>
+          </div>
+          <div className="RegBody">
+            <Form className="RegFormInfo">
+              <div className="inputSection">
+                <FormGroup className="name">
+                  <Label for="FullName">Full Name</Label>
+                  <div className="naming">
                     <Input
                       type="text"
-                      name="setuserName"
-                      id="setuserName"
-                      innerRef={userName}
-                      placeholder="Set userName"
+                      name="firstName"
+                      id="firstName"
+                      innerRef={firstName}
+                      placeholder="First Name"
                     />
-                    {/* </FormGroup> */}
-                    {/* <FormGroup> */}
-                    <Label for="Password">Password</Label>
                     <Input
                       type="text"
-                      name="setPassword"
-                      id="setPassword"
-                      innerRef={password}
-                      placeholder="Set Password"
+                      name="lastName"
+                      id="lastName"
+                      innerRef={lastName}
+                      placeholder="Last Name"
                     />
-                  </FormGroup>
-                  <FormGroup className="address">
-                    <Label for="setAddress">
-                      Address
-                      <Input
-                        type="text"
-                        name="Address"
-                        id="Address"
-                        innerRef={address}
-                        placeholder="Enter Address"
-                      />
-                    </Label>
-                  </FormGroup>
+                  </div>
+                </FormGroup>
 
-                  <FormGroup className="contact">
-                    <Label for="Contact">Contact no.</Label>
-                    <Input
-                      type="number"
-                      name="Contact"
-                      id="ContactInfo"
-                      innerRef={contact}
-                      placeholder="Enter Mobile Number"
-                    />
-                  </FormGroup>
+                <FormGroup className="email">
+                  <Label for="exampleEmail">Email</Label>
+                  <Input
+                    type="email"
+                    name="email"
+                    id="exampleEmail"
+                    innerRef={email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                    placeholder="Enter Email"
+                  />
+                  <br />
+                  {formik.touched.email && formik.errors.email && (
+                    <span>{formik.errors.email}</span>
+                  )}
+                </FormGroup>
 
-                  <FormGroup className="stream">
+                <FormGroup className="setIdentity">
+                  <Label for="userName">UserName</Label>
+                  <Input
+                    type="text"
+                    name="setuserName"
+                    id="setuserName"
+                    innerRef={userName}
+                    placeholder="Set userName"
+                  />
+                  {/* </FormGroup> */}
+                  {/* <FormGroup> */}
+                  <Label for="Password">Password</Label>
+                  <Input
+                    type="text"
+                    name="setPassword"
+                    id="setPassword"
+                    innerRef={password}
+                    placeholder="Set Password"
+                  />
+                </FormGroup>
+                <FormGroup className="address">
+                  <Label for="setAddress">Address</Label>
+                  <Input
+                    type="text"
+                    name="Address"
+                    id="Address"
+                    innerRef={address}
+                    placeholder="Enter Address"
+                  />
+                </FormGroup>
+
+                <FormGroup className="contact">
+                  <Label for="Contact">Contact no.</Label>
+                  <Input
+                    type="tel"
+                    name="Contact"
+                    id="ContactInfo"
+                    innerRef={contact}
+                    placeholder="Enter Mobile Number"
+                  />
+                </FormGroup>
+
+                <FormGroup className="streamSem">
+                  <div>
                     <Label for="exampleSelect">Select Stream</Label>
                     <Input
                       type="select"
@@ -220,9 +215,8 @@ function RegisterStudent() {
                         BCE - Bachelors in Civil Engineering
                       </option>
                     </Input>
-                  </FormGroup>
-
-                  <FormGroup>
+                  </div>
+                  <div>
                     <Label for="Semester">Semester</Label>
                     <Input
                       type="select"
@@ -240,47 +234,50 @@ function RegisterStudent() {
                       <option id="8">8</option>
                       <option id="9">9</option>
                     </Input>
-                    {/* <Input type="text" name="setSemester" id="setSemester" innerRef={semester} placeholder="Set Semester" /> */}
-                  </FormGroup>
+                  </div>
+                </FormGroup>
 
-                  <FormGroup>
-                    <Label for="Batch">Batch</Label>
-                    <Input
-                      type="text"
-                      name="setBatch"
-                      id="setBatch"
-                      innerRef={batch}
-                      placeholder="Set Batch"
-                    />
-                  </FormGroup>
+                <FormGroup>
+                  {/* <Input type="text" name="setSemester" id="setSemester" innerRef={semester} placeholder="Set Semester" /> */}
+                </FormGroup>
 
-                  <FormGroup>
-                    <Label for="exampleFile">Photo</Label>
-                    <Input
-                      type="file"
-                      name="file"
-                      id="contractFile"
-                      label="Image"
-                      accept=".jpeg, .png, .jpg"
-                      onChange={(e) => onFileSelected(e)}
-                    />
-                  </FormGroup>
-                </div>
-                <div className="sub-btn">
-                  <Button
-                    variant="primary"
-                    // onClick={postData}
-                    onClick={() => {
-                      postData();
-                      toggle();
-                    }}
-                  >
-                    Register Student
-                  </Button>
-                </div>
-              </Form>
-            </CardBody>
-          </Card>
+                <FormGroup>
+                  <Label for="Batch">Batch</Label>
+                  <Input
+                    type="text"
+                    name="setBatch"
+                    id="setBatch"
+                    innerRef={batch}
+                    placeholder="Set Batch"
+                  />
+                </FormGroup>
+
+                <FormGroup>
+                  <Label for="exampleFile">Photo</Label>
+                  <Input
+                    type="file"
+                    name="file"
+                    id="contractFile"
+                    label="Image"
+                    accept=".jpeg, .png, .jpg"
+                    onChange={(e) => onFileSelected(e)}
+                  />
+                </FormGroup>
+              </div>
+              <div className="sub-btn">
+                <Button
+                  variant="primary"
+                  // onClick={postData}
+                  onClick={() => {
+                    postData();
+                    toggle();
+                  }}
+                >
+                  Register Student
+                </Button>
+              </div>
+            </Form>
+          </div>
         </div>
       </div>
       <div id="popup">

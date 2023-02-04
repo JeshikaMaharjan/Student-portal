@@ -31,7 +31,7 @@ function Search({ details }) {
         </div>
       </div>
       <div className="body">
-        <div className="card">
+        <div className="Scard">
           <PersonList items={filteredPersons} />
         </div>
       </div>

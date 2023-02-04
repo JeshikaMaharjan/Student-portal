@@ -12,16 +12,13 @@ import StudentRoutes from "./components/Routes/StudentRoutes";
 
 import Logout from "./components/Logout";
 
-// import { useEffect, useState } from "react";
-// import { useBearStore } from "./Stores/bear-store";
-
 function App() {
   //------------------
   // const setAuthenticated = useAuth((state) => state.setAuthenticated);
   // const setRole = useAuth((state) => state.setRole);
   // setAuthenticated(true);
-  // // setRole(1);
-  // // setRole(2);
+  // setRole(1);
+  // setRole(2);
   // setRole(4);
   //------------------
   const isauthenticated = useAuth((state) => state.isauthenticated);

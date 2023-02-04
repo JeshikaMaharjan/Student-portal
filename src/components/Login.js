@@ -28,6 +28,7 @@ export default function Login() {
 
       if (!isLoggedIn) {
         setPostResult("Sign in unsuccesful");
+        // toggle();
         return;
       }
 
@@ -74,6 +75,9 @@ export default function Login() {
                       onClick={() => {
                         postData();
                         toggle();
+                        // if (postResult == "Sign in unsuccesful") {
+                        //   setTimeout(toggle(), 3000);
+                        // }
                       }}
                     >
                       Sign In
