@@ -91,7 +91,7 @@ h4 {
 }
 
 Label {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   font-weight: 500;
 }
