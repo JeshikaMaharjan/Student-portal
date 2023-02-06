@@ -89,7 +89,8 @@ function RegisterStudent() {
       contact_no: contact.current.value,
       role: role,
       email: email.current.value,
-      faculty: faculty.current.id,
+      // faculty: faculty.current.id,
+      faculty: 1,
       batch: batch.current.value,
       semester: semester.current.value,
       image: image,
@@ -211,9 +212,9 @@ function RegisterStudent() {
                       <option id="1" ref={faculty}>
                         BCT - Bachelors in Computer Engineering
                       </option>
-                      <option id="2" ref={faculty}>
+                      {/* <option id="2" ref={faculty}>
                         BCE - Bachelors in Civil Engineering
-                      </option>
+                      </option> */}
                     </Input>
                   </div>
                   <div>

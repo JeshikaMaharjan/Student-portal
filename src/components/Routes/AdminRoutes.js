@@ -12,7 +12,7 @@ function AdminRoutes() {
   return (
     <>
       <Routes>
-        <Route index element={<Layout />} />
+        <Route index element={<Layout component={<Profile />} />} />
         <Route path="profile" element={<Layout component={<Profile />} />} />
         <Route
           path="registration/*"

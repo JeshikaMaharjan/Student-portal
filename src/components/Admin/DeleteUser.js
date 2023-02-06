@@ -6,8 +6,15 @@ function DeleteUser() {
   const { tokenInstance } = useToken();
   const location = useLocation();
   const detail = location.state;
+  const [postResult, setPostResult] = useState(null);
 
   console.log("delete", detail);
+  const toggle = () => {
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+  };
 
   const name = useRef(null);
   function handleSubmit() {
@@ -15,6 +22,7 @@ function DeleteUser() {
       .delete(`/delete/${detail.userName}`)
       .then((res) => {
         console.log(res);
+        setPostResult(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -23,8 +31,26 @@ function DeleteUser() {
 
   return (
     <>
-      <p>confirm?</p>
-      <button onClick={handleSubmit}>Delete</button>
+      <div className="contain" id="blur">
+        <div className="content">
+          <p>confirm?</p>
+          <button onClick={handleSubmit}>Delete</button>
+        </div>
+      </div>
+      <div id="popup">
+        <div id="test1" onClick={toggle} className="close">
+          +
+        </div>
+        {postResult && (
+          <div role="alert">
+            <pre>{postResult}</pre>
+          </div>
+        )}
+
+        <button id="test1" onClick={toggle}>
+          Close
+        </button>
+      </div>
     </>
   );
 }

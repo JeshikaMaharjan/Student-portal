@@ -1,5 +1,5 @@
 import React from "react";
-// import { useSignOut } from 'react-auth-kit'
+
 import { Sidenavcomp } from "./Sidenavcomp";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function SideNav() {
   const navigate = useNavigate();
-  // const signOut = useSignOut()
+
   return (
     <>
       {/* <AppBar> */}

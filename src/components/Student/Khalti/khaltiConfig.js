@@ -1,13 +1,18 @@
 import myKey from "./khaltiKey";
 import { useToken } from "../../../apis";
+import { useAuth } from "../../../Authentication/auth";
 
 const KhaltiConfig = () => {
   const { tokenInstance } = useToken();
+  const username = useAuth((state) => state.username);
+  const amountpaid = useAuth((state) => state.amountpaid);
+  const description = useAuth((state) => state.description);
+
   let config = {
     // replace this key with yours
     publicKey: myKey.publicTestKey,
     productIdentity: "2",
-    productName: "Jeshika",
+    productName: "username",
     productUrl: "http://gameofthrones.wikia.com/wiki/Dragons",
     eventHandler: {
       // hit merchant api for initiating verfication
@@ -19,6 +24,7 @@ const KhaltiConfig = () => {
           amount: payload.amount,
           userName: payload.product_name,
           semester: 1,
+          // description:description
         };
         tokenInstance
           .post(`/khalti`, data)
@@ -42,10 +48,10 @@ const KhaltiConfig = () => {
     },
     paymentPreference: [
       "KHALTI",
-      "EBANKING",
-      "MOBILE_BANKING",
-      "CONNECT_IPS",
-      "SCT",
+      // "EBANKING",
+      // "MOBILE_BANKING",
+      // "CONNECT_IPS",
+      // "SCT",
     ],
   };
   return { config };

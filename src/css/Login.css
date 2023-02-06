@@ -41,6 +41,11 @@ img {
   letter-spacing: 1px;
 }
 
+form {
+  display: block;
+  margin-top: 0rem;
+}
+
 .loginBox .formBox {
   padding: 2.5rem;
   width: 65%;
@@ -53,7 +58,7 @@ img {
 
 .loginBox .formBox .inputBx span {
   margin-bottom: 5px;
-  font-size: 16px;
+  /* font-size: 16px; */
   display: inline-block;
   color: #607db8;
   font-weight: 300;
@@ -62,7 +67,7 @@ img {
 }
 
 .loginBox .formBox .inputBx input {
-  width: 100%;
+  width: 80%;
   padding: 10px 20px;
   outline: none;
   font-weight: 400;
@@ -72,6 +77,11 @@ img {
   color: #607b8b;
   background: transparent;
   border-radius: 30px;
+}
+
+.pswd {
+  display: flex;
+  align-items: center;
 }
 
 .loginBox .formBox .inputBx input[type="submit"] {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import KhaltiCheckout from "khalti-checkout-web";
 import "../../css/Dues.css";
 import { useToken } from "../../apis";
@@ -9,9 +9,11 @@ import { Input } from "reactstrap";
 function Dues() {
   const { tokenInstance } = useToken();
   const [data, setData] = useState([]);
-  const [amount, setamount] = useState("77");
-  const [description, setdescription] = useState("ll");
+  const [amountpaid, setamountpaid] = useState(0);
+  const [description, setdescription] = useState();
   const username = useAuth((state) => state.username);
+  const setAmount = useAuth((state) => state.setAmount);
+  const setDescription = useAuth((state) => state.setDescription);
 
   const { config } = KhaltiConfig();
   console.log(config);
@@ -29,10 +31,7 @@ function Dues() {
       });
   }, []);
   console.log(data);
-  function handleSelect(event) {
-    console.log(event.target.value);
-    const fulldetail = event.target.value;
-  }
+
   const options = [
     {
       id: 1,
@@ -41,22 +40,22 @@ function Dues() {
     },
     {
       id: 2,
-      name: "Due Payment",
+      name: "Due Payment for 5th semester",
       value: 3000000,
     },
     {
       id: 3,
-      name: "Due Payment",
+      name: "Due Payment for 4th semester",
       value: 20000,
     },
     {
       id: 4,
-      name: "Due Payment",
+      name: "Due Payment for 3rd semester",
       value: 15000,
     },
     {
       id: 5,
-      name: "Due Payment",
+      name: "Due Payment for 2nd semester",
       value: 25000,
     },
   ];
@@ -70,21 +69,13 @@ function Dues() {
         <div className="mainBody">
           <div className="leftDiv">
             <div className="card1">
-              <div className="inBox">
-                <h4>Fee for 6th semester: Rs 40,000.00</h4>
-              </div>
-              <div className="inBox">
-                <h4>Due Payment : Rs 30,000.00</h4>
-              </div>
-              <div className="inBox">
-                <h4>Due Payment : Rs 20,000.00</h4>
-              </div>
-              <div className="inBox">
-                <h4>Due Payment : Rs 15,000.00</h4>
-              </div>
-              <div className="inBox">
-                <h4>Due Payment : Rs 25,000.00</h4>
-              </div>
+              {options.map((singleoption) => (
+                <div className="inBox">
+                  <h4>
+                    {singleoption.name} : {singleoption.value}
+                  </h4>
+                </div>
+              ))}
             </div>
           </div>
           <div className="rightDiv">
@@ -94,35 +85,22 @@ function Dues() {
               </div>
               <div className="c2Body">
                 <div className="selectDiv">
-                  <Input type="select" name="selectStream" id="selectStream">
-                    <option>Fee for 6th semester: Rs 40,000.00</option>
-                    <option>Due Payment : Rs 30,000.00</option>
-                    <option>Due Payment : Rs 20,000.00</option>
-                    <option>Due Payment : Rs 15,000.00</option>
-                    <option>Due Payment : Rs 25,000.00</option>
-                    <option id="others">Others</option>
-                  </Input>
-                  {/* <select
-                    name="selectStream"
-                    id="selectStream"
-                    onChange={handleSelect}
+                  <div className="inBox">
+                    <h4>Description for payment</h4>
+                  </div>
+                  <br />
+                  <Input
+                    type="select"
+                    name="selectdescription"
+                    id="selectdescription"
+                    onChange={(e) => {
+                      setdescription(e.target.value);
+                    }}
                   >
                     {options.map((singleoption) => (
-                      <option id={singleoption.id}>
-                        {singleoption.name}:{singleoption.value}
-                      </option>
+                      <option>{singleoption.name}</option>
                     ))}
-                    <option id="others">Others</option>
-                  </select> */}
-                </div>
-                <div className="remarkDiv">
-                  <Input
-                    type="text"
-                    name="remark"
-                    id="remark"
-                    // placeholder="Remarks Here"
-                    value={description}
-                  ></Input>
+                  </Input>
                 </div>
                 <div className="displayDiv">
                   <Input
@@ -130,44 +108,31 @@ function Dues() {
                     name="amount"
                     id="amount"
                     min="0"
-                    // placeholder="Amount Here"
-                    value={amount}
+                    placeholder="Amount Here"
+                    onChange={(e) => {
+                      setamountpaid(e.target.value * 100);
+                    }}
                   ></Input>
                 </div>
                 <div className="paymentBtn">
-                  <button
-                    id="btn"
-                    onClick={() => checkout.show({ amount: 1000 })}
-                  >
-                    <span> Pay Via Khalti </span>{" "}
-                  </button>
+                  {amountpaid !== 0 && (
+                    <button
+                      id="btn"
+                      onClick={() => {
+                        setAmount(amountpaid);
+                        setDescription(description);
+                        checkout.show({ amount: amountpaid });
+                      }}
+                    >
+                      <span> Pay Via Khalti </span>{" "}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* <div className="wholeBody">
-        <div className="title">
-          <h1>Payment Details</h1>
-        </div>
-        <div className="card">
-          <div className="inBox">
-            
-            <h4>Payment for {data.semester} semester</h4>
-          </div>
-          <div className="inBox">
-            
-            <h4>Due Payment : {data}</h4>
-          </div>
-          <div className="paymentBtn">
-            <button id="btn" onClick={() => checkout.show({ amount: 1000 })}>
-              <span> Pay Via Khalti </span>{" "}
-            </button>
-            
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

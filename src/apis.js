@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuth } from "./Authentication/auth";
 
-const baseURL = "http://192.168.101.63:8000/api";
+const baseURL = "http://192.168.1.17:8000/api";
 
 const config = {
   baseURL: baseURL,
@@ -20,6 +20,7 @@ const useLogin = () => {
   const setUser = useAuth((state) => state.setUser);
   const setRole = useAuth((state) => state.setRole);
   const setAuthenticated = useAuth((state) => state.setAuthenticated);
+  const setMessage = useAuth((state) => state.setMessage);
 
   const login = async ({ username, password }) => {
     try {
@@ -29,6 +30,7 @@ const useLogin = () => {
 
       if (res.status !== 200) {
         setAuthenticated(false);
+        setMessage(res.data.message);
         return false;
       }
 
@@ -38,10 +40,12 @@ const useLogin = () => {
       setUser(res.data.username);
       setRole(res.data.role);
       setAuthenticated(true);
+      setMessage(res.data.message);
       return true;
     } catch (error) {
       console.log(error);
       setAuthenticated(false);
+      setMessage(error);
       return false;
     }
   };

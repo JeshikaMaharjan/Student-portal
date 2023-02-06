@@ -23,7 +23,9 @@ function Cardsingle({ person }) {
             <span>{person.userName}</span>
           </div>
           <div className="id">
-            <span>{person.id}</span>
+            <span>
+              {person.firstName} {person.lastName}{" "}
+            </span>
           </div>
         </div>
         <div className="option">
@@ -34,7 +36,7 @@ function Cardsingle({ person }) {
                                     <button id='result'>Results</button>
                                 </div> */}
 
-          <div className="editBtn">
+          {/* <div className="editBtn">
             <button
               id="edit"
               onClick={() =>
@@ -46,7 +48,7 @@ function Cardsingle({ person }) {
             >
               Edit
             </button>
-          </div>
+          </div> */}
           <div className="editBtn">
             <button
               id="edit"
@@ -61,7 +63,7 @@ function Cardsingle({ person }) {
             </button>
           </div>
 
-          <div className="deleteBtn">
+          {/* <div className="deleteBtn">
             <button
               id="delete"
               onClick={() =>
@@ -73,7 +75,7 @@ function Cardsingle({ person }) {
             >
               Delete
             </button>
-          </div>
+          </div> */}
           <div className="deleteBtn">
             <button
               id="delete"

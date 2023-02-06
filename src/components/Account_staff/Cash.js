@@ -9,7 +9,6 @@ function Cash() {
   const firstName = useRef(null);
   const lastName = useRef(null);
   const faculty = useRef(null);
-  // const [faculty, setfaculty] = useState(null) ;
   const batch = useRef(null);
   const semester = useRef(null);
   const billno = useRef(null);
