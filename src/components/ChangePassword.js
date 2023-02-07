@@ -189,13 +189,13 @@ const ChangePassword = () => {
     };
 
     tokenInstance
-      .post("/password/update/${username}", putData)
+      .post(`/password/update/${username}`, putData)
       .then((res) => {
-        setpostresult("Updated succesfully");
-        console.log(res);
+        setpostresult(res.data.message);
+        // console.log(res);
       })
       .catch((err) => {
-        setpostresult("Unsuccesful");
+        setpostresult(err.response.data.message);
         console.log(err);
       });
   }
@@ -232,7 +232,7 @@ const ChangePassword = () => {
                       name="new-password"
                       id="new-password"
                       innerRef={newPassword}
-                      placeholder="Enter New-Password"
+                      // placeholder="Enter New-Password"
                     />
                     <span id="test1" onClick={toggleBtn2}>
                       {state2 ? <VisibilityOffIcon /> : <VisibilityIcon />}
@@ -240,16 +240,14 @@ const ChangePassword = () => {
                   </div>
                 </FormGroup>
                 <FormGroup>
-                  <Label for="reenter-new-password">
-                    Re-Enter New Password
-                  </Label>
+                  <Label for="reenter-new-password">Confirm New Password</Label>
                   <div className="ipic">
                     <Input
                       type={state3 ? "text" : "password"}
                       name="reenter-new-password"
                       id="reenter-new-password"
                       innerRef={reEnteredPassword}
-                      placeholder="Re-Enter New Password"
+                      // placeholder="Re-Enter New Password"
                     />
                     <span id="test1" onClick={toggleBtn3}>
                       {state3 ? <VisibilityOffIcon /> : <VisibilityIcon />}

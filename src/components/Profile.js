@@ -16,7 +16,7 @@ const Profile = () => {
     tokenInstance
       .get(`/details/${username}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         const info = res.data;
         setData(info);
       })
@@ -26,11 +26,11 @@ const Profile = () => {
     if (role === 1) setisAdmin(true);
     if (role === 2) setisAccountStaff(true);
     if (role === 4) setisStudent(true);
-    if (data.faculty === 1)
+    if (data.faculty == 1)
       setFaculty("BCT - Bachelors in Computer Engineering");
-    if (data.faculty === 2) setFaculty("BCE - Bachelors in Civil Engineering");
+    if (data.faculty == 2) setFaculty("BCE - Bachelors in Civil Engineering");
   }, []);
-
+  console.log(faculty);
   return (
     <>
       <div className="header">
@@ -96,7 +96,10 @@ const Profile = () => {
               <div className="contact">Contact: {data.contact_no}</div>
               <div className="address">Address: {data.address}</div>
               <div className="email">Email: {data.email}</div>
-              <div className="faculty">Faculty: {faculty}</div>
+              {/* <div className="faculty">Faculty: {faculty}</div> */}
+              <div className="faculty">
+                Faculty: BCT - Bachelors in Computer Engineering
+              </div>
             </div>
           </div>
         </div>

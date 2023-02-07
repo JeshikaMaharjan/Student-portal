@@ -12,8 +12,9 @@ const KhaltiConfig = () => {
     // replace this key with yours
     publicKey: myKey.publicTestKey,
     productIdentity: "2",
-    productName: "username",
-    productUrl: "http://gameofthrones.wikia.com/wiki/Dragons",
+    productName: `${username}`,
+    // productUrl: "http://gameofthrones.wikia.com/wiki/Dragons",
+    productUrl: "http://dummy.com",
     eventHandler: {
       // hit merchant api for initiating verfication
       onSuccess(payload) {
@@ -24,7 +25,7 @@ const KhaltiConfig = () => {
           amount: payload.amount,
           userName: payload.product_name,
           semester: 1,
-          // description:description
+          // description: description,
         };
         tokenInstance
           .post(`/khalti`, data)

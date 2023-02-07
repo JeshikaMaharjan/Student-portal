@@ -16,6 +16,12 @@ function Cash() {
   const type = 2;
 
   const [postResult, setPostResult] = useState(null);
+  const toggle = () => {
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+  };
 
   async function postData() {
     console.log("postData");
@@ -30,81 +36,99 @@ function Cash() {
     await tokenInstance
       .post(`/transaction`, postData)
       .then((res) => {
-        console.log(res);
-        console.log("data:", postData);
-        setPostResult("successful.");
+        // console.log(res);
+        // console.log("data:", postData);
+        setPostResult(res.data.message);
       })
       .catch((e) => {
-        console.log(e.response.data.error);
-        setPostResult("Unsuccessful");
-        console.log("data:", postData);
+        // console.log(e.response.data.error);
+        setPostResult(e.data.message);
+        // console.log("data:", postData);
       });
   }
 
   return (
     <>
-      <div className="cash">
-        <div className="cashHeader">
-          <h2>Verify Cash Details</h2>
-        </div>
-        <div className="cashBody">
-          <div className="cashForm">
-            <Form>
-              <FormGroup>
-                <Label for="username">Username</Label>
-                <Input
-                  type="text"
-                  name="username"
-                  id="username"
-                  innerRef={userName}
-                  placeholder="Enter Username"
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleSelectSem">Select Semester</Label>
-                <Input
-                  type="select"
-                  name="selectSem"
-                  id="exampleSelectSemester"
-                  innerRef={semester}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                </Input>
-              </FormGroup>
+      <div className="contain" id="blur">
+        <div className="content">
+          <div className="cash">
+            <div className="cashHeader">
+              <h2>Verify Cash Details</h2>
+            </div>
+            <div className="cashBody">
+              <div className="cashForm">
+                <Form>
+                  <FormGroup>
+                    <Label for="username">Username</Label>
+                    <Input
+                      type="text"
+                      name="username"
+                      id="username"
+                      innerRef={userName}
+                      placeholder="Enter Username"
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleSelectSem">Select Semester</Label>
+                    <Input
+                      type="select"
+                      name="selectSem"
+                      id="exampleSelectSemester"
+                      innerRef={semester}
+                    >
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                    </Input>
+                  </FormGroup>
 
-              <FormGroup>
-                <Label for="exampleText">Amount</Label>
-                <Input
-                  type="textarea"
-                  name="text"
-                  id="exampleText"
-                  innerRef={amount}
-                />
-              </FormGroup>
-              {/* <FormGroup>
+                  <FormGroup>
+                    <Label for="exampleText">Amount</Label>
+                    <Input
+                      type="textarea"
+                      name="text"
+                      id="exampleText"
+                      innerRef={amount}
+                    />
+                  </FormGroup>
+                  {/* <FormGroup>
                                     <Label for="exampleFile">File</Label>
                                     <Input type="file" name="file" id="exampleFile" />
                                 </FormGroup> */}
-              <div className="btn">
-                <Button
-                  id="subbtn"
-                  onClick={() => {
-                    postData();
-                  }}
-                >
-                  Submit
-                </Button>
+                  <div className="btn">
+                    <Button
+                      id="subbtn"
+                      onClick={() => {
+                        postData();
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                </Form>
               </div>
-            </Form>
+            </div>
           </div>
         </div>
+      </div>
+      <div id="popup">
+        <div id="test1" onClick={toggle} className="close">
+          +
+        </div>
+        {postResult && (
+          <div role="alert">
+            <pre>{postResult}</pre>
+          </div>
+        )}
+
+        <button id="test1" onClick={toggle}>
+          Close
+        </button>
       </div>
     </>
   );

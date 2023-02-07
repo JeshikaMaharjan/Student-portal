@@ -178,7 +178,7 @@ button {
   width: 100%;
   padding: 1rem 2rem;
   overflow: auto;
-  border: red;
+  /* border: red; */
 }
 
 .inputSection .form-label {
@@ -209,7 +209,7 @@ Input {
 
 .email span {
   padding-left: 40px;
-  color: red;
+  /* color: red; */
 }
 
 input[type="email"]:valid {

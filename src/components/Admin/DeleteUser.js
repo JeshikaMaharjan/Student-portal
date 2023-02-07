@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useToken } from "../../apis";
 
 function DeleteUser() {
   const { tokenInstance } = useToken();
   const location = useLocation();
   const detail = location.state;
+  const navigate = useNavigate();
   const [postResult, setPostResult] = useState(null);
 
   console.log("delete", detail);
@@ -22,10 +23,11 @@ function DeleteUser() {
       .delete(`/delete/${detail.userName}`)
       .then((res) => {
         console.log(res);
-        setPostResult(res.data);
+        setPostResult(res.data.message);
       })
       .catch((err) => {
         console.log(err);
+        setPostResult(err.data.response.message);
       });
   }
 
@@ -34,7 +36,14 @@ function DeleteUser() {
       <div className="contain" id="blur">
         <div className="content">
           <p>confirm?</p>
-          <button onClick={handleSubmit}>Delete</button>
+          <button
+            onClick={() => {
+              handleSubmit();
+              toggle();
+            }}
+          >
+            Delete
+          </button>
         </div>
       </div>
       <div id="popup">
@@ -47,7 +56,13 @@ function DeleteUser() {
           </div>
         )}
 
-        <button id="test1" onClick={toggle}>
+        <button
+          id="test1"
+          onClick={() => {
+            toggle();
+            navigate("/secure/admin/search");
+          }}
+        >
           Close
         </button>
       </div>

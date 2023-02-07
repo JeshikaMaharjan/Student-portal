@@ -23,11 +23,12 @@ function Dues() {
     tokenInstance
       .get(`/due/${username}`)
       .then((res) => {
-        console.log(res.data);
-        setData(res.data);
+        // console.log(res.data);
+        setData(res.data.message);
       })
       .catch((err) => {
-        console.log(err);
+        setData(err.data.message);
+        // console.log(err);
       });
   }, []);
   console.log(data);

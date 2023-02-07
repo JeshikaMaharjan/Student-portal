@@ -50,6 +50,8 @@
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .badge #bellIcon {
@@ -163,7 +165,7 @@
   border: 3px solid white;
   align-self: flex-end;
   border-radius: 50%;
-  border: 1px solid #000;
+  border: 3px solid #fff;
 }
 
 .profile_info {

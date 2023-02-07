@@ -90,14 +90,14 @@ function RegisterStaff() {
     await tokenInstance
       .post("/user/create", postData)
       .then((res) => {
-        console.log(res);
-        console.log("data:", postData);
-        setPostResult("Registered successfully.");
+        // console.log(res);
+        // console.log("data:", postData);
+        setPostResult(res.data.message);
       })
       .catch((e) => {
         console.log(e);
-        setPostResult("Unsuccessful");
-        console.log("data:", postData);
+        setPostResult(e.response.data.message);
+        // console.log("data:", postData);
       });
   }
 

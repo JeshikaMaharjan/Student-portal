@@ -10,7 +10,7 @@ const Display = () => {
     tokenInstance
       .get(`/getInfo/allUser`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         const data = res.data;
         setUserList(data);
       })

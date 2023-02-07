@@ -57,11 +57,11 @@ function RegisterStudent() {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
-        console.log("onload");
+        // console.log("onload");
         resolve(fileReader.result);
       };
       fileReader.onerror = (error) => {
-        console.log("onerror");
+        // console.log("onerror");
         reject(error);
       };
     });
@@ -99,14 +99,14 @@ function RegisterStudent() {
     tokenInstance
       .post("/user/create", postData)
       .then((res) => {
-        console.log(res);
-        console.log("data:", postData);
-        setPostResult("Registered successfully.");
+        // console.log(res);
+        // console.log("data:", postData);
+        setPostResult(res.data.message);
       })
       .catch((e) => {
         console.log(e);
-        setPostResult("Unsuccessful");
-        console.log("data:", postData);
+        setPostResult(e.response.data.message);
+        // console.log("data:", postData);
       });
   }
 
