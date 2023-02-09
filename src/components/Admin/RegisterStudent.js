@@ -270,6 +270,7 @@ function RegisterStudent() {
                   variant="primary"
                   // onClick={postData}
                   onClick={() => {
+                    setPostResult("Loading");
                     postData();
                     toggle();
                   }}

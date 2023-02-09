@@ -42,7 +42,7 @@ function Cash() {
       })
       .catch((e) => {
         // console.log(e.response.data.error);
-        setPostResult(e.data.message);
+        setPostResult(e.response.data.message);
         // console.log("data:", postData);
       });
   }
@@ -104,7 +104,9 @@ function Cash() {
                     <Button
                       id="subbtn"
                       onClick={() => {
+                        setPostResult("Loading");
                         postData();
+                        toggle();
                       }}
                     >
                       Submit

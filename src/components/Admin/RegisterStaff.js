@@ -220,6 +220,7 @@ function RegisterStaff() {
                   variant="primary"
                   // onClick={postData}
                   onClick={() => {
+                    setPostResult("Loading");
                     postData();
                     toggle();
                   }}
