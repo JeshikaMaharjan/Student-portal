@@ -1,5 +1,7 @@
 import { useLogout } from "../apis";
 import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Prompt } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Logout() {
   console.log("logout");

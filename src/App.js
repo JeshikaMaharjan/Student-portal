@@ -5,21 +5,18 @@ import Login from "./components/Login";
 import { NoMatch } from "./components/NoMatch";
 import { SecureComponent } from "./components/Routes/secureComponent";
 import { useAuth } from "./Authentication/auth";
-//----------------------------------------------------
-import AdminRoutes from "./components/Routes/AdminRoutes";
-import AccountRoutes from "./components/Routes/Account_staffRoutes";
-import StudentRoutes from "./components/Routes/StudentRoutes";
 
 import Logout from "./components/Logout";
 
 function App() {
   //------------------
-  // const setAuthenticated = useAuth((state) => state.setAuthenticated);
-  // const setRole = useAuth((state) => state.setRole);
-  // setAuthenticated(true);
-  // // setRole(1);
-  // // setRole(2);
-  // setRole(4);
+  const setAuthenticated = useAuth((state) => state.setAuthenticated);
+  const setRole = useAuth((state) => state.setRole);
+  setAuthenticated(true);
+  // setRole(1);
+  // setRole(2);
+  // setRole(3);
+  setRole(4);
   //------------------
   const isauthenticated = useAuth((state) => state.isauthenticated);
   return (

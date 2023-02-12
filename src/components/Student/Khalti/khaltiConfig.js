@@ -1,19 +1,23 @@
 import myKey from "./khaltiKey";
 import { useToken } from "../../../apis";
 import { useAuth } from "../../../Authentication/auth";
+import { useEffect } from "react";
 
 const KhaltiConfig = () => {
   const { tokenInstance } = useToken();
   const username = useAuth((state) => state.username);
-  const amountpaid = useAuth((state) => state.amountpaid);
+  const setMessage = useAuth((state) => state.setMessage);
   const description = useAuth((state) => state.description);
+
+  useEffect(() => {
+    setMessage("Loading");
+  }, []);
 
   let config = {
     // replace this key with yours
     publicKey: myKey.publicTestKey,
     productIdentity: "2",
     productName: `${username}`,
-    // productUrl: "http://gameofthrones.wikia.com/wiki/Dragons",
     productUrl: "http://dummy.com",
     eventHandler: {
       // hit merchant api for initiating verfication
@@ -30,12 +34,14 @@ const KhaltiConfig = () => {
         tokenInstance
           .post(`/khalti`, data)
           .then((res) => {
-            console.log(res);
+            setMessage(res.data.message);
+            // setMessage("message");
             console.log("data:", data);
           })
           .catch((e) => {
-            console.log(e);
-            console.log("data:", data);
+            setMessage(e.response.data.message);
+            // setMessage("error");
+            console.log("error:", data);
           });
       },
       // onError handler is optional
@@ -47,13 +53,7 @@ const KhaltiConfig = () => {
         console.log("widget is closing");
       },
     },
-    paymentPreference: [
-      "KHALTI",
-      // "EBANKING",
-      // "MOBILE_BANKING",
-      // "CONNECT_IPS",
-      // "SCT",
-    ],
+    paymentPreference: ["KHALTI"],
   };
   return { config };
 };

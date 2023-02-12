@@ -7,6 +7,7 @@ import Display from "../Admin/Display";
 import EditDetails from "../Admin/EditDetails";
 import DeleteUser from "../Admin/DeleteUser";
 import ChangePassword from "../ChangePassword";
+import { NoMatch } from "../NoMatch";
 
 function AdminRoutes() {
   return (
@@ -26,6 +27,7 @@ function AdminRoutes() {
           path="changepassword"
           element={<Layout component={<ChangePassword />} />}
         />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </>
   );

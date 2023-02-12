@@ -18,9 +18,7 @@ const Payment = () => {
                 <button
                   id="btn"
                   onClick={() => {
-                    navigate("/secure/student/payment/statement", {
-                      replace: true,
-                    });
+                    navigate("statement");
                   }}
                 >
                   Statement
@@ -38,7 +36,7 @@ const Payment = () => {
                 <button
                   id="btn"
                   onClick={() => {
-                    navigate("/secure/student/payment/dues", { replace: true });
+                    navigate("dues");
                   }}
                 >
                   Due Fee

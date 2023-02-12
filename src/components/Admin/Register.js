@@ -19,9 +19,7 @@ const Register = () => {
                 <button
                   id="btn"
                   onClick={() => {
-                    navigate("/secure/admin/registration/registerstudent", {
-                      replace: true,
-                    });
+                    navigate("registerstudent");
                   }}
                 >
                   Register Student
@@ -40,9 +38,7 @@ const Register = () => {
                 <button
                   id="btn"
                   onClick={() => {
-                    navigate("/secure/admin/registration/registerstaff", {
-                      replace: true,
-                    });
+                    navigate("registerstaff");
                   }}
                 >
                   Register Staff

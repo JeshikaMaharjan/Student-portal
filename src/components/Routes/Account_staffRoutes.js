@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../Account_staff/Account_staff";
 import Cash from "../Account_staff/Cash";
 import ChangePassword from "../ChangePassword";
+import { NoMatch } from "../NoMatch";
 import Profile from "../Profile";
 
 function AccountRoutes() {
@@ -15,6 +16,7 @@ function AccountRoutes() {
           path="changepassword"
           element={<Layout component={<ChangePassword />} />}
         />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </>
   );

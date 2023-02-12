@@ -1,20 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "../Student/Student";
+import Layout from "../Entry_staff/Entrystaff";
 import Profile from "../Profile";
-import PaymentRoutes from "./PaymentRoutes";
+
 import ChangePassword from "../ChangePassword";
 import { NoMatch } from "../NoMatch";
 
-function StudentRoutes() {
+function EntryRoutes() {
   return (
     <>
       <Routes>
         <Route index element={<Layout component={<Profile />} />} />
         <Route path="profile" element={<Layout component={<Profile />} />} />
-        <Route
-          path="payment/*"
-          element={<Layout component={<PaymentRoutes />} />}
-        />
         <Route
           path="changepassword"
           element={<Layout component={<ChangePassword />} />}
@@ -24,4 +20,4 @@ function StudentRoutes() {
     </>
   );
 }
-export default StudentRoutes;
+export default EntryRoutes;

@@ -27,7 +27,6 @@ function Cash() {
     console.log("postData");
     const postData = {
       userName: userName.current.value,
-
       semester: semester.current.value,
       amount: amount.current.value,
       type: type,
@@ -36,14 +35,10 @@ function Cash() {
     await tokenInstance
       .post(`/transaction`, postData)
       .then((res) => {
-        // console.log(res);
-        // console.log("data:", postData);
         setPostResult(res.data.message);
       })
       .catch((e) => {
-        // console.log(e.response.data.error);
         setPostResult(e.response.data.message);
-        // console.log("data:", postData);
       });
   }
 
@@ -96,10 +91,7 @@ function Cash() {
                       innerRef={amount}
                     />
                   </FormGroup>
-                  {/* <FormGroup>
-                                    <Label for="exampleFile">File</Label>
-                                    <Input type="file" name="file" id="exampleFile" />
-                                </FormGroup> */}
+
                   <div className="btn">
                     <Button
                       id="subbtn"
