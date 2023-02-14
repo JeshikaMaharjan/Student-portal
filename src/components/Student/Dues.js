@@ -17,14 +17,14 @@ function Dues() {
   const setDescription = useAuth((state) => state.setDescription);
 
   const { config } = KhaltiConfig();
-  console.log(config);
+  // console.log(config);
   let checkout = new KhaltiCheckout(config);
 
   useEffect(() => {
     tokenInstance
       .get(`/due/${username}`)
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
@@ -41,34 +41,6 @@ function Dues() {
     popup.classList.toggle("active");
   };
 
-  const options = [
-    {
-      id: 1,
-      name: "Fee for 6th semester",
-      value: 40000,
-    },
-    {
-      id: 2,
-      name: "Due Payment for 5th semester",
-      value: 3000000,
-    },
-    {
-      id: 3,
-      name: "Due Payment for 4th semester",
-      value: 20000,
-    },
-    {
-      id: 4,
-      name: "Due Payment for 3rd semester",
-      value: 15000,
-    },
-    {
-      id: 5,
-      name: "Due Payment for 2nd semester",
-      value: 25000,
-    },
-  ];
-
   return (
     <>
       <div className="contain" id="blur">
@@ -77,73 +49,80 @@ function Dues() {
             <div className="title">
               <h1>Payment Details</h1>
             </div>
-            <div className="mainBody">
-              <div className="leftDiv">
-                <div className="card1">
-                  {options.map((singleoption) => (
-                    <div className="inBox">
-                      <h4>
-                        {singleoption.name} : {singleoption.value}
-                      </h4>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="rightDiv">
-                <div className="card2">
-                  <div className="c2Head">
-                    <span>Select Payment Option</span>
-                  </div>
-                  <div className="c2Body">
-                    <div className="selectDiv">
+            {data.length == 0 && <div>No dues left</div>}
+            {data && (
+              <div className="mainBody">
+                <div className="leftDiv">
+                  <div className="card1">
+                    {data.map((singleoption) => (
                       <div className="inBox">
-                        <h4>Description for payment</h4>
+                        <h4>
+                          Due for {singleoption.semester} semester :{" "}
+                          {singleoption.due}
+                        </h4>
                       </div>
-                      <br />
-                      <Input
-                        type="select"
-                        name="selectdescription"
-                        id="selectdescription"
-                        onChange={(e) => {
-                          setdescription(e.target.value);
-                        }}
-                      >
-                        {options.map((singleoption) => (
-                          <option>{singleoption.name}</option>
-                        ))}
-                      </Input>
+                    ))}
+                  </div>
+                </div>
+                <div className="rightDiv">
+                  <div className="card2">
+                    <div className="c2Head">
+                      <span>Select Payment Option</span>
                     </div>
-                    <div className="displayDiv">
-                      <Input
-                        type="number"
-                        name="amount"
-                        id="amount"
-                        min="0"
-                        placeholder="Amount Here"
-                        onChange={(e) => {
-                          setamountpaid(e.target.value * 100);
-                        }}
-                      ></Input>
-                    </div>
-                    <div className="paymentBtn">
-                      {amountpaid !== 0 && (
-                        <button
-                          id="btn"
-                          onClick={() => {
-                            setAmount(amountpaid);
-                            setDescription(description);
-                            checkout.show({ amount: amountpaid });
-                            toggle();
+                    <div className="c2Body">
+                      <div className="selectDiv">
+                        <div className="inBox">
+                          <h4>Description for payment</h4>
+                        </div>
+                        <br />
+                        <Input
+                          type="select"
+                          name="selectdescription"
+                          id="selectdescription"
+                          onChange={(e) => {
+                            setdescription(e.target.value);
                           }}
                         >
-                          <span> Pay Via Khalti </span>{" "}
-                        </button>
-                      )}
+                          <option>--Choose-</option>
+                          {data.map((singleoption) => (
+                            <option value={singleoption.semester}>
+                              Due for {singleoption.semester} semester
+                            </option>
+                          ))}
+                        </Input>
+                      </div>
+                      <div className="displayDiv">
+                        <Input
+                          type="number"
+                          name="amount"
+                          id="amount"
+                          min="0"
+                          placeholder="Amount Here"
+                          onChange={(e) => {
+                            setamountpaid(e.target.value * 100);
+                          }}
+                        ></Input>
+                      </div>
+                      <div className="paymentBtn">
+                        {amountpaid !== 0 && (
+                          <button
+                            id="btn"
+                            onClick={() => {
+                              setAmount(amountpaid);
+                              setDescription(description);
+                              checkout.show({ amount: amountpaid });
+                              toggle();
+                            }}
+                          >
+                            <span> Pay Via Khalti </span>{" "}
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

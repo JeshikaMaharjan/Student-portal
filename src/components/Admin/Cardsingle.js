@@ -54,7 +54,6 @@ function Cardsingle({ person }) {
               id="edit"
               onClick={() =>
                 navigate("/secure/admin/edit", {
-                  replace: true,
                   state: { ...person },
                 })
               }
@@ -81,7 +80,6 @@ function Cardsingle({ person }) {
               id="delete"
               onClick={() =>
                 navigate("/secure/admin/delete", {
-                  replace: true,
                   state: { ...person },
                 })
               }

@@ -1,11 +1,10 @@
 import { useLogout } from "../apis";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { BrowserRouter as Prompt } from "react-router-dom";
 import { useEffect } from "react";
+import Login from "./Login";
 
 export default function Logout() {
-  console.log("logout");
-
   const navigate = useNavigate();
   const { logout } = useLogout();
 
@@ -14,7 +13,7 @@ export default function Logout() {
     console.log("not logged out");
     return;
   }
-  navigate("/login");
+  navigate("/login", { replace: true });
 }
 // export default function Logout() {
 //   const navigate = useNavigate();

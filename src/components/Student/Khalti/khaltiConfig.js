@@ -16,7 +16,7 @@ const KhaltiConfig = () => {
   let config = {
     // replace this key with yours
     publicKey: myKey.publicTestKey,
-    productIdentity: "2",
+    productIdentity: description,
     productName: `${username}`,
     productUrl: "http://dummy.com",
     eventHandler: {
@@ -28,19 +28,21 @@ const KhaltiConfig = () => {
           token: payload.token,
           amount: payload.amount,
           userName: payload.product_name,
-          semester: 1,
-          // description: description,
+          semester: payload.product_identity,
         };
         tokenInstance
           .post(`/khalti`, data)
           .then((res) => {
             setMessage(res.data.message);
-            // setMessage("message");
+            console.log("d", description);
+
             console.log("data:", data);
           })
           .catch((e) => {
+            console.log(e);
             setMessage(e.response.data.message);
-            // setMessage("error");
+            console.log("d", description);
+
             console.log("error:", data);
           });
       },

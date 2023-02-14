@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuth } from "./Authentication/auth";
 
-const baseURL = "http://192.168.100.67:8000/api";
+const baseURL = "http://192.168.1.100:8000/api";
 
 const config = {
   baseURL: baseURL,
@@ -71,6 +71,7 @@ const useLogout = () => {
       setUser(null);
       setRole(null);
       setAuthenticated(false);
+
       return true;
     } catch (error) {
       console.log(error);

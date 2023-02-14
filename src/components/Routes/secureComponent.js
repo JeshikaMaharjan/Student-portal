@@ -11,6 +11,12 @@ export function SecureComponent() {
   const navigate = useNavigate();
   const isauthenticated = useAuth((state) => state.isauthenticated);
   const role = useAuth((state) => state.role);
+  useEffect(() => {
+    if (role === 1) navigate("/secure/admin");
+    if (role === 2) navigate("/secure/accountstaff");
+    if (role === 3) navigate("/secure/entrystaff");
+    if (role === 4) navigate("/secure/student");
+  }, []);
 
   if (isauthenticated) {
     return (
@@ -21,6 +27,7 @@ export function SecureComponent() {
         )}
         {role === 3 && <Route path="/entrystaff/*" element={<EntryRoutes />} />}
         {role === 4 && <Route path="/student/*" element={<StudentRoutes />} />}
+
         <Route path="*" element={<Unauthorized />} />
       </Routes>
     );

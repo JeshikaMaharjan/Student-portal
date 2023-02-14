@@ -7,7 +7,7 @@ const Profile = () => {
   const [data, setData] = useState([]);
   const username = useAuth((state) => state.username);
   const role = useAuth((state) => state.role);
-  const [faculty, setFaculty] = useState("");
+  const [faculty, setFaculty] = useState(null);
 
   useEffect(() => {
     tokenInstance
@@ -20,6 +20,17 @@ const Profile = () => {
       .catch((err) => {
         console.log(err);
       });
+    // if (role === 4) {
+    //   if (data.faculty == 1) {
+    //     setFaculty("BCT - Bachelors in Computer Engineering");
+    //   }
+    //   if (data.faculty == 2) {
+    //     setFaculty("BCE - Bachelors in Civil Engineering");
+    //   }
+    //   console.log(faculty);
+    // }
+  }, []);
+  useEffect(() => {
     if (role === 4) {
       if (data.faculty == 1) {
         setFaculty("BCT - Bachelors in Computer Engineering");
@@ -29,7 +40,7 @@ const Profile = () => {
       }
       console.log(faculty);
     }
-  }, [role]);
+  }, [data]);
   return (
     <>
       <div className="header">
