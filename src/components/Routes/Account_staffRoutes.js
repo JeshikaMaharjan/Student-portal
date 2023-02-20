@@ -5,7 +5,7 @@ import Scholarship from "../Account_staff/Scholarship";
 import SearchStudent from "../Account_staff/SearchStudent";
 import UpdateBill from "../Account_staff/UpdateBill";
 import ChangePassword from "../ChangePassword";
-import { NoMatch } from "../NoMatch";
+import NoMatch from "../NoMatch";
 import Profile from "../Profile";
 
 function AccountRoutes() {

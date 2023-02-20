@@ -3,7 +3,7 @@ import Layout from "../Student/Student";
 import Profile from "../Profile";
 import PaymentRoutes from "./PaymentRoutes";
 import ChangePassword from "../ChangePassword";
-import { NoMatch } from "../NoMatch";
+import NoMatch from "../NoMatch";
 
 function StudentRoutes() {
   return (

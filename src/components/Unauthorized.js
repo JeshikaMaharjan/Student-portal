@@ -1,20 +1,32 @@
 import { useNavigate } from "react-router-dom";
 
-const Unauthorized = () => {
+import React from "react";
+import "../css/Unauthorized.css";
+
+export default function Unauthorized() {
   const navigate = useNavigate();
 
   const goBack = () => navigate(-1);
-
   return (
-    <section>
-      <h1>Unauthorized</h1>
-      <br />
-      <p>You do not have access to the requested page.</p>
-      <div className="flexGrow">
-        <button onClick={goBack}>Go Back</button>
+    <>
+      <div className="body">
+        <div className="FPbody">
+          <div className="FPBox">
+            <div className="formBox">
+              <div className="deniedimg">
+                <img
+                  src="https://img.freepik.com/premium-vector/access-denied-alert-vector-illustration-design_624938-543.jpg?w=2000"
+                  alt="access denied"
+                />
+                <p>You do not have permission to access this page.</p>
+              </div>
+              <div className="inputBx">
+                <button onClick={goBack}>Go Back</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </>
   );
-};
-
-export default Unauthorized;
+}

@@ -35,7 +35,9 @@ const useLogin = () => {
       }
 
       console.log(res);
+      // sessionStorage.setItem('loginres','res')
 
+      // setToken(sessionStorage.getItem('loginres').data.access);
       setToken(res.data.access);
       setUser(res.data.username);
       setRole(res.data.role);
@@ -67,6 +69,7 @@ const useLogout = () => {
   const setAuthenticated = useAuth((state) => state.setAuthenticated);
   const logout = () => {
     try {
+      // sessionStorage.clear();
       setToken(null);
       setUser(null);
       setRole(null);

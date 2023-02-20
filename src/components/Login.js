@@ -45,8 +45,10 @@ export default function Login() {
   return (
     <>
       <div className="box">
-        <div className="logo">
-          <img src={SERAlogo} alt="Logo" />
+        <div className="logodiv">
+          <div className="logo">
+            <img src={SERAlogo} alt="Logo" />
+          </div>
         </div>
 
         <div className="loginBox">
@@ -79,6 +81,15 @@ export default function Login() {
                 </div>
               </div>
 
+              <div className="forgetpswd">
+                <button
+                  onClick={() => {
+                    navigate("/forgotpassword");
+                  }}
+                >
+                  Forgot Password?
+                </button>
+              </div>
               {isError && (
                 <div className="displayMessage">
                   <p> {postResult}</p>

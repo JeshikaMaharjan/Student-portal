@@ -17,6 +17,18 @@ export const Sidenavcomp = [
     icon: <PasswordIcon />,
     link: "/secure/entrystaff/changepassword",
   },
+  {
+    title: "Search",
+    icon: <PasswordIcon />,
+    link: "/secure/entrystaff/searchstudent",
+  },
+  //-----------------
+  {
+    title: "MarksEntry",
+    icon: <PasswordIcon />,
+    link: "/secure/entrystaff/marksentry",
+  },
+  //-----------------
 
   {
     title: "Log Out",

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { NoMatch } from "../NoMatch";
+import NoMatch from "../NoMatch";
 import Dues from "../Student/Dues";
 import Payment from "../Student/Payment";
 import Statement from "../Student/Statement";
