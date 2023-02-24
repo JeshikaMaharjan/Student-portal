@@ -7,14 +7,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const ResultForm = () => {
+function EditResult() {
   const location = useLocation();
   const detail = location.state;
   const navigate = useNavigate();
   const [postresult, setpostresult] = useState("");
   const [subjects, setSubjects] = useState([]);
+  const [Result, setResult] = useState([]);
   const { tokenInstance } = useToken();
-  // const username = useAuth((state) => state.username);
   const [mark, setMark] = useState([]);
   useEffect(() => {
     setMark([]);
@@ -29,30 +29,17 @@ const ResultForm = () => {
       .catch((err) => {
         console.log(err);
       });
+    tokenInstance
+      .get(`/result/${detail.username}/${detail.semester}`)
+      .then((res) => {
+        console.log(res);
+        setResult(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
-  //---------------------
-  // const subjects = [
-  //   {
-  //     id: 1,
-  //     subjectname: "OOAD",
-  //     totalmarks: 100,
-  //     passmarks: 32,
-  //   },
-  //   {
-  //     id: 2,
-  //     subjectname: "eco",
-  //     totalmarks: 100,
-  //     passmarks: 32,
-  //   },
-  //   {
-  //     id: 3,
-  //     subjectname: "maths",
-  //     totalmarks: 100,
-  //     passmarks: 32,
-  //   },
-  // ];
 
-  // }
   if (mark.length == 0) {
     for (let i = 0; i < subjects.length; i++) {
       const sub_id = subjects[i].id;
@@ -60,8 +47,6 @@ const ResultForm = () => {
     }
   }
   console.log(mark);
-
-  //---------------------
 
   const toggle = () => {
     var blur = document.getElementById("blur");
@@ -98,6 +83,7 @@ const ResultForm = () => {
               id={subject.id}
               name="inputmarks"
               required
+              defaultValue={Result.obtained_mark}
               onChange={(e) => {
                 handleChange(e);
               }}
@@ -110,7 +96,7 @@ const ResultForm = () => {
 
   function handleSubmit() {
     tokenInstance
-      .post(`/add/mark/${detail.username}/${detail.semester}`, mark)
+      .put(`/add/mark/${detail.username}/${detail.semester}`, mark)
       // .post(`/add/mark/student/2`, mark)
       .then((res) => {
         setpostresult(res.data.message);
@@ -173,7 +159,7 @@ const ResultForm = () => {
         <button
           onClick={() => {
             toggle();
-            navigate("/secure/entrystaff/searchstudent");
+            navigate("/secure/searchstudent");
           }}
         >
           Close
@@ -181,6 +167,6 @@ const ResultForm = () => {
       </div>
     </>
   );
-};
+}
 
-export default ResultForm;
+export default EditResult;

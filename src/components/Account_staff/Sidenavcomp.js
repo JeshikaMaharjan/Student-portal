@@ -8,31 +8,31 @@ import PasswordIcon from "@mui/icons-material/Password";
 
 import "../../css/Sidenavcomp.css";
 
-export const Sidenavcomp = [
+export const AccountSidenavcomp = [
   {
     title: "Profile",
     icon: <AccountCircleIcon />,
-    link: "/secure/accountstaff/profile",
+    link: "/secure/profile",
   },
   {
     title: "Password",
     icon: <PasswordIcon />,
-    link: "/secure/accountstaff/changepassword",
+    link: "/secure/changepassword",
   },
   {
     title: "Search",
     icon: <DescriptionIcon />,
-    link: "/secure/accountstaff/searchstudent",
+    link: "/secure/searchstudent",
   },
   // {
   //   title: "View",
   //   icon: <PersonAddIcon />,
-  //   link: "/secure/accountstaff/view",
+  //   link: "/secure/view",
   // },
   {
     title: "Payment",
     icon: <AutoGraphIcon />,
-    link: "/secure/accountstaff/payment",
+    link: "/secure/payment",
   },
 
   {

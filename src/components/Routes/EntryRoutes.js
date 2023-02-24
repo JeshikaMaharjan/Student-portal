@@ -1,32 +1,39 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "../Entry_staff/Entrystaff";
+import Entrystaff from "../Entry_staff/Entrystaff";
 import Profile from "../Profile";
 
 import ChangePassword from "../ChangePassword";
 import NoMatch from "../NoMatch";
-import ResultForm from "../Entry_staff/ResultForm";
-import SearchStudent from "../Entry_staff/SearchStudent";
+
+import ResultRoutes from "./ResultRoutes";
 
 function EntryRoutes() {
   return (
     <>
       <Routes>
-        <Route index element={<Layout component={<Profile />} />} />
-        <Route path="profile" element={<Layout component={<Profile />} />} />
-        <Route
-          path="changepassword"
-          element={<Layout component={<ChangePassword />} />}
-        />
-        {/* //------------------- */}
-        <Route
-          path="marksentry"
-          element={<Layout component={<ResultForm />} />}
-        />
-        {/* //------------------- */}
-        <Route
+        <Route index element={<Profile />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="changepassword" element={<ChangePassword />} />
+        <Route path="searchstudent/*" element={<ResultRoutes />} />
+        {/* <Route
           path="searchstudent"
-          element={<Layout component={<SearchStudent />} />}
+          element={<SearchStudent />}
         />
+        <Route
+          path="selection"
+          element={<Selection />} 
+        />
+        <Route
+          path="viewresult"
+          element={<ViewResult />} 
+        />
+        <Route
+          path="editresult"
+          element={<EditResult />}         /> */}
+        {/* <Route
+          path="marksentry"
+          element={<ResultForm />} 
+        /> */}
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>

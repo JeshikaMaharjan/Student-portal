@@ -235,7 +235,7 @@ function EditDetails() {
           id="test1"
           onClick={() => {
             toggle();
-            navigate("/secure/admin/search");
+            navigate("/secure/search");
           }}
         >
           Close

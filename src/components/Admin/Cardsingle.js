@@ -29,31 +29,11 @@ function Cardsingle({ person }) {
           </div>
         </div>
         <div className="option">
-          {/* <div className="viewBtn">
-                                    <button id='view'>View</button>
-                                </div>
-                                <div className="resultBtn">
-                                    <button id='result'>Results</button>
-                                </div> */}
-
-          {/* <div className="editBtn">
-            <button
-              id="edit"
-              onClick={() =>
-                navigate("/secure/admin/edit", {
-                  replace: true,
-                  state: { ...person },
-                })
-              }
-            >
-              Edit
-            </button>
-          </div> */}
           <div className="editBtn">
             <button
               id="edit"
               onClick={() =>
-                navigate("/secure/admin/edit", {
+                navigate("/secure/edit", {
                   state: { ...person },
                 })
               }
@@ -66,7 +46,7 @@ function Cardsingle({ person }) {
             <button
               id="delete"
               onClick={() =>
-                navigate("/secure/admin/delete", {
+                navigate("/secure/delete", {
                   replace: true,
                   state: { ...person },
                 })
@@ -79,7 +59,7 @@ function Cardsingle({ person }) {
             <button
               id="delete"
               onClick={() =>
-                navigate("/secure/admin/delete", {
+                navigate("/secure/delete", {
                   state: { ...person },
                 })
               }

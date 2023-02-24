@@ -1,8 +1,8 @@
 import React from "react";
-import Dashboard from "./Dashboard";
-import Sidenav from "./Sidenav";
+import Dashboard from "../Dashboard";
+import Sidenav from "../Sidenav";
 
-const Layout = (props) => {
+const Entrystaff = (props) => {
   return (
     <>
       <Sidenav />
@@ -11,4 +11,4 @@ const Layout = (props) => {
   );
 };
 
-export default Layout;
+export default Entrystaff;

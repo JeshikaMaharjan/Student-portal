@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { tokenInstance } from "../../apis";
-import Dashboard from "./Dashboard";
-import Sidenav from "./Sidenav";
+import Dashboard from "../Dashboard";
+import Sidenav from "../Sidenav";
 
-const Layout = (props) => {
+const Admin = (props) => {
+  console.log(props);
   return (
     <>
       <Sidenav />
@@ -12,4 +13,4 @@ const Layout = (props) => {
   );
 };
 
-export default Layout;
+export default Admin;

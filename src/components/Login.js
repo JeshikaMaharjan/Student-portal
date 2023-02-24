@@ -30,7 +30,6 @@ export default function Login() {
         setPostResult("Sign in failed", message);
         return;
       }
-
       navigate("/secure");
     } catch (err) {
       console.log(err);

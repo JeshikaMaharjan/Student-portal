@@ -22,11 +22,14 @@ const SearchStudent = () => {
       .then((res) => {
         console.log(res);
         const data = res.data;
+        // sessionStorage.setItem("filteredpersonlist", data);
         setfilteredPersons(data);
+        // setfilteredPersons(sessionStorage.getItem("filteredpersonlist"));
       })
       .catch((e) => {
         console.log(e);
       });
+    console.log(filteredPersons);
   }
 
   const handlebatch = (e) => {
@@ -116,21 +119,43 @@ const SearchStudent = () => {
                           {person.firstName} {person.lastName}
                         </span>
                       </div>
-                      {/* <div className="id">
-                        <span>{person.id}</span>
-                      </div> */}
                     </div>
                     <div className="option">
-                      <div className="viewBtn">
+                      <div className="selectBtn">
                         <button
                           id="view"
                           onClick={() =>
-                            navigate("marksentry", {
-                              state: { ...person },
+                            navigate("/secure/searchstudent/selection", {
+                              state: { ...person, btnid: 1 },
+                              replace: true,
                             })
                           }
                         >
-                          Update Marks
+                          UpLoad Result
+                        </button>
+                      </div>
+                      <div className="selectBtn">
+                        <button
+                          id="view"
+                          onClick={() =>
+                            navigate("/secure/searchstudent/selection", {
+                              state: { ...person, btnid: 2 },
+                            })
+                          }
+                        >
+                          View Result
+                        </button>
+                      </div>
+                      <div className="selectBtn">
+                        <button
+                          id="view"
+                          onClick={() =>
+                            navigate("/secure/searchstudent/selection", {
+                              state: { ...person, btnid: 3 },
+                            })
+                          }
+                        >
+                          Edit Result
                         </button>
                       </div>
                     </div>

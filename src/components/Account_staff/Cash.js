@@ -6,12 +6,7 @@ import { useToken } from "../../apis";
 function Cash() {
   const { tokenInstance } = useToken();
   const userName = useRef(null);
-  const firstName = useRef(null);
-  const lastName = useRef(null);
-  const faculty = useRef(null);
-  const batch = useRef(null);
   const semester = useRef(null);
-  const billno = useRef(null);
   const amount = useRef(null);
   const type = 2;
 

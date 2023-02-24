@@ -6,29 +6,22 @@ import PasswordIcon from "@mui/icons-material/Password";
 
 import "../../css/Sidenavcomp.css";
 
-export const Sidenavcomp = [
+export const EntrystaffSidenavcomp = [
   {
     title: "Profile",
     icon: <AccountCircleIcon />,
-    link: "/secure/entrystaff/profile",
+    link: "/secure/profile",
   },
   {
     title: "Password",
     icon: <PasswordIcon />,
-    link: "/secure/entrystaff/changepassword",
+    link: "/secure/changepassword",
   },
   {
     title: "Search",
     icon: <PasswordIcon />,
-    link: "/secure/entrystaff/searchstudent",
+    link: "/secure/searchstudent",
   },
-  //-----------------
-  {
-    title: "MarksEntry",
-    icon: <PasswordIcon />,
-    link: "/secure/entrystaff/marksentry",
-  },
-  //-----------------
 
   {
     title: "Log Out",

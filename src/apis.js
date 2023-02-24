@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuth } from "./Authentication/auth";
 
-const baseURL = "http://192.168.1.100:8000/api";
+const baseURL = "http://192.168.100.212:8000/api";
 
 const config = {
   baseURL: baseURL,
@@ -35,14 +35,19 @@ const useLogin = () => {
       }
 
       console.log(res);
-      // sessionStorage.setItem('loginres','res')
+      sessionStorage.setItem("token", res.data.access);
+      sessionStorage.setItem("user", res.data.username);
+      sessionStorage.setItem("role", res.data.role);
+      const token = sessionStorage.getItem("token");
+      const user = sessionStorage.getItem("user");
+      const role = sessionStorage.getItem("role");
 
-      // setToken(sessionStorage.getItem('loginres').data.access);
-      setToken(res.data.access);
-      setUser(res.data.username);
-      setRole(res.data.role);
       setAuthenticated(true);
       setMessage(res.data.message);
+      setToken(token);
+      setUser(user);
+      setRole(role);
+
       return true;
     } catch (error) {
       console.log(error);
@@ -69,7 +74,7 @@ const useLogout = () => {
   const setAuthenticated = useAuth((state) => state.setAuthenticated);
   const logout = () => {
     try {
-      // sessionStorage.clear();
+      sessionStorage.clear();
       setToken(null);
       setUser(null);
       setRole(null);
@@ -84,4 +89,4 @@ const useLogout = () => {
   return { logout };
 };
 
-export { useLogin, useToken, useLogout };
+export { useLogin, useToken, useLogout, config };

@@ -1,16 +1,14 @@
-import React from 'react'
-import Dashboard from './Dashboard';
-import Sidenav from './Sidenav';
+import React from "react";
+import Dashboard from "../Dashboard";
+import Sidenav from "../Sidenav";
 
-const Layout = (props) => {
+const Student = (props) => {
+  return (
+    <>
+      <Sidenav />
+      <Dashboard comp={props.component} />
+    </>
+  );
+};
 
-    return (
-        <>
-            <Sidenav />
-            <Dashboard comp = {props.component}/>
-        </>
-
-    );
-}
-
-export default Layout;
+export default Student;
