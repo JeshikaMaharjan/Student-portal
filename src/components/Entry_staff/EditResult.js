@@ -78,7 +78,6 @@ function EditResult() {
     return (
       <>
         <tr>
-          {/* <th scope="row">{subject.id}</th> */}
           <td>{subject.subject} </td>
           <td>{subject.full_marks}</td>
           <td>{subject.pass_marks}</td>
