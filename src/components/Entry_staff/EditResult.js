@@ -19,31 +19,35 @@ function EditResult() {
   useEffect(() => {
     setMark([]);
     console.log(mark);
+    // tokenInstance
+    //   .get(`/subject/${detail.faculty}/${detail.semester}`)
+    //   // .get(`/subject/1/2`)
+    //   .then((res) => {
+    //     console.log(res);
+    //     setSubjects(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
     tokenInstance
-      .get(`/subjects/${detail.faculty}/${detail.semester}`)
-      // .get(`/subject/1/2`)
+      .get(`/mark/${detail.username}/${detail.semester}`)
       .then((res) => {
         console.log(res);
+        setResult(res.data);
         setSubjects(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    tokenInstance
-      .get(`/result/${detail.username}/${detail.semester}`)
-      .then((res) => {
-        console.log(res);
-        setResult(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
+  console.log(Result);
 
   if (mark.length == 0) {
     for (let i = 0; i < subjects.length; i++) {
       const sub_id = subjects[i].id;
-      setMark((mark) => [...mark, { id: sub_id, mark: null }]);
+      console.log(sub_id);
+      const initmark = Result[i].marks;
+      setMark((mark) => [...mark, { id: sub_id, mark: initmark }]);
     }
   }
   console.log(mark);
@@ -83,7 +87,7 @@ function EditResult() {
               id={subject.id}
               name="inputmarks"
               required
-              defaultValue={Result.obtained_mark}
+              defaultValue={subject.marks}
               onChange={(e) => {
                 handleChange(e);
               }}
@@ -96,8 +100,7 @@ function EditResult() {
 
   function handleSubmit() {
     tokenInstance
-      .put(`/add/mark/${detail.username}/${detail.semester}`, mark)
-      // .post(`/add/mark/student/2`, mark)
+      .post(`/mark/update/${detail.username}/${detail.semester}`, mark)
       .then((res) => {
         setpostresult(res.data.message);
         console.log(res);
@@ -123,7 +126,7 @@ function EditResult() {
                   <Table responsive>
                     <thead>
                       <tr>
-                        <th>Sub_ID</th>
+                        {/* <th>Sub_ID</th> */}
                         <th>Subject</th>
                         <th>Total Mark</th>
                         <th>Pass Mark</th>
@@ -131,7 +134,7 @@ function EditResult() {
                       </tr>
                     </thead>
                     <tbody>
-                      {subjects.map((subject) => Marksentry({ subject }))}
+                      {Result.map((subject) => Marksentry({ subject }))}
                     </tbody>
                   </Table>
                   <div className="inputBx">

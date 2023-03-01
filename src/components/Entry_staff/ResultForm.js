@@ -20,7 +20,7 @@ const ResultForm = () => {
     setMark([]);
     console.log(mark);
     tokenInstance
-      .get(`/subjects/${detail.faculty}/${detail.semester}`)
+      .get(`/subject/${detail.faculty}/${detail.semester}`)
       // .get(`/subject/1/2`)
       .then((res) => {
         console.log(res);

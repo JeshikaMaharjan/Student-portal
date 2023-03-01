@@ -7,10 +7,12 @@ export function Selection() {
   const navigate = useNavigate();
   const location = useLocation();
   const detail = location.state;
+  console.log(detail);
 
   const [semester, setSemesterField] = useState();
   const [faculty, setFacultyField] = useState();
-  const username = detail.username;
+  const username = detail.person.userName;
+  console.log("u", username);
 
   const handlesemester = (e) => {
     setSemesterField(e.target.value);
@@ -20,7 +22,7 @@ export function Selection() {
   };
   const handleButtonClick = () => {
     if (detail.btnid == 1) {
-      navigate("/secure/marksentry", {
+      navigate("/secure/searchstudent/marksentry", {
         state: {
           username: username,
           semester: semester,
@@ -29,7 +31,7 @@ export function Selection() {
       });
     }
     if (detail.btnid == 2) {
-      navigate("/secure/viewresult", {
+      navigate("/secure/searchstudent/viewresult", {
         state: {
           username: username,
           semester: semester,
@@ -38,7 +40,7 @@ export function Selection() {
       });
     }
     if (detail.btnid == 3) {
-      navigate("/secure/editresult", {
+      navigate("/secure/searchstudent/editresult", {
         state: {
           username: username,
           semester: semester,

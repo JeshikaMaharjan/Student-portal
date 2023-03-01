@@ -19,20 +19,21 @@ export const StudentSidenavcomp = [
     icon: <PasswordIcon />,
     link: "/secure/changepassword",
   },
-  // {
-  //   title: "View",
-  //   icon: <PersonAddIcon />,
-  //   link: "/secure/view",
-  // },
-  // {
-  //   title: "Search",
-  //   icon: <DescriptionIcon />,
-  //   link: "/secure/search",
-  // },
+
   {
     title: "Payment",
     icon: <AutoGraphIcon />,
     link: "/secure/payment",
+  },
+  {
+    title: "Result",
+    icon: <AutoGraphIcon />,
+    link: "/secure/selection",
+  },
+  {
+    title: "Progress",
+    icon: <AutoGraphIcon />,
+    link: "/secure/progressgraph",
   },
   {
     title: "Log Out",

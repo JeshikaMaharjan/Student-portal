@@ -27,7 +27,6 @@ function SideNav() {
     if (role == 4) {
       setSidenavcomp(StudentSidenavcomp);
     }
-    console.log(Sidenavcomp);
   }, []);
 
   return (
@@ -41,7 +40,6 @@ function SideNav() {
         </div>
         <ul className="SidenavList">
           {Sidenavcomp.map((val, key) => {
-            console.log(val);
             return (
               <li
                 key={key}

@@ -126,7 +126,7 @@ const SearchStudent = () => {
                           id="view"
                           onClick={() =>
                             navigate("/secure/searchstudent/selection", {
-                              state: { ...person, btnid: 1 },
+                              state: { person: person, btnid: 1 },
                               replace: true,
                             })
                           }
@@ -139,7 +139,7 @@ const SearchStudent = () => {
                           id="view"
                           onClick={() =>
                             navigate("/secure/searchstudent/selection", {
-                              state: { ...person, btnid: 2 },
+                              state: { person: person, btnid: 2 },
                             })
                           }
                         >
@@ -151,7 +151,7 @@ const SearchStudent = () => {
                           id="view"
                           onClick={() =>
                             navigate("/secure/searchstudent/selection", {
-                              state: { ...person, btnid: 3 },
+                              state: { person: person, btnid: 3 },
                             })
                           }
                         >
