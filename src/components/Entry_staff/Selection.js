@@ -7,12 +7,10 @@ export function Selection() {
   const navigate = useNavigate();
   const location = useLocation();
   const detail = location.state;
-  console.log(detail);
 
   const [semester, setSemesterField] = useState();
   const [faculty, setFacultyField] = useState();
   const username = detail.person.userName;
-  console.log("u", username);
 
   const handlesemester = (e) => {
     setSemesterField(e.target.value);
@@ -91,15 +89,6 @@ export function Selection() {
             value="Submit"
             name=""
             onClick={handleButtonClick}
-            // onClick={() =>
-            //   navigate("/secure/marksentry", {
-            //     state: {
-            //       username: username,
-            //       semester: semester,
-            //       faculty: faculty,
-            //     },
-            //   })
-            // }
           />
         </div>
       </div>

@@ -13,7 +13,7 @@ const Dashboard = (props) => {
     tokenInstance
       .get(`/details/${username}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         const info = res.data;
         setData(info);
       })

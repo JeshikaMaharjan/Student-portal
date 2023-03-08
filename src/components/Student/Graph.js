@@ -8,6 +8,7 @@ export default function Graph() {
   const username = useAuth((state) => state.username);
   const { tokenInstance } = useToken();
   const [dataset, setDataSet] = useState([]);
+  const [postresult, setpostresult] = useState("");
 
   useEffect(() => {
     tokenInstance
@@ -37,22 +38,71 @@ export default function Graph() {
       },
     ],
   };
+  const toggle = () => {
+    var blur = document.getElementById("blur");
+    blur.classList.toggle("active");
+    var popup = document.getElementById("popup");
+    popup.classList.toggle("active");
+  };
+  function handleButtonClick() {
+    setpostresult("Predicting...");
+    tokenInstance
+      .get(`/prediction/${username}`)
+      .then((res) => {
+        console.log(res);
+        setTimeout(() => {
+          setpostresult(res.data.message);
+        }, 3000);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
   return (
-    <div>
-      <Line
-        data={state}
-        options={{
-          title: {
-            display: true,
-            text: "Progress graph",
-            fontSize: 20,
-          },
-          legend: {
-            display: true,
-            position: "right",
-          },
-        }}
-      />
-    </div>
+    <>
+      <div className="contain" id="blur">
+        <div className="content">
+          <div>
+            <Line
+              data={state}
+              options={{
+                title: {
+                  display: true,
+                  text: "Progress graph",
+                  fontSize: 20,
+                },
+                legend: {
+                  display: true,
+                  position: "right",
+                },
+              }}
+            />
+          </div>
+          <div>
+            <button
+              onClick={() => {
+                handleButtonClick();
+                toggle();
+              }}
+            >
+              Predict My 8th sem status
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="popup">
+        <div onClick={toggle} className="close">
+          +
+        </div>
+        <h2> {postresult}</h2>
+        <button
+          onClick={() => {
+            toggle();
+          }}
+        >
+          Close
+        </button>
+      </div>
+    </>
   );
 }

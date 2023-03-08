@@ -22,10 +22,15 @@ export const EntrystaffSidenavcomp = [
     icon: <PasswordIcon />,
     link: "/secure/searchstudent",
   },
+  {
+    title: "Bulk",
+    icon: <PasswordIcon />,
+    link: "/secure/bulkentry",
+  },
 
   {
     title: "Log Out",
     icon: <LogoutIcon />,
-    link: "/logout",
+    link: "/secure/confirmation",
   },
 ];

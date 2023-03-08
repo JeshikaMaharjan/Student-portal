@@ -12,7 +12,7 @@ import EntryRoutes from "./Routes/EntryRoutes";
 import StudentRoutes from "./Routes/StudentRoutes";
 
 export function SecureComponent() {
-  console.log("secure");
+  // console.log("secure");
   const navigate = useNavigate();
   const isauthenticated = useAuth((state) => state.isauthenticated);
   const role = useAuth((state) => state.role);

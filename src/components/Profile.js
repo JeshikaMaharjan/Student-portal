@@ -14,7 +14,7 @@ const Profile = () => {
       .get(`/details/${username}`)
       .then((res) => {
         const info = res.data;
-        console.log(info);
+        // console.log(info);
         setData(info);
       })
       .catch((err) => {
@@ -29,7 +29,7 @@ const Profile = () => {
       if (data.faculty == 2) {
         setFaculty("BCE - Bachelors in Civil Engineering");
       }
-      console.log(faculty);
+      // console.log(faculty);
     }
   }, [data]);
   return (

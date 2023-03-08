@@ -24,11 +24,11 @@ export const AccountSidenavcomp = [
     icon: <DescriptionIcon />,
     link: "/secure/searchstudent",
   },
-  // {
-  //   title: "View",
-  //   icon: <PersonAddIcon />,
-  //   link: "/secure/view",
-  // },
+  {
+    title: "Voucher",
+    icon: <PersonAddIcon />,
+    link: "/secure/voucher",
+  },
   {
     title: "Payment",
     icon: <AutoGraphIcon />,
@@ -38,6 +38,6 @@ export const AccountSidenavcomp = [
   {
     title: "Log Out",
     icon: <LogoutIcon />,
-    link: "/logout",
+    link: "/secure/confirmation",
   },
 ];

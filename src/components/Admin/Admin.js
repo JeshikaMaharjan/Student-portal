@@ -4,7 +4,6 @@ import Dashboard from "../Dashboard";
 import Sidenav from "../Sidenav";
 
 const Admin = (props) => {
-  console.log(props);
   return (
     <>
       <Sidenav />

@@ -4,17 +4,20 @@ import "../../css/Dues.css";
 import { useToken } from "../../apis";
 import { useAuth } from "../../Authentication/auth";
 import KhaltiConfig from "./Khalti/khaltiConfig";
-import { Input } from "reactstrap";
+import { Input, Label } from "reactstrap";
 
 function Dues() {
   const { tokenInstance } = useToken();
   const [data, setData] = useState([]);
   const [amountpaid, setamountpaid] = useState(0);
-  const [description, setdescription] = useState();
+  const [description, setdescription] = useState(null);
   const username = useAuth((state) => state.username);
   const message = useAuth((state) => state.message);
   const setAmount = useAuth((state) => state.setAmount);
   const setDescription = useAuth((state) => state.setDescription);
+  const setMessage = useAuth((state) => state.setMessage);
+  const [image, setImage] = useState(null);
+  // const [postResult, setPostResult] = useState("");
 
   const { config } = KhaltiConfig();
   // console.log(config);
@@ -24,7 +27,7 @@ function Dues() {
     tokenInstance
       .get(`/due/${username}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
@@ -32,7 +35,7 @@ function Dues() {
         // console.log(err);
       });
   }, []);
-  console.log(data);
+  // console.log(data);
 
   const toggle = () => {
     var blur = document.getElementById("blur");
@@ -40,7 +43,50 @@ function Dues() {
     var popup = document.getElementById("popup");
     popup.classList.toggle("active");
   };
+  const convertToBase64 = async (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        // console.log("onload");
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        // console.log("onerror");
+        reject(error);
+      };
+    });
+  };
 
+  const onFileSelected = async (e) => {
+    const file = e.target.files[0];
+    console.log("ff", file);
+    if (file !== undefined) {
+      const base64 = await convertToBase64(file);
+      setImage(base64);
+    } else {
+      setImage(null);
+    }
+  };
+  function handleVoucher() {
+    setMessage("Loading..");
+    const postData = {
+      image: image,
+      amount: amountpaid,
+      username: username,
+      semester: description,
+    };
+    tokenInstance
+      .post(`/voucher`, postData)
+      .then((res) => {
+        console.log(res.data);
+        setMessage(res.data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage(err);
+      });
+  }
   return (
     <>
       <div className="contain" id="blur">
@@ -54,7 +100,7 @@ function Dues() {
               <div className="mainBody">
                 <div className="leftDiv">
                   <div className="card1">
-                    {data.map((singleoption) => (
+                    {data.map((singleoption, key) => (
                       <div className="inBox">
                         <h4>
                           Due for {singleoption.semester} semester :{" "}
@@ -83,7 +129,7 @@ function Dues() {
                             setdescription(e.target.value);
                           }}
                         >
-                          <option>--Choose-</option>
+                          <option value={null}>--Choose-</option>
                           {data.map((singleoption) => (
                             <option value={singleoption.semester}>
                               Due for {singleoption.semester} semester
@@ -97,26 +143,54 @@ function Dues() {
                           name="amount"
                           id="amount"
                           min="0"
+                          required
                           placeholder="Amount Here"
                           onChange={(e) => {
                             setamountpaid(e.target.value * 100);
                           }}
                         ></Input>
                       </div>
+                      <div>
+                        <Label for="exampleFile">Voucher upload</Label>
+                        <Input
+                          type="file"
+                          name="file"
+                          id="contractFile"
+                          label="Image"
+                          accept=".jpeg, .png, .jpg"
+                          onChange={(e) => onFileSelected(e)}
+                        />
+                      </div>
                       <div className="paymentBtn">
-                        {amountpaid !== 0 && (
+                        {description !== null && amountpaid !== 0 && (
                           <button
                             id="btn"
                             onClick={() => {
                               setAmount(amountpaid);
                               setDescription(description);
-                              checkout.show({ amount: amountpaid });
+                              setTimeout(
+                                checkout.show({ amount: amountpaid }),
+                                2000
+                              );
                               toggle();
                             }}
                           >
                             <span> Pay Via Khalti </span>{" "}
                           </button>
                         )}
+
+                        {description !== null &&
+                          amountpaid !== 0 &&
+                          image !== null && (
+                            <button
+                              onClick={() => {
+                                handleVoucher();
+                                toggle();
+                              }}
+                            >
+                              <span> Upload Voucher </span>{" "}
+                            </button>
+                          )}
                       </div>
                     </div>
                   </div>

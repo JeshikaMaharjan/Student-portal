@@ -6,6 +6,7 @@ import NoMatch from "../NoMatch";
 import Graph from "../Student/Graph";
 import { Selection } from "../Student/Selection";
 import { ViewResult } from "../Student/ViewResult";
+import { Confirmation } from "../Confirmation";
 
 function StudentRoutes() {
   return (
@@ -18,6 +19,8 @@ function StudentRoutes() {
         <Route path="selection" element={<Selection />} />
         <Route path="viewresult" element={<ViewResult />} />
         <Route path="progressgraph" element={<Graph />} />
+        <Route path="confirmation" element={<Confirmation />} />
+
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </>

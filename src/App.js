@@ -36,7 +36,7 @@ function App() {
     accesstoken != null && setAuthenticated(true);
   }
   const isauthenticated = useAuth((state) => state.isauthenticated);
-  console.log(isauthenticated);
+  // console.log(isauthenticated);
 
   return (
     <>

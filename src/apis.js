@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuth } from "./Authentication/auth";
 
-const baseURL = "http://192.168.1.73:8000/api";
+const baseURL = "http://10.0.0.26:5000/api";
 
 const config = {
   baseURL: baseURL,
@@ -34,7 +34,7 @@ const useLogin = () => {
         return false;
       }
 
-      console.log(res);
+      // console.log(res);
       sessionStorage.setItem("token", res.data.access);
       sessionStorage.setItem("user", res.data.username);
       sessionStorage.setItem("role", res.data.role);

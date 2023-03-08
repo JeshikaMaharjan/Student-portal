@@ -9,24 +9,11 @@ export default function Logout() {
   const { logout } = useLogout();
 
   const isloggedout = logout();
-  if (!isloggedout) {
-    console.log("not logged out");
-    return;
-  }
-  navigate("/login", { replace: true });
+  useEffect(() => {
+    if (!isloggedout) {
+      console.log("not logged out");
+      return;
+    }
+    navigate("/login", { replace: true });
+  });
 }
-// export default function Logout() {
-//   const navigate = useNavigate();
-//   const { logout } = useLogout();
-
-//   function logoutConfirmed() {
-//     const isloggedout = logout();
-//     if (!isloggedout) {
-//       console.log("not logged out");
-//       return;
-//     }
-//     navigate("/login");
-//   }
-//   logoutConfirmed();
-
-// }

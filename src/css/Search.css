@@ -1,5 +1,7 @@
 .dash_body .header {
-  height: 20%;
+  height: 12%;
+  display: flex;
+  align-items: center;
 }
 
 .SearchBarDiv {
@@ -24,7 +26,7 @@ input {
 .body {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 ::-webkit-scrollbar {
@@ -33,12 +35,11 @@ input {
   background-color: transparent;
 }
 
-.Scard {
+.Secard {
   position: relative;
   overflow: auto;
   margin-top: 2rem;
-  max-height: 60vh;
-  min-height: auto;
+  height: 60vh;
   width: 95%;
   background-color: #d9d9d9;
   border-radius: 20px;
@@ -47,11 +48,11 @@ input {
   align-items: center;
 }
 
-.individualCard {
+.individualCarddd {
   width: 95%;
 }
 
-.individualCard ul {
+.individualCarddd ul {
   height: 8rem;
   margin: 1rem 0rem;
   border-radius: 20px;
@@ -61,7 +62,7 @@ input {
   align-items: center;
 }
 
-.individualCard .imageSec #img-profile {
+.individualCarddd .imageSec #img-profile {
   border-radius: 0;
   object-fit: cover;
 }
@@ -74,6 +75,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 0px;
 }
 
 .nameId {

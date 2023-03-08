@@ -53,6 +53,7 @@ const KhaltiConfig = () => {
       },
       onClose() {
         console.log("widget is closing");
+        setMessage("Khalti widget closed.");
       },
     },
     paymentPreference: ["KHALTI"],

@@ -22,14 +22,15 @@ function Cash() {
     console.log("postData");
     const postData = {
       userName: userName.current.value,
-      semester: semester.current.value,
-      amount: amount.current.value,
+      semester: parseInt(semester.current.value, 10),
+      amount: parseFloat(amount.current.value, 10),
       type: type,
     };
 
     await tokenInstance
       .post(`/transaction`, postData)
       .then((res) => {
+        console.log(res.data);
         setPostResult(res.data.message);
       })
       .catch((e) => {
@@ -54,6 +55,7 @@ function Cash() {
                       type="text"
                       name="username"
                       id="username"
+                      required
                       innerRef={userName}
                       placeholder="Enter Username"
                     />
@@ -83,6 +85,7 @@ function Cash() {
                       type="textarea"
                       name="text"
                       id="exampleText"
+                      required
                       innerRef={amount}
                     />
                   </FormGroup>

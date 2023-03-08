@@ -49,30 +49,32 @@ export default function ForgotPswd() {
       <div className="contain" id="blur">
         <div className="content">
           <div className="body">
-            <div className="FPbody">
-              <div className="FPBox">
-                <div className="formBox">
+            <div className="FPfbody">
+              <div className="FPfBox">
+                <div className="fformBox">
                   <form onSubmit={(e) => e.preventDefault()}>
                     <h2>Forgot Password?</h2>
-                    <div>
-                      <p>
+                    <div className="paragraph">
+                      <span>
                         Please enter the valid username and email address linked
-                        to your account, and we'll send you instruction for
-                        resetting your password.
-                      </p>
+                        to your account to receive further details.
+                      </span>
                     </div>
-                    <span>Username:</span>
-                    <input
-                      className="forName"
-                      placeholder="Enter username"
-                      onChange={handleName}
-                    />
-                    <span>Email Address:</span>
-                    <input
-                      className="forAddress"
-                      placeholder="example00@gmail.com"
-                      onChange={handleEmail}
-                    />
+
+                    <div className="useremail">
+                      <span>Username:</span>
+                      <input
+                        className="forName"
+                        placeholder="Enter username"
+                        onChange={handleName}
+                      />
+                      <span>Email:</span>
+                      <input
+                        className="forAddress"
+                        placeholder="example00@gmail.com"
+                        onChange={handleEmail}
+                      />
+                    </div>
                     <div className="inputBx">
                       <button
                         name=""

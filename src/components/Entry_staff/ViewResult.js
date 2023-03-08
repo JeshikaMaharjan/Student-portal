@@ -7,7 +7,6 @@ import { useToken } from "../../apis";
 function ViewResult() {
   const location = useLocation();
   const detail = location.state;
-  console.log(detail);
   const navigate = useNavigate();
   // const [postresult, setpostresult] = useState("");
   const [result, setResult] = useState([]);
@@ -60,7 +59,7 @@ function ViewResult() {
                 </tr>
               </thead>
               <tbody>
-                {result.map((subject) => Marksview({ subject }))}
+                {result.map((subject, key) => Marksview({ subject }))}
 
                 {/* {result.map((singleresult) => {
                   console.log(singleresult);

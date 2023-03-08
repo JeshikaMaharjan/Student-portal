@@ -38,6 +38,6 @@ export const StudentSidenavcomp = [
   {
     title: "Log Out",
     icon: <LogoutIcon />,
-    link: "/logout",
+    link: "/secure/confirmation",
   },
 ];

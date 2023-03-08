@@ -32,6 +32,6 @@ export const AdminSidenavcomp = [
   {
     title: "Logout",
     icon: <LogoutIcon />,
-    link: "/logout",
+    link: "/secure/confirmation",
   },
 ];
