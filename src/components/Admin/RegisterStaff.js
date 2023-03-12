@@ -101,6 +101,26 @@ function RegisterStaff() {
       });
   }
 
+
+
+  const imageRef = useRef(null);
+
+  function handleImageChange(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const img = imageRef.current;
+      img.src = event.target.result;
+      img.style.display = 'block';
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+
+
+
   return (
     <>
       <div className="contain" id="blur">
@@ -111,7 +131,7 @@ function RegisterStaff() {
           <div className="RegBody">
             <Form className="RegFormInfo">
               <div className="inputSection">
-                <FormGroup className="name">
+                <FormGroup className="namenn">
                   <Label for="FullName">Full Name</Label>
                   <div className="naming">
                     <Input
@@ -137,6 +157,7 @@ function RegisterStaff() {
                     type="email"
                     name="email"
                     id="exampleEmail"
+                    autoComplete="none"
                     innerRef={email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -150,13 +171,14 @@ function RegisterStaff() {
                 </FormGroup>
 
                 <FormGroup className="setIdentity">
-                  <Label for="userName">UserName</Label>
+                  <Label for="userName">Username</Label>
                   <Input
                     type="text"
                     name="setuserName"
                     id="setuserName"
+                    autoComplete="none"
                     innerRef={userName}
-                    placeholder="Set userName"
+                    placeholder="Set username"
                   />
                   {/* </FormGroup> */}
                   {/* <FormGroup> */}
@@ -165,6 +187,7 @@ function RegisterStaff() {
                     type="text"
                     name="setPassword"
                     id="setPassword"
+                    autoComplete="none"
                     innerRef={password}
                     placeholder="Set Password"
                   />
@@ -181,39 +204,52 @@ function RegisterStaff() {
                 </FormGroup>
 
                 <FormGroup className="contact">
-                  <Label for="Contact">Contact no.</Label>
+                  <Label for="Contact">Contact No.</Label>
                   <Input
-                    type="number"
+                    type="tel"
+                    pattern="[9][0-9]{9}"
+                    maxlength="10"
+                    required title="Please enter 10 digit number starting with 9"
                     name="Contact"
                     id="ContactInfo"
                     innerRef={contact}
+                    autoComplete="none"
                     placeholder="Enter Mobile Number"
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="staff">Select staff</Label>
+                  <Label for="staff">Select Staff</Label>
                   <Input
                     type="select"
                     name="selectstaff"
                     id="setstaff"
                     innerRef={role}
                   >
+                      <option disabled selected value="">Select Type </option>
                     <option value="2">Account staff</option>
                     <option value="3">Entry staff</option>
                   </Input>
                 </FormGroup>
-
-                <FormGroup>
+                <FormGroup >
                   <Label for="exampleFile">Photo</Label>
-                  <Input
-                    type="file"
-                    name="file"
-                    id="contractFile"
-                    label="Image"
-                    accept=".jpeg, .png, .jpg"
-                    onChange={(e) => onFileSelected(e)}
-                  />
+                  <div className="imageSectionForForm">
+                    <div>
+                      <Input
+                        type="file"
+                        name="file"
+                        id="contractFile"
+                        label="Image"
+                        accept=".jpeg, .png, .jpg"
+                        onChange={(e) => onFileSelected(e)}
+                        onInput={handleImageChange}
+                      />
+                    </div>
+                    <div>
+                      <img ref={imageRef} alt="Identity" />
+                    </div>
+                  </div>
                 </FormGroup>
+
               </div>
               <div className="sub-btn">
                 <Button

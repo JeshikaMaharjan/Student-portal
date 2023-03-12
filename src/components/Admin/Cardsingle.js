@@ -19,7 +19,7 @@ function Cardsingle({ person }) {
           />
         </div>
         <div className="nameId">
-          <div className="name">
+          <div className="namee">
             <span>{person.userName}</span>
           </div>
           <div className="id">

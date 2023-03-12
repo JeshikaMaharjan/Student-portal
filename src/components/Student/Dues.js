@@ -17,6 +17,8 @@ function Dues() {
   const setDescription = useAuth((state) => state.setDescription);
   const setMessage = useAuth((state) => state.setMessage);
   const [image, setImage] = useState(null);
+  const [semdue, setsemdue] = useState(null);
+  const [val, setval] = useState(null);
   // const [postResult, setPostResult] = useState("");
 
   const { config } = KhaltiConfig();
@@ -87,6 +89,24 @@ function Dues() {
         setMessage(err);
       });
   }
+  function KhaltiCheck() {
+    console.log("ap", amountpaid);
+    console.log("d", semdue);
+    if (amountpaid / 100 <= semdue) {
+      setTimeout(checkout.show({ amount: amountpaid }), 2000);
+      toggle();
+    } else {
+      setMessage(
+        "The Amount you entered exceeds the Due limit. Please enter again."
+      );
+      toggle();
+    }
+  }
+  function handleSelect(sem) {
+    tokenInstance.get(`due/${username}/${sem}`).then((res) => {
+      setsemdue(res.data.due);
+    });
+  }
   return (
     <>
       <div className="contain" id="blur">
@@ -95,7 +115,15 @@ function Dues() {
             <div className="title">
               <h1>Payment Details</h1>
             </div>
-            {data.length == 0 && <div>No dues left</div>}
+            {data.length == 0 && (
+              <div className="mainBody">
+                <div className="leftDiv">
+                  <div className="card1">
+                    <div className="inBox">No dues left</div>
+                  </div>
+                </div>
+              </div>
+            )}
             {data && (
               <div className="mainBody">
                 <div className="leftDiv">
@@ -116,7 +144,7 @@ function Dues() {
                       <span>Select Payment Option</span>
                     </div>
                     <div className="c2Body">
-                      <div className="selectDiv">
+                      <div className="selectDivDue">
                         <div className="inBox">
                           <h4>Description for payment</h4>
                         </div>
@@ -126,10 +154,17 @@ function Dues() {
                           name="selectdescription"
                           id="selectdescription"
                           onChange={(e) => {
+                            sessionStorage.setItem(
+                              "product_Id",
+                              e.target.value
+                            );
                             setdescription(e.target.value);
+                            handleSelect(e.target.value);
                           }}
                         >
-                          <option value={null}>--Choose-</option>
+                          <option disabled selected value="">
+                            --Choose Due--
+                          </option>
                           {data.map((singleoption) => (
                             <option value={singleoption.semester}>
                               Due for {singleoption.semester} semester
@@ -151,11 +186,11 @@ function Dues() {
                         ></Input>
                       </div>
                       <div>
-                        <Label for="exampleFile">Voucher upload</Label>
+                        <Label for="exampleFile">For Voucher Upload</Label>
                         <Input
                           type="file"
                           name="file"
-                          id="contractFile"
+                          id="voucherSelect"
                           label="Image"
                           accept=".jpeg, .png, .jpg"
                           onChange={(e) => onFileSelected(e)}
@@ -168,11 +203,7 @@ function Dues() {
                             onClick={() => {
                               setAmount(amountpaid);
                               setDescription(description);
-                              setTimeout(
-                                checkout.show({ amount: amountpaid }),
-                                2000
-                              );
-                              toggle();
+                              KhaltiCheck();
                             }}
                           >
                             <span> Pay Via Khalti </span>{" "}
@@ -183,12 +214,13 @@ function Dues() {
                           amountpaid !== 0 &&
                           image !== null && (
                             <button
+                              id="btn"
                               onClick={() => {
                                 handleVoucher();
                                 toggle();
                               }}
                             >
-                              <span> Upload Voucher </span>{" "}
+                              <span>Upload Voucher </span>{" "}
                             </button>
                           )}
                       </div>
@@ -210,7 +242,13 @@ function Dues() {
           </div>
         )}
 
-        <button id="test1" onClick={toggle}>
+        <button
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+        >
           Close
         </button>
       </div>

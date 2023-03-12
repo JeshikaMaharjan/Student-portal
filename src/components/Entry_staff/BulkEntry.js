@@ -1,19 +1,23 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Input, Label } from "reactstrap";
 import { useToken } from "../../apis";
+import "../../css/BulkEntry.css";
 
 export function BulkEntry() {
+  const navigate = useNavigate();
   const [postresult, setpostresult] = useState("");
   const { tokenInstance } = useToken();
   const [batch, setBatchField] = useState();
   const [faculty, setFacultyField] = useState();
   const [amount, setAmountField] = useState();
+  const [showconfirmation, setshowconfirmation] = useState(false);
+  const [buttonID, setbuttonId] = useState(null);
 
   const handleSemesterClick = () => {
     setpostresult("Loading");
     tokenInstance
-      .post(`/upgrade/semester`)
+      .post("/upgrade/semester")
       .then((res) => {
         setpostresult(res.data.message);
         console.log(res);
@@ -25,7 +29,21 @@ export function BulkEntry() {
     toggle();
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e) => {
+    setshowconfirmation(!showconfirmation);
+    setbuttonId(e.target.className);
+    // console.log(showconfirmation);
+  };
+  const handleButtonNavigation = () => {
+    console.log("id", buttonID);
+    if (buttonID == "upgradeSemester") {
+      handleSemesterClick();
+    }
+    if (buttonID == "FeeEntry") {
+      handleFeeUpgrade();
+    }
+  };
+  const handleFeeUpgrade = () => {
     setpostresult("Loading");
     const postData = {
       batch: batch,
@@ -33,7 +51,7 @@ export function BulkEntry() {
       amount: parseFloat(amount, 10),
     };
     tokenInstance
-      .post(`/bulk`, postData)
+      .post("/bulk", postData)
       .then((res) => {
         setpostresult(res.data.message);
         console.log(res);
@@ -59,80 +77,112 @@ export function BulkEntry() {
     var popup = document.getElementById("popup");
     popup.classList.toggle("active");
   };
+  console.log("b", showconfirmation);
   return (
     <>
       <div className="contain" id="blur">
-        <div className="content">
-          <div className="btnsection">
-            <div className="inputBx">
-              <h4>Upgrade students to next semester</h4>
-              <button
-                type="submit"
-                id="submitbtn"
-                name=""
-                onClick={handleSemesterClick}
-              >
-                Upgrade
-              </button>
-            </div>
-          </div>
-          <div className="stream">
-            <Label for="exampleSelect">Stream</Label>
-            <Input
-              type="select"
-              name="selectStream"
-              id="selectStream"
-              onChange={handlefaculty}
-            >
-              <option>-Choose-- </option>
-              <option value="1">BCT - Bachelors in Computer Engineering</option>
-              <option value="2">BCE - Bachelors in Civil Engineering</option>
-            </Input>
-          </div>
-          <div className="batch">
-            <Input
-              type="text"
-              id="selectBatch"
-              name=""
-              placeholder="Enter batch"
-              onChange={handlebatch}
-            />
-          </div>
-          <div className="amount">
-            <Input
-              type="text"
-              id="selectAmount"
-              name=""
-              placeholder="Enter semester fee"
-              onChange={handleamount}
-            />
-          </div>
-          <div className="button">
-            <button
-              type="submit"
-              id="submitbtn"
-              value="Submit"
-              name=""
-              onClick={handleButtonClick}
-            >
-              Submit
-            </button>
+        <div className="bulk">
+          <div className="bulkBody">
+            {showconfirmation == false && (
+              <div className="BBupgrade">
+                <div className="upgradeDiv">
+                  <span>Upgrade students to next semester? </span>
+                  <div id="fUpgradeBtn">
+                    <button
+                      className="upgradeSemester"
+                      type="submit"
+                      value="Upgrade"
+                      name=""
+                      id="btn"
+                      onClick={handleButtonClick}
+                    >
+                      Upgrade
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+            {showconfirmation == false && (
+              <div className="BBfeeupgrade">
+                <div className="FUhead">
+                  <span>Fee Entry</span>
+                </div>
+                <div className="FUbody">
+                  <div className="stream">
+                    <Label for="exampleSelect">Stream</Label>
+                    <Input
+                      type="select"
+                      name="selectStream"
+                      id="selectStream"
+                      onChange={handlefaculty}
+                    >
+                      <option disabled selected value="">
+                        --Choose--{" "}
+                      </option>
+                      <option value="1">
+                        BCT - Bachelors in Computer Engineering
+                      </option>
+                      <option value="2">
+                        BCE - Bachelors in Civil Engineering
+                      </option>
+                    </Input>
+                  </div>
+                  <div className="batch">
+                    <Label for="exampleSelect">Batch</Label>
+                    <Input
+                      type="text"
+                      id="selectBatch"
+                      name=""
+                      placeholder="Enter batch"
+                      onChange={handlebatch}
+                    />
+                  </div>
+                  <div className="amount">
+                    <Label for="exampleSelect">Amount</Label>
+                    <Input
+                      type="text"
+                      id="selectAmount"
+                      name=""
+                      placeholder="Enter semester fee"
+                      onChange={handleamount}
+                    />
+                  </div>
+                </div>
+                <div className="fUpgradeBtn">
+                  <button
+                    className="FeeEntry"
+                    type="submit"
+                    value="Upgrade"
+                    name=""
+                    id="btn"
+                    onClick={handleButtonClick}
+                  >
+                    Upgrade
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {showconfirmation == true && (
+              <div className="confirmationDiv">
+                <span>Confirm Upgrade?</span>
+                <div className="CUbtns">
+                  <div id="fUpgradeBtn">
+                    <button id="btn" onClick={handleButtonNavigation}>
+                      Yes
+                    </button>
+                  </div>
+                  <div id="fUpgradeBtn">
+                    <button id="btn" onClick={handleButtonClick}>
+                      No
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
-      {/* <div id="popup">
-          <div onClick={toggle} className="close">
-            +
-          </div>
-          <h2> {postresult}</h2>
-          <button
-            onClick={() => {
-              toggle();
-            }}
-          >
-            Close
-          </button>
-        </div> */}
 
       <div id="popup">
         <div onClick={toggle} className="close">
@@ -142,6 +192,7 @@ export function BulkEntry() {
         <button
           onClick={() => {
             toggle();
+            setshowconfirmation(false);
           }}
         >
           Close

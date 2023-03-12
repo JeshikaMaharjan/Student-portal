@@ -15,14 +15,14 @@ function Individualstmt({ transactiondata }) {
           <div className="col" id="col1">
             <span> {transactiondata.semester.name} </span>
           </div>
-          <div className="col" id="col2">
-            <p>{type}</p>
-          </div>
           <div className="col" id="col3">
             <p>{transactiondata.date}</p>
           </div>
           <div className="col" id="col4">
             <p>{transactiondata.amount}</p>
+          </div>
+          <div className="col" id="col2">
+            <p>{type}</p>
           </div>
         </div>
       </div>

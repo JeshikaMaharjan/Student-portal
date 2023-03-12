@@ -3,7 +3,7 @@
   top: 0;
 }
 
-.FPbody {
+.UNbody {
   height: 100%;
   width: 100%;
   display: flex;
@@ -17,11 +17,13 @@
   flex-direction: column;
   align-items: center;
 }
+
+
 img {
   height: 450px;
   width: 450px;
 }
-.FPBox {
+.UNBox {
   width: 70%;
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
@@ -29,7 +31,7 @@ img {
   align-items: center;
 }
 
-.FPBox .formBox h2 {
+.UNBox .formBox h2 {
   color: #607b8b;
   font-weight: 600;
   font-size: 1.5em;
@@ -40,14 +42,14 @@ img {
   /* letter-spacing: 1px; */
 }
 
-.FPBox .formBox {
+.UNBox .formBox {
   padding: 2.5rem;
   width: 90%;
   border-radius: 15px;
   /* border: 3px solid black; */
 }
 
-input {
+/* input {
   margin-top: 1rem;
   width: 90%;
   padding: 10px 20px;
@@ -55,7 +57,7 @@ input {
   border: 1px solid #607d8b;
   background: transparent;
   border-radius: 30px;
-}
+} */
 
 p {
   font-size: 18px;

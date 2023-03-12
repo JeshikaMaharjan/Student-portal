@@ -30,7 +30,7 @@
 }
 
 .dash_header .clockDiv #clock {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
   padding-left: 1.5rem;
 }
@@ -46,7 +46,6 @@
 }
 
 .notification_div .badge {
-  background-color: #d9d9d9;
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
@@ -121,7 +120,7 @@
 }
 
 .greet {
-  margin-top: 3rem;
+  margin-top: 3.5rem;
   height: 185%;
   width: 70%;
   display: flex;
@@ -183,6 +182,7 @@
   height: 80%;
   width: 80%;
   border-radius: 3rem;
+  /* background-color: #a5c7da; */
   background-color: #a5c7da;
 }
 
@@ -196,11 +196,29 @@
 }
 
 .informations {
-  height: 84%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  /* min-height: auto; */
+  height: 74%;
   padding: 2rem 0rem 2rem 2rem;
   font-size: 15px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.sidha {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidha2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.forIndentation {
+  width: 100%;
+  display: flex;
+}
+
+.IndentationData {
+  width: 100%;
 }

@@ -10,18 +10,16 @@ export default function Unauthorized() {
   return (
     <>
       <div className="body">
-        <div className="FPbody">
-          <div className="FPBox">
-            <div className="formBox">
+        <div className="UNbody">
+          <div className="UNBox">
+            <div className="UNformBox">
               <div className="deniedimg">
                 <img
                   src="https://img.freepik.com/premium-vector/access-denied-alert-vector-illustration-design_624938-543.jpg?w=2000"
                   alt="access denied"
                 />
                 <p>You do not have permission to access this page.</p>
-              </div>
-              <div className="inputBx">
-                <button onClick={goBack}>Go Back</button>
+                <button id="btn" onClick={goBack}>Go Back</button>
               </div>
             </div>
           </div>

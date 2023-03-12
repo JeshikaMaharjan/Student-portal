@@ -6,9 +6,9 @@
 }
 
 .sections {
-  margin-top: 1rem;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -28,54 +28,81 @@
 }
 #searchbtn {
   width: 100%;
-  background-color: aqua;
   border-radius: 20px;
 }
 /* 
 .card-body {
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } */
 
 ::-webkit-scrollbar {
   /* hides the scroll bar*/
+  margin-top: 2rem;
   width: 0.2em;
   background-color: transparent;
 }
 
-.search-card {
+.searchStudentCard .search-card {
   position: relative;
   overflow: auto;
   margin-top: 2rem;
-  max-height: 55vh;
-  min-height: auto;
+  height: 45vh;
   width: 95%;
-  background-color: #d9d9d9;
+  /* background-color: chartreuse; */
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.SCard {
+.CardFSearchStd {
+  padding: 0px;
+  height: 60vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.individualCard {
-  height: 8rem;
+.searchStudentCard {
+  background-color: #d9d9d9;
+  height: 90%;
+  width: 90%;
+  border-radius: 20px;
+}
+
+.Scard {
+  /* padding-top: 8rem; */
+  /* margin-top: 2rem; */
+  min-height: auto;
   width: 95%;
+  border-radius: 20px;
+  max-height: 65vh;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.individualCardd {
+  margin-top: auto;
+  width: 95%;
+}
+
+.individualCardd ul {
   margin: 1rem 0rem;
   border-radius: 20px;
   background-color: #e48888;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
-.individualCard .imageSec #img-profile {
+.individualCardd .imageSec #img-profile {
   border-radius: 0;
   object-fit: cover;
 }

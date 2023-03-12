@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../apis";
+import "../../css/Voucher.css";
 
 export function VoucherValidate() {
   const { tokenInstance } = useToken();
@@ -28,31 +29,39 @@ export function VoucherValidate() {
       {data.length == 0 && <div>No vouchers to validate.</div>}
       {data.length !== 0 && (
         <div className="mainBody">
-          <div className="leftDiv">
-            <div className="card1">
-              {data.map((singleoption, key) => (
-                <div className="inBox">
-                  <h4>UserName : {singleoption.userName}</h4>
-                  <br></br>
-                  <h4>Semester: {singleoption.semester}</h4>
-                  <h4>Amount: {singleoption.amount}</h4>
-                  <h4>VoucherID: {singleoption.voucher_id}</h4>
-
-                  <button
-                    onClick={() =>
-                      navigate("/secure/voucherimg", {
-                        state: { detail: singleoption },
-                      })
-                    }
-                  >
-                    View Voucher
-                  </button>
-                </div>
-              ))}
+          <div className="forColumnFormat">
+          <div className="voucher-card-title">
+            <div className="titleNaming">
+              <span>Username</span>
+              <span>Semester</span>
+              <span>Amount</span>
+              {/* <span>Voucher ID</span> */}
+              <span>Voucher</span>
             </div>
           </div>
+            {data.map((singleoption, key) => (
+              <div className="titleNaming">
+                <span>{singleoption.userName}</span>
+                <span>{singleoption.semester}</span>
+                <span> Rs. {singleoption.amount}</span>
+
+                <button
+                  id="btnFVD"
+                  onClick={() =>
+                    navigate("/secure/voucherimg", {
+                      state: { detail: singleoption },
+                    })
+                  }
+                >
+                  View
+                </button>
+              </div>
+            ))}
+          {/* </div> */}
         </div>
-      )}
+        </div>
+  )
+}
     </>
   );
 }

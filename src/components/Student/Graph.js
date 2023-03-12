@@ -3,18 +3,21 @@ import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import { useAuth } from "../../Authentication/auth";
 import { useToken } from "../../apis";
+import "../../css/Graph.css";
 
 export default function Graph() {
   const username = useAuth((state) => state.username);
   const { tokenInstance } = useToken();
   const [dataset, setDataSet] = useState([]);
   const [postresult, setpostresult] = useState("");
+  let showbutton = false;
 
   useEffect(() => {
     tokenInstance
       .get(`graph/data/${username}`)
       .then((res) => {
         setDataSet(res.data);
+        console.log(dataset);
       })
       .catch((err) => {
         setDataSet(null);
@@ -22,6 +25,13 @@ export default function Graph() {
       });
   }, []);
   console.log(dataset);
+
+  if (dataset.length !== 0) {
+    if (dataset.x.length !== 0 && dataset.y.length !== 0) {
+      showbutton = true;
+    }
+  }
+
   const state = {
     // labels: ["Sem1", "Sem2", "Sem3", "Sem4", "Sem5"],
     labels: dataset.x,
@@ -62,32 +72,41 @@ export default function Graph() {
     <>
       <div className="contain" id="blur">
         <div className="content">
-          <div>
-            <Line
-              data={state}
-              options={{
-                title: {
-                  display: true,
-                  text: "Progress graph",
-                  fontSize: 20,
-                },
-                legend: {
-                  display: true,
-                  position: "right",
-                },
-              }}
-            />
+          <div className="graphBody">
+            <div className="graphSection">
+              <Line
+                data={state}
+                options={{
+                  title: {
+                    display: true,
+                    text: "Progress graph",
+                    fontSize: 20,
+                  },
+                  legend: {
+                    display: true,
+                    position: "right",
+                  },
+                }}
+              />
+            </div>
           </div>
-          <div>
-            <button
-              onClick={() => {
-                handleButtonClick();
-                toggle();
-              }}
-            >
-              Predict My 8th sem status
-            </button>
-          </div>
+          {showbutton == false && (
+            <div className="noresult">
+              No result available to form a progress graph.
+            </div>
+          )}
+          {showbutton == true && (
+            <div className="graphButton">
+              <button
+                onClick={() => {
+                  handleButtonClick();
+                  toggle();
+                }}
+              >
+                Predict My 8th sem status
+              </button>
+            </div>
+          )}
         </div>
       </div>
       <div id="popup">

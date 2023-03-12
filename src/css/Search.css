@@ -23,10 +23,9 @@ input {
   align-items: center;
 }
 
-.body {
+ .body {    /* yesle serach student admin ko ma affect gariraxa*/
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 
 ::-webkit-scrollbar {
@@ -87,9 +86,9 @@ input {
   justify-content: space-evenly;
   align-items: center;
 }
-.name {
+/* .name {
   text-align: center;
-}
+} */      /* yo chai form ko fullname ma ni connected xa */
 
 span {
   font-weight: 500;

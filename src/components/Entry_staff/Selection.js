@@ -1,30 +1,37 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Input, Label } from "reactstrap";
+import { Input, Label, Card } from "reactstrap";
 import { useToken } from "../../apis";
+import "../../css/SearchStudent.css";
 
 export function Selection() {
   const navigate = useNavigate();
   const location = useLocation();
   const detail = location.state;
+  // console.log("dd", detail);
+  const facultyId = detail.person.faculty;
+  let faculty = null;
+  if (facultyId == 1) {
+    faculty = "BCT - Bachelors in Computer Engineering";
+  }
+  if (facultyId == 2) {
+    faculty = "BCE - Bachelors in Civil Engineering";
+  }
 
   const [semester, setSemesterField] = useState();
-  const [faculty, setFacultyField] = useState();
   const username = detail.person.userName;
 
   const handlesemester = (e) => {
     setSemesterField(e.target.value);
   };
-  const handlefaculty = (e) => {
-    setFacultyField(e.target.value);
-  };
+
   const handleButtonClick = () => {
     if (detail.btnid == 1) {
       navigate("/secure/searchstudent/marksentry", {
         state: {
           username: username,
           semester: semester,
-          faculty: faculty,
+          faculty: facultyId,
         },
       });
     }
@@ -33,7 +40,7 @@ export function Selection() {
         state: {
           username: username,
           semester: semester,
-          faculty: faculty,
+          faculty: facultyId,
         },
       });
     }
@@ -42,56 +49,58 @@ export function Selection() {
         state: {
           username: username,
           semester: semester,
-          faculty: faculty,
+          faculty: facultyId,
         },
       });
     }
   };
   return (
     <>
-      <div className="semester">
-        <Label for="exampleSelect">Semester</Label>
-        <Input
-          type="select"
-          name="selectSemester"
-          id="selectSemester"
-          onChange={handlesemester}
-        >
-          <option>-Choose-- </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </Input>
-      </div>
-      <div className="stream">
-        <Label for="exampleSelect">Stream</Label>
-        <Input
-          type="select"
-          name="selectStream"
-          id="selectStream"
-          onChange={handlefaculty}
-        >
-          <option>-Choose-- </option>
-          <option value="1">BCT - Bachelors in Computer Engineering</option>
-          <option value="2">BCE - Bachelors in Civil Engineering</option>
-        </Input>
-      </div>
-      <div className="btnsection">
-        <div className="inputBx">
-          <input
-            type="submit"
-            id="submitbtn"
-            value="Submit"
-            name=""
-            onClick={handleButtonClick}
-          />
+      <Card>
+        <div className="sections">
+          <div className="selectsection">
+            <div className="stream">
+              <Label for="exampleSelect">Stream</Label>
+              <Input type="select" name="selectStream" id="selectStream">
+                <option disabled selected value="">
+                  {faculty}
+                </option>
+              </Input>
+            </div>
+            <div className="stream">
+              <Label for="exampleSelect">Semester</Label>
+              <Input
+                type="select"
+                name="selectSemester"
+                id="selectSemester"
+                onChange={handlesemester}
+              >
+                <option disabled selected value="">
+                  --Choose--{" "}
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </Input>
+            </div>
+          </div>
+          <div className="btnsection">
+            <div className="inputBx">
+              <input
+                type="submit"
+                id="searchbtn"
+                value="Search"
+                onClick={handleButtonClick}
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      </Card>
     </>
   );
 }

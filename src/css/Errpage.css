@@ -12,23 +12,23 @@
   align-items: center;
 }
 
-h1 {
+/* h1 {
   color: aliceblue;
-}
+} */  /* yesle chai yo heading ko color affect gariraxa regform ma*/
 
 p {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
   font-size: 8rem;
 }
 
-input {
+/* input {
   margin-top: 1rem;
   width: 90%;
   padding: 10px 20px;
   letter-spacing: 1px;
   border: 1px solid #607d8b;
   border-radius: 30px;
-}
+} */
 
 input[type="submit"] {
   background: #07e2a0;

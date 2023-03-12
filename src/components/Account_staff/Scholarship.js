@@ -19,7 +19,7 @@ const Scholarship = () => {
   const [data, setData] = useState([]);
   const location = useLocation();
   const detail = location.state;
-  // console.log(detail);
+  console.log(detail);
   const amount = useRef(null);
   const [semester, setSemester] = useState(null);
 
@@ -30,7 +30,7 @@ const Scholarship = () => {
       .get(`/details/${detail.userName}`)
       .then((res) => {
         const info = res.data;
-        console.log(info);
+        console.log("i", info);
         setData(info);
       })
       .catch((err) => {
@@ -66,74 +66,114 @@ const Scholarship = () => {
     setSemester(e.target.value);
   };
 
+  const [faculty, setFaculty] = useState(null);
+
+  useEffect(() => {
+      if (data.faculty == 1) {
+        setFaculty("BCT - Bachelors in Computer Engineering");
+      }
+      if (data.faculty == 2) {
+        setFaculty("BCE - Bachelors in Civil Engineering");
+      // console.log(faculty);
+    }
+  }, [data]);
+
+
   return (
     <>
       <div className="contain" id="blur">
         <div className="content">
           <Card>
             <CardHeader>
-              <h1>Scholarship</h1>
+              <h1>SCHOLARSHIP</h1>
             </CardHeader>
 
             <CardBody>
-              <div className="statm-card">
+              <div className="billing">
                 <Form className="AccFormInfo">
                   <div className="inputSection">
+
                     <FormGroup className="name">
-                      <Label for="FullName">Full Name</Label>
-                      <div className="naming">
-                        <p>
-                          {data.firstName} {data.lastName}
-                        </p>
+                      <div className="forIndentation">
+                        <Label for="FullName">Full Name:</Label></div>
+                      <div className="IndentationData">
+                        {data.firstName} {data.lastName}
                       </div>
                     </FormGroup>
 
                     <FormGroup className="Identity">
-                      <Label for="username">Username</Label>
-                      <p>{data.userName}</p>
+                      <div className="forIndentation">
+                        <Label for="username">Username:</Label></div>
+                      <div className="IndentationData">
+                        {data.userName}
+                      </div>
                     </FormGroup>
-                    <FormGroup className="batch">
-                      <Label for="exampleBatch">Batch</Label>
-                      <p>{data.batch}</p>
 
-                      <Label for="examplesem">Semester</Label>
-                      <p>{data.semester}</p>
+                    <FormGroup className="Identity">
+                      <div className="forIndentation">
+                        <Label for="username">Program:</Label></div>
+                      <div className="IndentationData">
+                        {faculty}
+                      </div>
                     </FormGroup>
+
+                    <FormGroup className="batch">
+                      <div className="forIndentation">
+                        <Label for="exampleBatch">Batch:</Label></div>
+                      <div className="IndentationData">
+                        {data.batch}
+                      </div>
+                    </FormGroup>
+
+                    <FormGroup className="sem">
+                      <div className="forIndentation">
+                        <Label for="examplesem">Semester:</Label>
+                      </div>
+                      <div className="IndentationData">
+                        {data.semester}
+                      </div>
+                    </FormGroup>
+
                     <FormGroup>
-                      <Label for="exampleSelect">
-                        Select which Semester to set Scholarship to{" "}
-                      </Label>
-                      <Input
-                        type="select"
-                        name="selectStream"
-                        id="selectStream"
-                        onChange={handlesemester}
-                      >
-                        <option>--Choose--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                      </Input>
+                      <div className="forIndentation">
+                        <Label for="exampleSelect">
+                          Select which Semester to set Scholarship to{" "}
+                        </Label></div>
+                      <div className="IndentationData">
+                        <Input
+                          type="select"
+                          name="selectStream"
+                          id="selectStream"
+                          onChange={handlesemester}
+                        >
+                          <option disabled selected value="">--Choose--</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                        </Input>
+                      </div>
                     </FormGroup>
 
                     <FormGroup className="Contract">
-                      <Label for="dueFee">Scholarship Amount</Label>
-                      <Input
-                        type="number"
-                        name="dueFee"
-                        id="dueFee"
-                        placeholder="Enter Amount Fee "
-                        min="0"
-                        innerRef={amount}
-                      />
+                      <div className="forIndentation">
+                        <Label for="dueFee">Scholarship Amount</Label></div>
+                      <div className="IndentationData">
+                        <Input
+                          type="number"
+                          name="dueFee"
+                          id="ub"
+                          placeholder="Enter Amount"
+                          min="0"
+                          innerRef={amount}
+                        /></div>
                     </FormGroup>
                   </div>
+
                   <div className="sub-btn">
                     <Button
                       variant="primary"

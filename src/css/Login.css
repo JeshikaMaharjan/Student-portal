@@ -12,6 +12,9 @@
   position: relative;
   width: 50%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #d9d9d9;
 }
 
 .logo {
@@ -19,6 +22,16 @@
   max-width: 100%;
   /* max-height: 100%; */
   overflow: hidden;
+}
+
+.inputBx input {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 90%;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  border: 1px solid #607d8b;
+  border-radius: 30px;
 }
 
 .logo img {
@@ -52,6 +65,7 @@
   display: inline-block;
   letter-spacing: 1px;
 }
+
 
 form {
   display: block;
@@ -116,6 +130,14 @@ form {
   background: #36f5b5;
 }
 
+.displayMessage span{
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  color: red;
+
+}
+
 .loginBox .formBox .remember {
   margin-bottom: 10px;
   color: #607d8b;
@@ -123,14 +145,25 @@ form {
   font-size: 14px;
 }
 
+.inputBx .pswd{
+  display: flex;
+  align-items: center;
+}
 @media (max-width: 768px) {
   .logo {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    opacity: 0.5;
   }
+
+.divlogo{
+  position: absolute;
+  width: 100%;
+  /* background-color: #07e2a0; */
+}
 
   .loginBox {
     display: flex;
@@ -148,4 +181,22 @@ form {
     background-color: #fff;
     opacity: 0.9;
   }
+
+  .inputBx .pswd{
+    display: flex;
+    align-items: center;
+  }
 }
+
+
+.msgForLogout{
+  padding-top: 5rem;
+  /* background-color: yellow; */
+  text-align: center;
+}
+
+
+/* .msgForLogout p{
+  font-weight: 200;
+  font-size: 25px;
+} */

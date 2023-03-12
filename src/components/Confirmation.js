@@ -4,7 +4,7 @@ export function Confirmation() {
   const navigate = useNavigate();
   return (
     <>
-      <div>
+      <div className="msgForLogout">
         <p>Do you want to logout?</p>
         <button
           onClick={() => {

@@ -30,29 +30,7 @@ const ResultForm = () => {
         console.log(err);
       });
   }, []);
-  //---------------------
-  // const subjects = [
-  //   {
-  //     id: 1,
-  //     subjectname: "OOAD",
-  //     totalmarks: 100,
-  //     passmarks: 32,
-  //   },
-  //   {
-  //     id: 2,
-  //     subjectname: "eco",
-  //     totalmarks: 100,
-  //     passmarks: 32,
-  //   },
-  //   {
-  //     id: 3,
-  //     subjectname: "maths",
-  //     totalmarks: 100,
-  //     passmarks: 32,
-  //   },
-  // ];
 
-  // }
   if (mark.length == 0) {
     for (let i = 0; i < subjects.length; i++) {
       const sub_id = subjects[i].id;
@@ -60,8 +38,6 @@ const ResultForm = () => {
     }
   }
   console.log(mark);
-
-  //---------------------
 
   const toggle = () => {
     var blur = document.getElementById("blur");
@@ -137,7 +113,7 @@ const ResultForm = () => {
                   <Table responsive>
                     <thead>
                       <tr>
-                        <th>Sub_ID</th>
+                        {/* <th>Sub_ID</th> */}
                         <th>Subject</th>
                         <th>Total Mark</th>
                         <th>Pass Mark</th>
@@ -173,7 +149,7 @@ const ResultForm = () => {
         <button
           onClick={() => {
             toggle();
-            navigate("/secure/entrystaff/searchstudent");
+            navigate("/secure/searchstudent");
           }}
         >
           Close

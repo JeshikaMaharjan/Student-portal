@@ -30,7 +30,7 @@ function RegisterStudent() {
   const password = useRef(null);
   const [role, setRole] = useState(4);
   const email = useRef(null);
-  const faculty = useRef(null);
+  const [faculty, setFacultyField] = useState();
   const batch = useRef(null);
   const semester = useRef(null);
   const [image, setImage] = useState("");
@@ -90,7 +90,7 @@ function RegisterStudent() {
       role: role,
       email: email.current.value,
       // faculty: faculty.current.id,
-      faculty: 1,
+      faculty: faculty,
       batch: batch.current.value,
       semester: semester.current.value,
       image: image,
@@ -109,6 +109,24 @@ function RegisterStudent() {
         // console.log("data:", postData);
       });
   }
+  const handlefaculty = (e) => {
+    setFacultyField(e.target.value);
+  };
+
+  const imageRef = useRef(null);
+
+  function handleImageChange(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const img = imageRef.current;
+      img.src = event.target.result;
+      img.style.display = "block";
+    };
+
+    reader.readAsDataURL(file);
+  }
 
   return (
     <>
@@ -120,7 +138,7 @@ function RegisterStudent() {
           <div className="RegBody">
             <Form className="RegFormInfo">
               <div className="inputSection">
-                <FormGroup className="name">
+                <FormGroup className="namenn">
                   <Label for="FullName">Full Name</Label>
                   <div className="naming">
                     <Input
@@ -146,6 +164,7 @@ function RegisterStudent() {
                     type="email"
                     name="email"
                     id="exampleEmail"
+                    autoComplete="none"
                     innerRef={email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -163,6 +182,7 @@ function RegisterStudent() {
                   <Input
                     type="text"
                     name="setuserName"
+                    autoComplete="none"
                     id="setuserName"
                     innerRef={userName}
                     placeholder="Set userName"
@@ -175,6 +195,7 @@ function RegisterStudent() {
                     name="setPassword"
                     id="setPassword"
                     innerRef={password}
+                    autoComplete="none"
                     placeholder="Set Password"
                   />
                 </FormGroup>
@@ -192,7 +213,12 @@ function RegisterStudent() {
                 <FormGroup className="contact">
                   <Label for="Contact">Contact no.</Label>
                   <Input
+                    pattern="[9][0-9]{9}"
+                    maxlength="10"
+                    required
+                    title="Please enter 10 digit number starting with 9"
                     type="tel"
+                    autoComplete="none"
                     name="Contact"
                     id="ContactInfo"
                     innerRef={contact}
@@ -206,15 +232,17 @@ function RegisterStudent() {
                     <Input
                       type="select"
                       name="selectStream"
-                      // id="selectStream"
-                      // innerRef={faculty}
+                      onChange={handlefaculty}
                     >
-                      <option id="1" ref={faculty}>
+                      <option disabled selected value="">
+                        Choose Stream
+                      </option>
+                      <option value="1">
                         BCT - Bachelors in Computer Engineering
                       </option>
-                      {/* <option id="2" ref={faculty}>
+                      <option value="2">
                         BCE - Bachelors in Civil Engineering
-                      </option> */}
+                      </option>
                     </Input>
                   </div>
                   <div>
@@ -225,6 +253,9 @@ function RegisterStudent() {
                       id="setSemester"
                       innerRef={semester}
                     >
+                      <option disabled selected value="">
+                        Select Semester
+                      </option>
                       <option id="1">1</option>
                       <option id="2">2</option>
                       <option id="3">3</option>
@@ -233,7 +264,6 @@ function RegisterStudent() {
                       <option id="6">6</option>
                       <option id="7">7</option>
                       <option id="8">8</option>
-                      <option id="9">9</option>
                     </Input>
                   </div>
                 </FormGroup>
@@ -255,14 +285,22 @@ function RegisterStudent() {
 
                 <FormGroup>
                   <Label for="exampleFile">Photo</Label>
-                  <Input
-                    type="file"
-                    name="file"
-                    id="contractFile"
-                    label="Image"
-                    accept=".jpeg, .png, .jpg"
-                    onChange={(e) => onFileSelected(e)}
-                  />
+                  <div className="imageSectionForForm">
+                    <div>
+                      <Input
+                        type="file"
+                        name="file"
+                        id="contractFile"
+                        label="Image"
+                        accept=".jpeg, .png, .jpg"
+                        onChange={(e) => onFileSelected(e)}
+                        onInput={handleImageChange}
+                      />
+                    </div>
+                    <div>
+                      <img ref={imageRef} alt="Identity" />
+                    </div>
+                  </div>
                 </FormGroup>
               </div>
               <div className="sub-btn">

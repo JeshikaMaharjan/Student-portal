@@ -11,7 +11,7 @@
   justify-content: center;
 }
 
-.statm-card {
+.billing{
   padding: 1rem;
   max-height: 70vh;
   min-height: auto;
@@ -26,22 +26,42 @@
   min-height: auto;
   width: 100%;
   padding: 1rem 2rem;
-  border: red;
 }
 
-.form-label {
+/* .form-label {
   margin: 0px 1.5rem 2px;
-}
+} */
+ 
 
-.naming {
-  display: inline-flex;
-}
 
-.name {
-  width: 90%;
+.AccFormInfo .inputSection .mb-3 {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  /* background-color: chartreuse; */
+  margin-bottom: 1rem!important;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
+ 
+.inputSection .forIndentation{
+  width: 50%;
+  /* background-color: violet; */
+  display: flex;
+}
+
+.inputSection .IndentationData{
+  width: 50%;
+/* background-color: tomato; */
+}
+
+#ub{
+  width: 50%;
+}
+
+/* .name {
+  width: 90%;
+} */
 
 Input {
   margin-left: 2rem;

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useToken } from "../../apis";
+import "../../css/imgcomp.css";
+
 
 export function ImageComponent() {
   const { tokenInstance } = useToken();
@@ -42,33 +44,40 @@ export function ImageComponent() {
     <>
       <div className="contain" id="blur">
         <div className="content">
-          <div>
-            <img
-              className="small"
-              src={state.detail.image}
-              alt="no image"
-              //   style={{ height: 800, width: 800 }}
-            />
-          </div>
-          <div>
-            <h4> Amount: {state.detail.amount}</h4>
-            <h4> Semester: {state.detail.semester}</h4>
-            <button
-              onClick={() => {
-                handleVerify(true);
-                showResultPopup();
-              }}
-            >
-              Accept
-            </button>
-            <button
-              onClick={() => {
-                handleVerify(false);
-                showResultPopup();
-              }}
-            >
-              Reject
-            </button>
+          <div className="verBody">
+            <div className="verVouImg">
+              <img
+                className="small"
+                src={state.detail.image}
+                alt="Voucher"
+              />
+            </div>
+            <div className="AmountSem">
+              <div className="AS">
+                <h4> Amount: {state.detail.amount}</h4>
+                <h4> Semester: {state.detail.semester}</h4>
+              </div>
+              <div className="divFIC">
+                <button
+                  id="btn"
+                  onClick={() => {
+                    handleVerify(true);
+                    showResultPopup();
+                  }}
+                >
+                  Accept
+                </button>
+                <button
+                  id="btn"
+                  onClick={() => {
+                    handleVerify(false);
+                    showResultPopup();
+                  }}
+                >
+                  Reject
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

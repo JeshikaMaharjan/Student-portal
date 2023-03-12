@@ -40,7 +40,7 @@
 .card1 {
   margin-top: 5%;
   min-height: auto;
-  max-height: 70%;
+  max-height: 80%;
   width: 90%;
   background-color: #d9d9d9;
   border-radius: 10px;
@@ -58,7 +58,7 @@ h4 {
 
 .card2 {
   margin-top: 7.5%;
-  height: 70%;
+  height: 80%;
   width: 80%;
   background-color: #d9d9d9;
   border-radius: 10px;
@@ -86,14 +86,34 @@ h4 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: -6rem;
+  /* justify-content: center; */
+  /* margin-top: -6rem; */
+  /* padding-top: 0.5rem; */
+  /* background-color: chartreuse; */
+  padding: 0.5rem 1.5rem;
+}
+
+
+ .c2Body .selectDivDue .inBox{
+  width: 100%;
+}
+
+.c2Body .displayDiv #amount{
+  width:100%;
+  margin: 0.5rem 0px;
+}
+.c2Body .selectDivDue #selectdescription{
+  width: 100%;
+  margin: 0px;
+}
+
+.c2Body #voucherSelect{
+  width: 100%;
+  margin: 0px;
 }
 
 Label {
-  /* display: flex; */
-  justify-content: center;
+  text-align: center;
   font-weight: 500;
 }
 
@@ -109,16 +129,17 @@ Label {
 }
 
 .paymentBtn {
-  height: 50px;
+  height: 50%;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .paymentBtn #btn {
   border-radius: 25px;
-  height: 80%;
+  height: 40%;
   width: 12rem;
   background-color: aqua;
   display: flex;

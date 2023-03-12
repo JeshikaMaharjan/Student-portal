@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useAuth } from "./Authentication/auth";
 
-const baseURL = "http://10.0.0.26:5000/api";
+const baseURL = "http://192.168.101.36:5000/api";
 
 const config = {
   baseURL: baseURL,

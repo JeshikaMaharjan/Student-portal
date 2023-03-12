@@ -4,6 +4,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PasswordIcon from "@mui/icons-material/Password";
+import SearchIcon from '@mui/icons-material/Search';
 
 import "../../css/Sidenavcomp.css";
 
@@ -26,7 +27,7 @@ export const AdminSidenavcomp = [
   },
   {
     title: "Search",
-    icon: <DescriptionIcon />,
+    icon: < SearchIcon />,
     link: "/secure/search",
   },
   {

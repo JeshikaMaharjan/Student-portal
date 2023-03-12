@@ -33,10 +33,22 @@ function Statement() {
         </CardHeader>
 
         <CardBody>
-          <div className="statm-card">
-            {transactiondata.map((singledata) => (
-              <Individualstmt transactiondata={singledata} />
-            ))}
+          <div className="forColumnFormat">
+            <div className="statm-card-title">
+              <div className="titleNaming">
+                <span>Semester</span>
+                <span>Date</span>
+                <span>Amount</span>
+                <span>Remark</span>
+              </div>
+
+            </div>
+            <div className="statm-card">
+              {transactiondata.map((singledata) => (
+                <Individualstmt transactiondata={singledata} />
+              ))}
+
+            </div>
           </div>
         </CardBody>
       </Card>

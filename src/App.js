@@ -14,10 +14,10 @@ function App() {
   // const setAuthenticated = useAuth((state) => state.setAuthenticated);
   // const setRole = useAuth((state) => state.setRole);
   // setAuthenticated(true);
-  // sessionStorage.setItem("role", 4);
-  // // setRole(1);
-  // // setRole(2);
-  // // setRole(3);
+  // sessionStorage.setItem("role", 3);
+  // setRole(1);
+  // setRole(2);
+  // setRole(3);
   // setRole(4);
   //------------------
   const setToken = useAuth((state) => state.setToken);

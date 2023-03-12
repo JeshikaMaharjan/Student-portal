@@ -68,6 +68,7 @@ function Cash() {
                       id="exampleSelectSemester"
                       innerRef={semester}
                     >
+                      <option disabled selected value="">--Choose--</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -82,15 +83,16 @@ function Cash() {
                   <FormGroup>
                     <Label for="exampleText">Amount</Label>
                     <Input
-                      type="textarea"
+                      type="number"
                       name="text"
+                      min={0}
                       id="exampleText"
+                      placeholder="Enter The Paid Amount"
                       required
                       innerRef={amount}
                     />
                   </FormGroup>
 
-                  <div className="btn">
                     <Button
                       id="subbtn"
                       onClick={() => {
@@ -101,7 +103,7 @@ function Cash() {
                     >
                       Submit
                     </Button>
-                  </div>
+                   
                 </Form>
               </div>
             </div>

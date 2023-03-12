@@ -4,7 +4,7 @@ import "../../css/Search.css";
 
 function PersonList({ items }) {
   return (
-    <div className="individualCard">
+    <div className="individualCardd">
       {items.map((person) => (
         <Cardsingle key={person.id} person={person} />
       ))}

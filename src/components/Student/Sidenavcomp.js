@@ -1,11 +1,12 @@
 import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import DescriptionIcon from "@mui/icons-material/Description";
+// import PersonAddIcon from "@mui/icons-material/PersonAdd";
+// import DescriptionIcon from "@mui/icons-material/Description";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PasswordIcon from "@mui/icons-material/Password";
-
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import "../../css/Sidenavcomp.css";
 
 export const StudentSidenavcomp = [
@@ -22,12 +23,12 @@ export const StudentSidenavcomp = [
 
   {
     title: "Payment",
-    icon: <AutoGraphIcon />,
+    icon: <AccountBalanceWalletIcon />,
     link: "/secure/payment",
   },
   {
-    title: "Result",
-    icon: <AutoGraphIcon />,
+    title: "Results",
+    icon: <LibraryBooksIcon />,
     link: "/secure/selection",
   },
   {
