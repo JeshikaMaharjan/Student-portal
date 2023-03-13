@@ -9,6 +9,8 @@ export default function NoMatch() {
   return (
     <>
       <div className="body">
+        <div id="dash_clock" style={{ display: "none" }}></div>
+
         <div className="FPbody">
           <p>!!404!!</p>
           <br></br>

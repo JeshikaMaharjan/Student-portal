@@ -35,7 +35,7 @@ export function BulkEntry() {
     // console.log(showconfirmation);
   };
   const handleButtonNavigation = () => {
-    console.log("id", buttonID);
+    // console.log("id", buttonID);
     if (buttonID == "upgradeSemester") {
       handleSemesterClick();
     }

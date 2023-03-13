@@ -26,19 +26,21 @@ export function VoucherValidate() {
       <div className="title">
         <h1>Voucher Details</h1>
       </div>
-      {data.length == 0 && <div>No vouchers to validate.</div>}
+      {data.length == 0 && (
+        <div className="msgForLogout">No vouchers to validate.</div>
+      )}
       {data.length !== 0 && (
         <div className="mainBody">
           <div className="forColumnFormat">
-          <div className="voucher-card-title">
-            <div className="titleNaming">
-              <span>Username</span>
-              <span>Semester</span>
-              <span>Amount</span>
-              {/* <span>Voucher ID</span> */}
-              <span>Voucher</span>
+            <div className="voucher-card-title">
+              <div className="titleNaming">
+                <span>Username</span>
+                <span>Semester</span>
+                <span>Amount</span>
+                {/* <span>Voucher ID</span> */}
+                <span>Voucher</span>
+              </div>
             </div>
-          </div>
             {data.map((singleoption, key) => (
               <div className="titleNaming">
                 <span>{singleoption.userName}</span>
@@ -57,11 +59,10 @@ export function VoucherValidate() {
                 </button>
               </div>
             ))}
-          {/* </div> */}
+            {/* </div> */}
+          </div>
         </div>
-        </div>
-  )
-}
+      )}
     </>
   );
 }

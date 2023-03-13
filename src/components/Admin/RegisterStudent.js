@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-
 import { Button, Form, FormGroup, Label, Input, CardHeader } from "reactstrap";
 import "../../css/RegForm.css";
 import { useToken } from "../../apis";
@@ -110,6 +109,7 @@ function RegisterStudent() {
       });
   }
   const handlefaculty = (e) => {
+    console.log(e.target.value);
     setFacultyField(e.target.value);
   };
 
@@ -128,6 +128,30 @@ function RegisterStudent() {
     reader.readAsDataURL(file);
   }
 
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    // if (firstName !== "" && lastName !== "" && password !== "") {
+    if (
+      !firstName.current.value &&
+      !lastName.current.value &&
+      !password.current.value &&
+      !userName.current.value &&
+      !email.current.value &&
+      !address.current.value &&
+      !contact.current.value &&
+      !faculty.current.value &&
+      !batch.current.value &&
+      !semester.current.value
+    ) {
+      console.log("Please fill out all fields before submitting");
+    } else {
+      console.log("Form is ready to submit");
+      setPostResult("Loading");
+      postData();
+      toggle();
+    }
+  };
+
   return (
     <>
       <div className="contain" id="blur">
@@ -136,7 +160,13 @@ function RegisterStudent() {
             <h1>Registration</h1>
           </div>
           <div className="RegBody">
-            <Form className="RegFormInfo">
+            <Form
+              className="RegFormInfo"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+            >
               <div className="inputSection">
                 <FormGroup className="namenn">
                   <Label for="FullName">Full Name</Label>
@@ -144,6 +174,9 @@ function RegisterStudent() {
                     <Input
                       type="text"
                       name="firstName"
+                      // value={firstName}
+                      // onChange={handleChange}
+                      required
                       id="firstName"
                       innerRef={firstName}
                       placeholder="First Name"
@@ -152,6 +185,7 @@ function RegisterStudent() {
                       type="text"
                       name="lastName"
                       id="lastName"
+                      required
                       innerRef={lastName}
                       placeholder="Last Name"
                     />
@@ -170,6 +204,7 @@ function RegisterStudent() {
                     onBlur={formik.handleBlur}
                     value={formik.values.email}
                     placeholder="Enter Email"
+                    required
                   />
                   <br />
                   {formik.touched.email && formik.errors.email && (
@@ -184,6 +219,7 @@ function RegisterStudent() {
                     name="setuserName"
                     autoComplete="none"
                     id="setuserName"
+                    required
                     innerRef={userName}
                     placeholder="Set userName"
                   />
@@ -194,6 +230,9 @@ function RegisterStudent() {
                     type="text"
                     name="setPassword"
                     id="setPassword"
+                    // value={password}
+                    // onChange={handleChange}
+                    required
                     innerRef={password}
                     autoComplete="none"
                     placeholder="Set Password"
@@ -207,6 +246,7 @@ function RegisterStudent() {
                     id="Address"
                     innerRef={address}
                     placeholder="Enter Address"
+                    required
                   />
                 </FormGroup>
 
@@ -214,9 +254,8 @@ function RegisterStudent() {
                   <Label for="Contact">Contact no.</Label>
                   <Input
                     pattern="[9][0-9]{9}"
-                    maxlength="10"
+                    maxLength="10"
                     required
-                    title="Please enter 10 digit number starting with 9"
                     type="tel"
                     autoComplete="none"
                     name="Contact"
@@ -232,6 +271,7 @@ function RegisterStudent() {
                     <Input
                       type="select"
                       name="selectStream"
+                      required
                       onChange={handlefaculty}
                     >
                       <option disabled selected value="">
@@ -251,6 +291,7 @@ function RegisterStudent() {
                       type="select"
                       name="setSemester"
                       id="setSemester"
+                      required
                       innerRef={semester}
                     >
                       <option disabled selected value="">
@@ -269,10 +310,6 @@ function RegisterStudent() {
                 </FormGroup>
 
                 <FormGroup>
-                  {/* <Input type="text" name="setSemester" id="setSemester" innerRef={semester} placeholder="Set Semester" /> */}
-                </FormGroup>
-
-                <FormGroup>
                   <Label for="Batch">Batch</Label>
                   <Input
                     type="text"
@@ -280,6 +317,7 @@ function RegisterStudent() {
                     id="setBatch"
                     innerRef={batch}
                     placeholder="Set Batch"
+                    required
                   />
                 </FormGroup>
 
@@ -304,15 +342,7 @@ function RegisterStudent() {
                 </FormGroup>
               </div>
               <div className="sub-btn">
-                <Button
-                  variant="primary"
-                  // onClick={postData}
-                  onClick={() => {
-                    setPostResult("Loading");
-                    postData();
-                    toggle();
-                  }}
-                >
+                <Button variant="primary" type="submit">
                   Register Student
                 </Button>
               </div>

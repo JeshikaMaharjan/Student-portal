@@ -8,8 +8,8 @@ import { config } from "../apis";
 
 export default function ForgotPswd() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
-  const [username, setUsername] = useState();
+  const [email, setEmail] = useState(null);
+  const [username, setUsername] = useState(null);
   const { tokenInstance } = useToken();
   const setMessage = useAuth((state) => state.setMessage);
 
@@ -27,27 +27,33 @@ export default function ForgotPswd() {
     setUsername(e.target.value);
   }
   function postData() {
+    setMessage("Loading ");
     const postData = {
       username: username,
       email: email,
     };
-
+    console.log(postData);
     axios
       .create(config)
       .post("/forgot/password", postData)
       .then((res) => {
         console.log(res);
-        setMessage("Check your email ");
+        // setMessage("Check your email ");
+        setMessage(res.data.message);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data.message);
+        setMessage(err.response.data.message);
       });
+    toggle();
   }
-  console.log(email);
+  // console.log(email);
   return (
     <>
       <div className="contain" id="blur">
         <div className="content">
+          <div id="dash_clock" style={{ display: "none" }}></div>
+
           <div className="body">
             <div className="FPfbody">
               <div className="FPfBox">
@@ -80,7 +86,7 @@ export default function ForgotPswd() {
                         name=""
                         onClick={() => {
                           postData();
-                          toggle();
+                          // toggle();
                           // navigate("/login");
                         }}
                       >
@@ -95,7 +101,14 @@ export default function ForgotPswd() {
         </div>
       </div>
       <div id="popup">
-        <div id="test1" onClick={toggle} className="close">
+        <div
+          id="test1"
+          onClick={() => {
+            toggle();
+            navigate("/login");
+          }}
+          className="close"
+        >
           +
         </div>
 

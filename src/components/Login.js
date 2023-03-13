@@ -52,6 +52,7 @@ export default function Login() {
             <img src={SERAlogo} alt="Logo" />
           </div>
         </div>
+        <div id="dash_clock" style={{ display: "none" }}></div>
 
         <div className="loginBox">
           <div className="formBox">
