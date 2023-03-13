@@ -101,8 +101,6 @@ function RegisterStaff() {
       });
   }
 
-
-
   const imageRef = useRef(null);
 
   function handleImageChange(event) {
@@ -112,14 +110,11 @@ function RegisterStaff() {
     reader.onload = function (event) {
       const img = imageRef.current;
       img.src = event.target.result;
-      img.style.display = 'block';
+      img.style.display = "block";
     };
 
     reader.readAsDataURL(file);
   }
-
-
-
 
   return (
     <>
@@ -209,7 +204,8 @@ function RegisterStaff() {
                     type="tel"
                     pattern="[9][0-9]{9}"
                     maxlength="10"
-                    required title="Please enter 10 digit number starting with 9"
+                    required
+                    title="Please enter 10 digit number starting with 9"
                     name="Contact"
                     id="ContactInfo"
                     innerRef={contact}
@@ -225,12 +221,14 @@ function RegisterStaff() {
                     id="setstaff"
                     innerRef={role}
                   >
-                      <option disabled selected value="">Select Type </option>
+                    <option disabled selected value="">
+                      Select Type{" "}
+                    </option>
                     <option value="2">Account staff</option>
                     <option value="3">Entry staff</option>
                   </Input>
                 </FormGroup>
-                <FormGroup >
+                <FormGroup>
                   <Label for="exampleFile">Photo</Label>
                   <div className="imageSectionForForm">
                     <div>
@@ -249,7 +247,6 @@ function RegisterStaff() {
                     </div>
                   </div>
                 </FormGroup>
-
               </div>
               <div className="sub-btn">
                 <Button
@@ -269,7 +266,14 @@ function RegisterStaff() {
         </div>
       </div>
       <div id="popup">
-        <div id="test1" onClick={toggle} className="close">
+        <div
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+          className="close"
+        >
           +
         </div>
         {postResult && (
@@ -278,7 +282,13 @@ function RegisterStaff() {
           </div>
         )}
 
-        <button id="test1" onClick={toggle}>
+        <button
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+        >
           Close
         </button>
       </div>

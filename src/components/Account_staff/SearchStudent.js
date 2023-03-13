@@ -22,6 +22,7 @@ const SearchStudent = () => {
       .then((res) => {
         console.log(res);
         const data = res.data;
+
         setfilteredPersons(data);
       })
       .catch((e) => {
@@ -53,7 +54,9 @@ const SearchStudent = () => {
                 id="selectStream"
                 onChange={handlebatch}
               >
-                <option disabled selected value="">--Choose-- </option>
+                <option disabled selected value="">
+                  --Choose--{" "}
+                </option>
                 {batches.map((batch) => (
                   <option>{batch}</option>
                 ))}
@@ -67,7 +70,9 @@ const SearchStudent = () => {
                 id="selectStream"
                 onChange={handlefaculty}
               >
-                <option disabled selected value="">--Choose-- </option>
+                <option disabled selected value="">
+                  --Choose--{" "}
+                </option>
                 <option value="1">
                   BCT - Bachelors in Computer Engineering
                 </option>

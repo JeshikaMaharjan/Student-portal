@@ -321,7 +321,14 @@ function RegisterStudent() {
         </div>
       </div>
       <div id="popup">
-        <div id="test1" onClick={toggle} className="close">
+        <div
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+          className="close"
+        >
           +
         </div>
         {postResult && (
@@ -330,7 +337,13 @@ function RegisterStudent() {
           </div>
         )}
 
-        <button id="test1" onClick={toggle}>
+        <button
+          id="test1"
+          onClick={() => {
+            toggle();
+            window.location.reload(true);
+          }}
+        >
           Close
         </button>
       </div>

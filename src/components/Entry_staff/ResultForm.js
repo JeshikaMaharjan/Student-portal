@@ -21,7 +21,7 @@ const ResultForm = () => {
     console.log(mark);
     tokenInstance
       .get(`/subject/${detail.faculty}/${detail.semester}`)
-      // .get(`/subject/1/2`)
+
       .then((res) => {
         console.log(res);
         setSubjects(res.data);
@@ -37,7 +37,7 @@ const ResultForm = () => {
       setMark((mark) => [...mark, { id: sub_id, mark: null }]);
     }
   }
-  console.log(mark);
+  // console.log(mark);
 
   const toggle = () => {
     var blur = document.getElementById("blur");
@@ -60,7 +60,7 @@ const ResultForm = () => {
 
       setMark(marklist);
     };
-    console.log(mark);
+    // console.log(mark);
 
     return (
       <>
@@ -87,7 +87,7 @@ const ResultForm = () => {
   function handleSubmit() {
     tokenInstance
       .post(`/add/mark/${detail.username}/${detail.semester}`, mark)
-      // .post(`/add/mark/student/2`, mark)
+
       .then((res) => {
         setpostresult(res.data.message);
         console.log(res);
@@ -142,7 +142,13 @@ const ResultForm = () => {
       </div>
 
       <div id="popup">
-        <div onClick={toggle} className="close">
+        <div
+          onClick={() => {
+            toggle();
+            navigate("/secure/searchstudent");
+          }}
+          className="close"
+        >
           +
         </div>
         <h2> {postresult}</h2>

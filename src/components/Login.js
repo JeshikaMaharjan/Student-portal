@@ -14,6 +14,7 @@ export default function Login() {
   const [postResult, setPostResult] = useState(null);
   const message = useAuth((state) => state.message);
   let isError = useState(false);
+  // let postResult = useState(null);
 
   const { login } = useLogin();
 
@@ -27,7 +28,9 @@ export default function Login() {
       isError = !isLoggedIn;
 
       if (!isLoggedIn) {
-        setPostResult("Sign in failed", message);
+        setPostResult(` ${sessionStorage.getItem("errmsg")}`);
+
+        // console.log(postResult);
         return;
       }
       navigate("/secure");

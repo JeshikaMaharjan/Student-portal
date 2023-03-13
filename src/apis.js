@@ -30,7 +30,6 @@ const useLogin = () => {
 
       if (res.status !== 200) {
         setAuthenticated(false);
-        setMessage(res.data.message);
         return false;
       }
 
@@ -50,9 +49,10 @@ const useLogin = () => {
 
       return true;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setAuthenticated(false);
-      setMessage(error);
+      sessionStorage.setItem("errmsg", error.response.data.message);
+      // setMessage(sessionStorage.getItem("errmsg"));
       return false;
     }
   };

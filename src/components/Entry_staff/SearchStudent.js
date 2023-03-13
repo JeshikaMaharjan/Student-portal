@@ -20,16 +20,14 @@ const SearchStudent = () => {
     tokenInstance
       .post("/student/details", postdata)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         const data = res.data;
-        // sessionStorage.setItem("filteredpersonlist", data);
         setfilteredPersons(data);
-        // setfilteredPersons(sessionStorage.getItem("filteredpersonlist"));
       })
       .catch((e) => {
         console.log(e);
       });
-    console.log(filteredPersons);
+    // console.log(filteredPersons);
   }
 
   const handlebatch = (e) => {

@@ -54,11 +54,11 @@ export function BulkEntry() {
       .post("/bulk", postData)
       .then((res) => {
         setpostresult(res.data.message);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         setpostresult(err.response.data.message);
-        console.log(err);
+        // console.log(err);
       });
     toggle();
   };
@@ -77,7 +77,6 @@ export function BulkEntry() {
     var popup = document.getElementById("popup");
     popup.classList.toggle("active");
   };
-  console.log("b", showconfirmation);
   return (
     <>
       <div className="contain" id="blur">
@@ -185,7 +184,13 @@ export function BulkEntry() {
       </div>
 
       <div id="popup">
-        <div onClick={toggle} className="close">
+        <div
+          onClick={() => {
+            toggle();
+            setshowconfirmation(false);
+          }}
+          className="close"
+        >
           +
         </div>
         <h2> {postresult}</h2>

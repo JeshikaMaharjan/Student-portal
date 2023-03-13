@@ -32,7 +32,7 @@ function EditResult() {
     tokenInstance
       .get(`/mark/${detail.username}/${detail.semester}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setResult(res.data);
         setSubjects(res.data);
       })
@@ -40,7 +40,7 @@ function EditResult() {
         console.log(err);
       });
   }, []);
-  console.log(Result);
+  // console.log(Result);
 
   if (mark.length == 0) {
     for (let i = 0; i < subjects.length; i++) {
