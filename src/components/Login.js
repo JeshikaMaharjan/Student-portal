@@ -64,6 +64,7 @@ export default function Login() {
                   className="type"
                   type="text"
                   name="name"
+                  autoComplete="none"
                   ref={username}
                   placeholder="Enter Username"
                 />

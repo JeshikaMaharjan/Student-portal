@@ -10,7 +10,7 @@ const SearchStudent = () => {
   const [filteredPersons, setfilteredPersons] = useState([]);
   const [batchField, setBatchField] = useState();
   const [facultyField, setFacultyField] = useState();
-  const batches = ["2076", "2077", "2078", "2079"];
+  const batches = ["2075", "2076", "2077", "2078"];
 
   function postData() {
     const postdata = {
