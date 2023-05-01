@@ -14,7 +14,7 @@ function App() {
   // const setAuthenticated = useAuth((state) => state.setAuthenticated);
   // const setRole = useAuth((state) => state.setRole);
   // setAuthenticated(true);
-  // sessionStorage.setItem("role", 3);
+  // sessionStorage.setItem("role", 1);
   // setRole(1);
   // setRole(2);
   // setRole(3);
