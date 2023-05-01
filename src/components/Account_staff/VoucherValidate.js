@@ -37,7 +37,6 @@ export function VoucherValidate() {
                 <span>Username</span>
                 <span>Semester</span>
                 <span>Amount</span>
-                {/* <span>Voucher ID</span> */}
                 <span>Voucher</span>
               </div>
             </div>

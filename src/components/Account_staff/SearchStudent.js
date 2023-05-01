@@ -20,7 +20,7 @@ const SearchStudent = () => {
     tokenInstance
       .post(`/student/details`, postdata)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         const data = res.data;
 
         setfilteredPersons(data);
@@ -80,19 +80,21 @@ const SearchStudent = () => {
               </Input>
             </div>
           </div>
-          <div className="btnsection">
-            <div className="inputBx">
-              <input
-                type="submit"
-                id="searchbtn"
-                value="Search"
-                name=""
-                onClick={() => {
-                  postData();
-                }}
-              />
+          {batchField != null && facultyField != null && (
+            <div className="btnsection">
+              <div className="inputBx">
+                <input
+                  type="submit"
+                  id="searchbtn"
+                  value="Search"
+                  name=""
+                  onClick={() => {
+                    postData();
+                  }}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div className="CardFSearchStd">
           <div className="searchStudentCard">
@@ -124,6 +126,19 @@ const SearchStudent = () => {
                           </div>
                         </div>
                         <div className="option">
+                          <div className="viewBtn">
+                            <button
+                              id="detail"
+                              onClick={() =>
+                                navigate("viewdetail", {
+                                  replace: true,
+                                  state: { ...person },
+                                })
+                              }
+                            >
+                              View Detail
+                            </button>
+                          </div>
                           <div className="viewBtn">
                             <button
                               id="searchbtn"

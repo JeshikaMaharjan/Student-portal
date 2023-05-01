@@ -30,7 +30,7 @@ const Scholarship = () => {
       .get(`/details/${detail.userName}`)
       .then((res) => {
         const info = res.data;
-        console.log("i", info);
+        // console.log("i", info);
         setData(info);
       })
       .catch((err) => {
@@ -177,6 +177,7 @@ const Scholarship = () => {
                     <Button
                       variant="primary"
                       onClick={() => {
+                        setPostResult("Loading..");
                         handleSubmit();
                         toggle();
                       }}

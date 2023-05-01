@@ -34,7 +34,6 @@ export const AccountSidenavcomp = [
     icon: <AutoGraphIcon />,
     link: "/secure/payment",
   },
-
   {
     title: "Log Out",
     icon: <LogoutIcon />,

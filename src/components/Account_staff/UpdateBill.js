@@ -30,7 +30,7 @@ const UpdateBill = () => {
       .get(`/details/${detail.userName}`)
       .then((res) => {
         const info = res.data;
-        console.log(info);
+        // console.log(info);
         setData(info);
       })
       .catch((err) => {
@@ -157,7 +157,7 @@ const UpdateBill = () => {
                     <Button
                       variant="primary"
                       onClick={() => {
-                        setPostResult("Loading");
+                        setPostResult("Loading..");
                         handleSubmit();
                         toggle();
                       }}

@@ -10,5 +10,4 @@ const Accountstaff = (props) => {
     </>
   );
 };
-
 export default Accountstaff;

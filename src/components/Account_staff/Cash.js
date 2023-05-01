@@ -19,7 +19,7 @@ function Cash() {
   };
 
   async function postData() {
-    console.log("postData");
+    // console.log("postData");
     const postData = {
       userName: userName.current.value,
       semester: parseInt(semester.current.value, 10),
@@ -30,7 +30,7 @@ function Cash() {
     await tokenInstance
       .post(`/transaction`, postData)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setPostResult(res.data.message);
       })
       .catch((e) => {

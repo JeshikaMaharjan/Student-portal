@@ -27,11 +27,11 @@ export function ImageComponent() {
       validity: isAccepted,
       voucher_id: voucher_id,
     };
-    console.log(postData);
+    // console.log(postData);
     tokenInstance
       .post("verify/voucher", postData)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setPostResult(res.data.message);
       })
       .catch((err) => {
