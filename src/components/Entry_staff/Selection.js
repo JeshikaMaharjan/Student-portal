@@ -91,12 +91,14 @@ export function Selection() {
           </div>
           <div className="btnsection">
             <div className="inputBx">
-              <input
-                type="submit"
-                id="searchbtn"
-                value="Search"
-                onClick={handleButtonClick}
-              />
+              {(semester != null) & (faculty != null) && (
+                <input
+                  type="submit"
+                  id="searchbtn"
+                  value="Search"
+                  onClick={handleButtonClick}
+                />
+              )}
             </div>
           </div>
         </div>

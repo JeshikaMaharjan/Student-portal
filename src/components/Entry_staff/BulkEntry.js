@@ -20,7 +20,7 @@ export function BulkEntry() {
       .post("/upgrade/semester")
       .then((res) => {
         setpostresult(res.data.message);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         setpostresult(err.response.data.message);

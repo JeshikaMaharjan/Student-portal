@@ -18,7 +18,7 @@ function EditResult() {
   const [mark, setMark] = useState([]);
   useEffect(() => {
     setMark([]);
-    console.log(mark);
+    // console.log(mark);
     // tokenInstance
     //   .get(`/subject/${detail.faculty}/${detail.semester}`)
     //   // .get(`/subject/1/2`)
@@ -45,12 +45,12 @@ function EditResult() {
   if (mark.length == 0) {
     for (let i = 0; i < subjects.length; i++) {
       const sub_id = subjects[i].id;
-      console.log(sub_id);
+      // console.log(sub_id);
       const initmark = Result[i].marks;
       setMark((mark) => [...mark, { id: sub_id, mark: initmark }]);
     }
   }
-  console.log(mark);
+  // console.log(mark);
 
   const toggle = () => {
     var blur = document.getElementById("blur");
@@ -73,7 +73,7 @@ function EditResult() {
 
       setMark(marklist);
     };
-    console.log(mark);
+    // console.log(mark);
 
     return (
       <>
@@ -102,7 +102,7 @@ function EditResult() {
       .post(`/mark/update/${detail.username}/${detail.semester}`, mark)
       .then((res) => {
         setpostresult(res.data.message);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         setpostresult(err.response.data.message);

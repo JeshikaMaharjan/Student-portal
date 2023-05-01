@@ -18,7 +18,7 @@ function ViewResult() {
     tokenInstance
       .get(`/mark/${detail.username}/${detail.semester}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setResult(res.data);
       })
       .catch((err) => {

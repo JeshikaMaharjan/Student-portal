@@ -10,5 +10,4 @@ const Entrystaff = (props) => {
     </>
   );
 };
-
 export default Entrystaff;

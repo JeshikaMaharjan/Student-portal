@@ -55,7 +55,7 @@ const SearchStudent = () => {
                 onChange={handlebatch}
               >
                 <option disabled selected value="">
-                  --Select--{" "}
+                  --Select--
                 </option>
                 {batches.map((batch) => (
                   <option>{batch}</option>
@@ -80,19 +80,21 @@ const SearchStudent = () => {
               </Input>
             </div>
           </div>
-          <div className="btnsection">
-            <div className="inputBx">
-              <input
-                type="submit"
-                id="searchbtn"
-                value="Search"
-                name=""
-                onClick={() => {
-                  postData();
-                }}
-              />
+          {(batchField != null) & (facultyField != null) && (
+            <div className="btnsection">
+              <div className="inputBx">
+                <input
+                  type="submit"
+                  id="searchbtn"
+                  value="Search"
+                  name=""
+                  onClick={() => {
+                    postData();
+                  }}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div className="CardFSearchStd">
           <div className="searchStudentCard">
@@ -123,6 +125,19 @@ const SearchStudent = () => {
                           </div>
                         </div>
                         <div className="option">
+                          <div className="viewBtn">
+                            <button
+                              id="detail"
+                              onClick={() =>
+                                navigate("viewdetail", {
+                                  replace: true,
+                                  state: { ...person },
+                                })
+                              }
+                            >
+                              View Detail
+                            </button>
+                          </div>
                           <div className="selectBtn">
                             <button
                               id="searchbtn"

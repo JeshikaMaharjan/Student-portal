@@ -18,12 +18,12 @@ const ResultForm = () => {
   const [mark, setMark] = useState([]);
   useEffect(() => {
     setMark([]);
-    console.log(mark);
+    // console.log(mark);
     tokenInstance
       .get(`/subject/${detail.faculty}/${detail.semester}`)
 
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setSubjects(res.data);
       })
       .catch((err) => {
@@ -90,7 +90,7 @@ const ResultForm = () => {
 
       .then((res) => {
         setpostresult(res.data.message);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         setpostresult(err.response.data.message);
