@@ -52,7 +52,6 @@ const ChangePassword = () => {
         console.log(err);
       });
   }
-  // const [Password, setPassword] = useState("");
   const [valid, setValid] = useState(true);
 
   const validatePassword = (password) => {
@@ -62,7 +61,6 @@ const ChangePassword = () => {
 
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
-    // setPassword(newPassword);
     setValid(validatePassword(newPassword));
   };
 

@@ -31,7 +31,6 @@ function SideNav() {
 
   return (
     <>
-      {/* <AppBar> */}
       <div className="Sidenav">
         <div className="menuToggle">
           <icon id="hamburger" style={{ display: "none" }}>

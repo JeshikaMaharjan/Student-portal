@@ -14,7 +14,6 @@ export default function Login() {
   const [postResult, setPostResult] = useState(null);
   const message = useAuth((state) => state.message);
   let isError = useState(false);
-  // let postResult = useState(null);
 
   const { login } = useLogin();
 

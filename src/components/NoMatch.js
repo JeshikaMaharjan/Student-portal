@@ -15,7 +15,8 @@ export default function NoMatch() {
           <p>!!404!!</p>
           <br></br>
           <h1>Page Not Found</h1>
-          <button id="btn" onClick={goBack}>
+          <button id="btn"
+            style={{ color: "white", border: "none" }} onClick={goBack}>
             Go Back
           </button>
         </div>

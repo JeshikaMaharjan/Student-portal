@@ -1,7 +1,5 @@
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Authentication/auth";
-
 import Admin from "./Admin/Admin";
 import Accountstaff from "./Account_staff/Account_staff";
 import Entrystaff from "./Entry_staff/Entrystaff";

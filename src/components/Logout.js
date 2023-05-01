@@ -1,6 +1,5 @@
 import { useLogout } from "../apis";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { BrowserRouter as Prompt } from "react-router-dom";
 import { useEffect } from "react";
 import Login from "./Login";
 

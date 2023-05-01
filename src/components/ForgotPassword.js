@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useToken } from "../apis";
 import "../css/ForgotPassword.css";
 import { useAuth } from "../Authentication/auth";
@@ -10,8 +10,8 @@ export default function ForgotPswd() {
   const navigate = useNavigate();
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
-  const { tokenInstance } = useToken();
-  const setMessage = useAuth((state) => state.setMessage);
+  const [postResult, setPostResult] = useState(null);
+  // const setMessage = useAuth((state) => state.setMessage);
 
   const toggle = () => {
     var blur = document.getElementById("blur");
@@ -27,27 +27,31 @@ export default function ForgotPswd() {
     setUsername(e.target.value);
   }
   function postData() {
-    setMessage("Loading ");
     const postData = {
       username: username,
       email: email,
     };
-    console.log(postData);
+    // console.log(postData);
     axios
       .create(config)
       .post("/forgot/password", postData)
       .then((res) => {
-        console.log(res);
-        // setMessage("Check your email ");
-        setMessage(res.data.message);
+        // console.log(res);
+        setPostResult(res.data.message);
       })
       .catch((err) => {
-        console.log(err.response.data.message);
-        setMessage(err.response.data.message);
+        console.log(err?.response?.data?.message);
+        setPostResult(err?.response?.data?.message);
       });
-    toggle();
   }
-  // console.log(email);
+
+  function handleSubmit(e) {
+    if (username !== null && email !== null) {
+      // console.log("Form is ready to submit");
+      setPostResult("Loading");
+      postData();
+    }
+  }
   return (
     <>
       <div className="contain" id="blur">
@@ -58,7 +62,13 @@ export default function ForgotPswd() {
             <div className="FPfbody">
               <div className="FPfBox">
                 <div className="fformBox">
-                  <form onSubmit={(e) => e.preventDefault()}>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleSubmit();
+                      toggle();
+                    }}
+                  >
                     <h2>Forgot Password?</h2>
                     <div className="paragraph">
                       <span>
@@ -71,11 +81,14 @@ export default function ForgotPswd() {
                       <span>Username:</span>
                       <input
                         className="forName"
+                        required
+                        name="userName"
                         placeholder="Enter username"
                         onChange={handleName}
                       />
                       <span>Email:</span>
                       <input
+                        required
                         className="forAddress"
                         placeholder="example00@gmail.com"
                         onChange={handleEmail}
@@ -83,11 +96,10 @@ export default function ForgotPswd() {
                     </div>
                     <div className="inputBx">
                       <button
+                        type="submit"
                         name=""
                         onClick={() => {
-                          postData();
-                          // toggle();
-                          // navigate("/login");
+                          handleSubmit();
                         }}
                       >
                         Send
@@ -104,7 +116,6 @@ export default function ForgotPswd() {
         <div
           id="test1"
           onClick={() => {
-            toggle();
             navigate("/login");
           }}
           className="close"
@@ -113,13 +124,12 @@ export default function ForgotPswd() {
         </div>
 
         <div role="alert">
-          <pre>Check your email for further details.</pre>
+          <pre>{postResult}</pre>
         </div>
 
         <button
           id="test1"
           onClick={() => {
-            toggle();
             navigate("/login");
           }}
         >

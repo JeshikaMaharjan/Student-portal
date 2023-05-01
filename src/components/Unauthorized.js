@@ -21,7 +21,8 @@ export default function Unauthorized() {
                   alt="access denied"
                 />
                 <p>You do not have permission to access this page.</p>
-                <button id="btn" onClick={goBack}>
+                <button id="btn"
+                  style={{ color: "white", border: "none" }} onClick={goBack}>
                   Go Back
                 </button>
               </div>

@@ -28,7 +28,6 @@ const Dashboard = (props) => {
         <div className="dash_header">
           <div className="clockDiv">
             <div id="dash_clock">
-              {/* 00:00:00 */}
               <span id="hrs">00 </span>:<span id="min">00 </span>:
               <span id="sec">00 </span>
               <span id="session"> AM</span>
