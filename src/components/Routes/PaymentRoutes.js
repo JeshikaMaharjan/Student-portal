@@ -16,4 +16,5 @@ function PaymentRoutes() {
     </>
   );
 }
+
 export default PaymentRoutes;

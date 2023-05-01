@@ -1,10 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Entrystaff from "../Entry_staff/Entrystaff";
 import Profile from "../Profile";
-
 import ChangePassword from "../ChangePassword";
 import NoMatch from "../NoMatch";
-
 import ResultRoutes from "./ResultRoutes";
 import { BulkEntry } from "../Entry_staff/BulkEntry";
 import { Confirmation } from "../Confirmation";

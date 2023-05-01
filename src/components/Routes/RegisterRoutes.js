@@ -17,4 +17,5 @@ function RegisterRoutes() {
     </>
   );
 }
+
 export default RegisterRoutes;

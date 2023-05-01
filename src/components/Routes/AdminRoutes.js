@@ -8,6 +8,7 @@ import DeleteUser from "../Admin/DeleteUser";
 import ChangePassword from "../ChangePassword";
 import NoMatch from "../NoMatch";
 import { Confirmation } from "../Confirmation";
+import ViewDetails from "../ViewStudentDetails";
 
 function AdminRoutes() {
   return (
@@ -20,6 +21,7 @@ function AdminRoutes() {
         <Route path="search" element={<Display />} />
         <Route path="edit" element={<EditDetails />} />
         <Route path="delete" element={<DeleteUser />} />
+        <Route path="view" element={<ViewDetails />} />
         <Route path="changepassword" element={<ChangePassword />} />
         <Route path="confirmation" element={<Confirmation />} />
 

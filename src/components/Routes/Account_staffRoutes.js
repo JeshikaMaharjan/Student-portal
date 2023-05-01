@@ -7,6 +7,7 @@ import UpdateBill from "../Account_staff/UpdateBill";
 import { VoucherValidate } from "../Account_staff/VoucherValidate";
 import ChangePassword from "../ChangePassword";
 import { Confirmation } from "../Confirmation";
+import ViewDetails from "../ViewStudentDetails";
 import NoMatch from "../NoMatch";
 import Profile from "../Profile";
 
@@ -21,6 +22,7 @@ function AccountRoutes() {
         <Route path="voucherimg" element={<ImageComponent />} />
         <Route path="changepassword" element={<ChangePassword />} />
         <Route path="searchstudent" element={<SearchStudent />} />
+        <Route path="searchstudent/viewdetail" element={<ViewDetails />} />
         <Route path="searchstudent/updatebill" element={<UpdateBill />} />
         <Route
           path="searchstudent/updatescholarship"

@@ -5,6 +5,7 @@ import SearchStudent from "../Entry_staff/SearchStudent";
 import { Selection } from "../Entry_staff/Selection";
 import ViewResult from "../Entry_staff/ViewResult";
 import NoMatch from "../NoMatch";
+import ViewDetails from "../ViewStudentDetails";
 
 function ResultRoutes() {
   return (
@@ -12,6 +13,7 @@ function ResultRoutes() {
       <Routes>
         <Route index element={<SearchStudent />} />
         <Route path="selection" element={<Selection />} />
+        <Route path="viewdetail" element={<ViewDetails />} />
         <Route path="marksentry" element={<ResultForm />} />
         <Route path="viewresult" element={<ViewResult />} />
         <Route path="editresult" element={<EditResult />} />
