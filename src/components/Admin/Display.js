@@ -18,7 +18,7 @@ const Display = () => {
         console.log(e);
       });
   }, []);
-  console.log(UserList);
+  // console.log(UserList);
 
   return (
     <>

@@ -52,11 +52,11 @@ function RegisterStaff() {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
-        console.log("onload");
+        // console.log("onload");
         resolve(fileReader.result);
       };
       fileReader.onerror = (error) => {
-        console.log("onerror");
+        // console.log("onerror");
         reject(error);
       };
     });
@@ -66,15 +66,15 @@ function RegisterStaff() {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     setImage(base64);
-    console.log("File");
+    // console.log("File");
   };
 
-  console.log({ image });
+  // console.log({ image });
 
   const [postResult, setPostResult] = useState(null);
 
   async function postData() {
-    console.log("postData");
+    // console.log("postData");
     const postData = {
       firstName: firstName.current.value,
       lastName: lastName.current.value,

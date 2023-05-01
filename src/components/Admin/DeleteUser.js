@@ -9,7 +9,7 @@ function DeleteUser() {
   const navigate = useNavigate();
   const [postResult, setPostResult] = useState(null);
 
-  console.log("delete", detail);
+  // console.log("delete", detail);
   const toggle = () => {
     var blur = document.getElementById("blur");
     blur.classList.toggle("active");
@@ -22,7 +22,7 @@ function DeleteUser() {
     tokenInstance
       .delete(`/delete/${detail.userName}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setPostResult(res.data.message);
       })
       .catch((err) => {

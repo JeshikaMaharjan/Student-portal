@@ -42,19 +42,18 @@ function Cardsingle({ person }) {
             </button>
           </div>
 
-          {/* <div className="deleteBtn">
+          <div className="detailBtn">
             <button
-              id="delete"
+              id="detail"
               onClick={() =>
-                navigate("/secure/delete", {
-                  replace: true,
+                navigate("/secure/view", {
                   state: { ...person },
                 })
               }
             >
-              Delete
+              View
             </button>
-          </div> */}
+          </div>
           <div className="deleteBtn">
             <button
               id="delete"

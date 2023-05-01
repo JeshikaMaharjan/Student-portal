@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { tokenInstance } from "../../apis";
 import Dashboard from "../Dashboard";
 import Sidenav from "../Sidenav";
 

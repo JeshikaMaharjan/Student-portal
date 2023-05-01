@@ -17,8 +17,6 @@ function Search({ details }) {
       <div className="header">
         <div className="SearchBarDiv">
           <div className="SearchStudent">
-            {/* <div id="combo-box-demo" className="SearchPanel"> */}
-            {/* <div> */}
             <input
               type="search"
               // id="combo-box-demo"

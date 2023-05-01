@@ -70,15 +70,15 @@ function RegisterStudent() {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     setImage(base64);
-    console.log("File");
+    // console.log("File");
   };
 
-  console.log({ image });
+  // console.log({ image });
 
   const [postResult, setPostResult] = useState(null);
 
   function postData() {
-    console.log("postData");
+    // console.log("postData");
     const postData = {
       firstName: firstName.current.value,
       lastName: lastName.current.value,
@@ -109,7 +109,7 @@ function RegisterStudent() {
       });
   }
   const handlefaculty = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setFacultyField(e.target.value);
   };
 

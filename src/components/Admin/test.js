@@ -45,7 +45,6 @@ const ChangePassword = () => {
       .post(`/password/update/${username}`, putData)
       .then((res) => {
         setpostresult(res.data.message);
-        // console.log(res);
       })
       .catch((err) => {
         setpostresult(err.response.data.message);

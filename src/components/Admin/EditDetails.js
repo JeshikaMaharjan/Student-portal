@@ -10,7 +10,7 @@ function EditDetails() {
   const detail = location.state;
   const navigate = useNavigate();
 
-  console.log("edit", detail);
+  // console.log("edit", detail);
   const toggle = () => {
     var blur = document.getElementById("blur");
     blur.classList.toggle("active");
