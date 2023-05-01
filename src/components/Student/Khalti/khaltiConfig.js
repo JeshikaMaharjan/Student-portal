@@ -12,7 +12,7 @@ const KhaltiConfig = () => {
   useEffect(() => {
     setMessage("Loading");
   }, []);
-  console.log("conf", description);
+  // console.log("conf", description);
 
   let config = {
     // replace this key with yours
@@ -24,7 +24,7 @@ const KhaltiConfig = () => {
     eventHandler: {
       // hit merchant api for initiating verfication
       onSuccess(payload) {
-        console.log(payload);
+        // console.log(payload);
 
         let data = {
           token: payload.token,
@@ -36,16 +36,16 @@ const KhaltiConfig = () => {
           .post(`/khalti`, data)
           .then((res) => {
             setMessage(res.data.message);
-            console.log("d", description);
+            // console.log("d", description);
 
-            console.log("data:", data);
+            // console.log("data:", data);
           })
           .catch((e) => {
             console.log(e);
             setMessage(e.response.data.message);
-            console.log("d", description);
+            // console.log("d", description);
 
-            console.log("error:", data);
+            // console.log("error:", data);
           });
       },
       // onError handler is optional
@@ -54,7 +54,7 @@ const KhaltiConfig = () => {
         console.log(error);
       },
       onClose() {
-        console.log("widget is closing");
+        // console.log("widget is closing");
         setMessage("Khalti widget closed.");
       },
     },

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../../css/Statement.css";
 function Individualstmt({ transactiondata }) {
-  console.log("i", transactiondata);
+  // console.log("i", transactiondata);
   const [type, setType] = useState();
   useEffect(() => {
     if (transactiondata.type == 1) setType("Bill added");

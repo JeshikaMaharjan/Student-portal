@@ -17,14 +17,14 @@ export default function Graph() {
       .get(`graph/data/${username}`)
       .then((res) => {
         setDataSet(res.data);
-        console.log(dataset);
+        // console.log(dataset);
       })
       .catch((err) => {
         setDataSet(null);
         console.log(err);
       });
   }, []);
-  console.log(dataset);
+  // console.log(dataset);
 
   if (dataset.length !== 0) {
     if (dataset.x.length !== 0 && dataset.y.length !== 0) {
@@ -59,7 +59,7 @@ export default function Graph() {
     tokenInstance
       .get(`/prediction/${username}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setTimeout(() => {
           setpostresult(res.data.message);
         }, 3000);

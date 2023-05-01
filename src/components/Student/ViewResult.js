@@ -15,11 +15,11 @@ export function ViewResult() {
   const [mark, setMark] = useState([]);
   useEffect(() => {
     setMark([]);
-    console.log(mark);
+    // console.log(mark);
     tokenInstance
       .get(`/mark/${detail.username}/${detail.semester}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setResult(res.data);
       })
       .catch((err) => {
@@ -27,7 +27,7 @@ export function ViewResult() {
         console.log(err);
       });
   }, []);
-  console.log(result);
+  // console.log(result);
   function Marksview({ subject }) {
     return (
       <>

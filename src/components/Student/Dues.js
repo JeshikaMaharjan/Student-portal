@@ -62,7 +62,7 @@ function Dues() {
 
   const onFileSelected = async (e) => {
     const file = e.target.files[0];
-    console.log("ff", file);
+    // console.log("ff", file);
     if (file !== undefined) {
       const base64 = await convertToBase64(file);
       setImage(base64);
@@ -74,14 +74,14 @@ function Dues() {
     setMessage("Loading..");
     const postData = {
       image: image,
-      amount: amountpaid,
+      amount: amountpaid / 100,
       username: username,
       semester: description,
     };
     tokenInstance
       .post(`/voucher`, postData)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setMessage(res.data.message);
       })
       .catch((err) => {
@@ -90,8 +90,8 @@ function Dues() {
       });
   }
   function KhaltiCheck() {
-    console.log("ap", amountpaid);
-    console.log("d", semdue);
+    // console.log("ap", amountpaid);
+    // console.log("d", semdue);
     if (amountpaid / 100 <= semdue) {
       setTimeout(checkout.show({ amount: amountpaid }), 2000);
       toggle();
@@ -182,6 +182,7 @@ function Dues() {
                           placeholder="Amount Here"
                           onChange={(e) => {
                             setamountpaid(e.target.value * 100);
+                            // setamountpaid(e.target.value);
                           }}
                         ></Input>
                       </div>

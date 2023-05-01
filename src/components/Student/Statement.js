@@ -16,14 +16,14 @@ function Statement() {
       .get(`/payment/details/${username}`)
       .then((res) => {
         const info = res.data;
-        console.log(info);
+        // console.log(info);
         setData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  console.log(transactiondata);
+  // console.log(transactiondata);
 
   return (
     <>
@@ -41,13 +41,11 @@ function Statement() {
                 <span>Amount</span>
                 <span>Remark</span>
               </div>
-
             </div>
             <div className="statm-card">
               {transactiondata.map((singledata) => (
                 <Individualstmt transactiondata={singledata} />
               ))}
-
             </div>
           </div>
         </CardBody>
