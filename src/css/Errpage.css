@@ -5,7 +5,7 @@
 .FPbody {
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: white;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -14,7 +14,7 @@
 
 /* h1 {
   color: aliceblue;
-} */  /* yesle chai yo heading ko color affect gariraxa regform ma*/
+} */ /* yesle chai yo heading ko color affect gariraxa regform ma*/
 
 p {
   /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */

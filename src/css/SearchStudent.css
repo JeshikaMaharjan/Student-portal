@@ -67,7 +67,7 @@
 }
 
 .searchStudentCard {
-  background-color: #d9d9d9;
+  background-color: #a5c7da;
   height: 90%;
   width: 90%;
   border-radius: 20px;
@@ -80,7 +80,7 @@
   width: 95%;
   border-radius: 20px;
   max-height: 65vh;
-  background-color:  #a5c7da;
+  background-color: #a5c7da;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,7 +129,7 @@
 }
 
 .option button {
-  background-color: #5AA3CB;
+  background-color: #5aa3cb;
   border-radius: 15px;
   width: 7rem;
   color: white;
